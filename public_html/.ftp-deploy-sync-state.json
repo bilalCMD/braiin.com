@@ -1,0 +1,511 @@
+{
+    "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
+    "version": "1.0.0",
+    "generatedTime": 1780065575311,
+    "data": [
+        {
+            "type": "file",
+            "name": ".htaccess",
+            "size": 2429,
+            "hash": "5373c7d28ad59e2702d2fa61a2f3520f4dfbddc408a40ed6520e846c2dd60d0c"
+        },
+        {
+            "type": "file",
+            "name": "Logo_Dark.png",
+            "size": 211228,
+            "hash": "23446eae4db2ee46ee3ce32c2f93632d7fd56e7efc865e7b7c863fded77f1368"
+        },
+        {
+            "type": "file",
+            "name": "about.html",
+            "size": 13704,
+            "hash": "0ea4211c6de7fe6c0efefc43a9cd17a954ef4018092575cc9f5362b936323736"
+        },
+        {
+            "type": "file",
+            "name": "agriculture.html",
+            "size": 22099,
+            "hash": "7cbdbb5aa30baf969cabb8e84baa44d305f3016bc188854ded5a49fdb78011c1"
+        },
+        {
+            "type": "folder",
+            "name": "assets"
+        },
+        {
+            "type": "file",
+            "name": "contact.html",
+            "size": 11952,
+            "hash": "07908ffee522aefab737552e74de79574df2e6d78f03be1d8ad0ac105e8ec242"
+        },
+        {
+            "type": "file",
+            "name": "customer-experience.html",
+            "size": 16306,
+            "hash": "d7af00705ec1881fe1da98a2d0d7ba822ffbab986fc9b69d95dbb74161f2d11e"
+        },
+        {
+            "type": "file",
+            "name": "footer.html",
+            "size": 1910,
+            "hash": "251e18b92669b650cd8a19b698fd558bc5c04dfb7a0d98443965e173f791960f"
+        },
+        {
+            "type": "file",
+            "name": "google9edad27c81a91998.html",
+            "size": 53,
+            "hash": "c4b4ade0d9f70ac8ecda24f380eb1e8fef419832f6fb32a1e33fa3075a28af61"
+        },
+        {
+            "type": "file",
+            "name": "header.html",
+            "size": 1422,
+            "hash": "c7f76dbb46f429c0d100dfa6249152470c612b52e6fd6e2336ee9933b5cd2306"
+        },
+        {
+            "type": "file",
+            "name": "index.html",
+            "size": 26664,
+            "hash": "f0eb006a599d8ddeff7536a885e7923254b901180e8145b4446fe5581bfb26c9"
+        },
+        {
+            "type": "file",
+            "name": "investors.html",
+            "size": 7309,
+            "hash": "912bec4131d9304996b32c228a7ff0d22417a14f972aeff99f12d7c4b18c48be"
+        },
+        {
+            "type": "file",
+            "name": "iots.html",
+            "size": 8385,
+            "hash": "99f2c05fdce3a2a2f97f107ee09a7355a26df1878fb7b9be6d0235ce49dc8dcb"
+        },
+        {
+            "type": "file",
+            "name": "property-technology.html",
+            "size": 10663,
+            "hash": "36ac9d2fba8b11a4f5338490e0084386ccdb661ee683509ff3b010eaf7eb64fd"
+        },
+        {
+            "type": "file",
+            "name": "robotics.html",
+            "size": 8819,
+            "hash": "6dc629199f02f50b5bd96b80261c3274682e6d758f6c825170d35594eb92ec47"
+        },
+        {
+            "type": "file",
+            "name": "sitemap.xml",
+            "size": 1855,
+            "hash": "53c4f4227c16cfa18c68cc27ce854a054cfe1a9137fe4f19b5eaf35eef19cc6d"
+        },
+        {
+            "type": "file",
+            "name": "style.css",
+            "size": 17363,
+            "hash": "22a9ce16bb67f94a6d3e41a9915c26ba7ee7b99a2afe785563958f875836c57d"
+        },
+        {
+            "type": "file",
+            "name": "webinar-registration.html",
+            "size": 34107,
+            "hash": "c73ae33908ede0155eee0a140441dff5331d71c8c29508aaed36468b048613e6"
+        },
+        {
+            "type": "folder",
+            "name": "assets/images"
+        },
+        {
+            "type": "folder",
+            "name": "assets/logo"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/Image_enhancement.jpg",
+            "size": 754998,
+            "hash": "2a85db361e82945b8196b0d27ae5374eb9dab3458d98757128acb2fda8f711a0"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/aerial-imagery.png",
+            "size": 265112,
+            "hash": "3333ef2705efd8cf1cd848b2aa8757a13cf5bae480f883cadf7d28158de5d4c2"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/ag-monitoring.jpg",
+            "size": 90802,
+            "hash": "2d02a25b55050d19f1824b803b89f950a20ccde135d5057d896a523668433968"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/ag-platform.jpg",
+            "size": 44303,
+            "hash": "eb6f568fe02d06da94bd844ef35db076c2d9eb928044860c4f4362b4760dc9c4"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/ag-spraying.jpg",
+            "size": 66854,
+            "hash": "7f0860cb141ad11e2f837e850b9e7d635f3ae06c9f918aa247c83535385dc714"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/agriculture-drone.jpg",
+            "size": 6170011,
+            "hash": "e67fb014b8708147399f355f969ea7b01f88b160e8e300593b565b71b69ebdbf"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/agriculture.png",
+            "size": 2458476,
+            "hash": "99b0e488bda8fcdbaadd0349e48b17a53f6239bed4c2aa137727b1ae790c86a5"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/agriculture.webp",
+            "size": 135368,
+            "hash": "f84763f73012b14bc0814b19a6ba5edd670c2d0c45103ff3a00fe240a7e9b59d"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/ai-ml.jpg",
+            "size": 28242,
+            "hash": "373de8949a7e869a162a895fb9d06cc6e132e079a9d1b57d3d0023c098df8075"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/ai_ml.webp",
+            "size": 506292,
+            "hash": "1b943977c720ec2fe4e9a52394932602539062f6d6a18617508ee59b91d7368b"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/aiml.png",
+            "size": 2146271,
+            "hash": "035c435172c7d2064a9723dd4faca3e94aeee5bde09eb45756b23c0092df03ea"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/aiml.webp",
+            "size": 65378,
+            "hash": "531723a0fb5e3dc2c446bd99c254d108798f693f382043db4d130763013cd3a2"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/braiin-agriculture-drone-robotics-crop-spraying.webp",
+            "size": 96880,
+            "hash": "b9f164f8ed8cc37aefb89b15b5749b6ce8cad4cdbc7eba2212e75ef4ee61c469"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/braiin-agriculture-solutions.webp",
+            "size": 95500,
+            "hash": "240b46c4d8102d602a6800c225b0471d9a096e80583d830d1c10773cf310d24e"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/braiin-ai-customer-experience-automation.webp",
+            "size": 30418,
+            "hash": "06f45162bb6163847c41eb57c454937ea68967ababc266f7ff635e15d0bfbca9"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/braiin-drone-spraying-in-agriculture-crops.webp",
+            "size": 144276,
+            "hash": "5ff699ab3e1b1b6caa89d4e1cc866ee60153ac26049c57c21a5a5737e955dd1d"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/braiin-empowers-businesses-with-automations.webp",
+            "size": 97838,
+            "hash": "ce29d8af94370d925b87c202496de4cb92bf9b0c9265c5565c23dc55cd9bcea9"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/braiin-favicon.webp",
+            "size": 6424,
+            "hash": "f9eb2ae79c1413d980be83ce95c3cc9d3a6beece68f98960667af1125eab0241"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/braiin-logo.webp",
+            "size": 10062,
+            "hash": "644adb55761302cfb7a5d6df9a900d63930d7e01c0ae9250ee120ba660eae5b1"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/braiin-powering-the-future.webp",
+            "size": 110694,
+            "hash": "379b21ed805d5d09ba1b53a5c78f7a00726b3d50cc8c72266ef42f1dcb084e15"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/braiin-property-technology-digital-infrastructure.webp",
+            "size": 84004,
+            "hash": "e3205af776f367e50ce517820451be9ec598eafce585e3ef95eb224a3cd09267"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/contact.jpg",
+            "size": 81678,
+            "hash": "6f9aba247f043611dff73d846f9b18016def810e0f5786b4d6d6fffe5d8f92d7"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/customer.jpg",
+            "size": 8268836,
+            "hash": "0e5eb49a7a526923ea4931e0c3fc4198702960be15231188e04ead41347580fb"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/customer.png",
+            "size": 1968831,
+            "hash": "01d1a894d29e08e95b825b7b8fb20594476227df24c2aeb7aa61854212f016ed"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/customer.webp",
+            "size": 35978,
+            "hash": "c0fe2089b86a99c4ba1ef469fc8e61ceb0e204602fa6faab300cab32646d9fcf"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/cx-hero.png",
+            "size": 943924,
+            "hash": "b6e6fbcf9bb80d050a80bbe1c93ad5cf70e90e0e5610a1621481f6fc1f529e2a"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/cx-overview.png",
+            "size": 801304,
+            "hash": "361acb04d9a5ee26e5c074f3cc96964e49bf52a01a8d4dd9bb3ec320ca0d7c2d"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/drone-robot-spraying.webp",
+            "size": 218908,
+            "hash": "b656ffc6121d9dec1f923e69d8c25796515c139057db4ee2e9b9f6a29de9e822"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/drone_robotics.webp",
+            "size": 185570,
+            "hash": "af2fab4c08840f07a3010fe2f2482bbf21a284cfecd4933ce43e2ac8f0d42ff5"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/farmers.jpg",
+            "size": 12465544,
+            "hash": "f3a8dade6d02dc9eed515caa75a50215e94118d8cd6551d530412923051d52a6"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/hero-main.jpg",
+            "size": 1432089,
+            "hash": "4002e437083198e2517c265d49a339220d50788b4f619b1eaacb3d6e3ee5fc84"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/heroimage.png",
+            "size": 8502476,
+            "hash": "aa5ddbcad32d26e23cf9f0acf770468c6c1f4c2dc7ca592189ef43d5bd84796f"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/herosection.jpg",
+            "size": 3198892,
+            "hash": "e460131317fcd4919c7bfe94b4731bc9f27cbda06940a11c10421895e0af57ae"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/iot-devices.webp",
+            "size": 41432,
+            "hash": "b4e51882177cc5b50e4bbb65a541394d85d68d6be9654a697a94610970bef523"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/iots-hero.jpg",
+            "size": 1531689,
+            "hash": "bd2fcf8db0fb0d61a52c4ca40378e43d2e1e27c654be0dc324fad2e16de4b90e"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/iots-sensors.jpg",
+            "size": 17230,
+            "hash": "85fa8b25d9f7754f56f71a22096539063277d7d41476181e9fca7e9c142fcec4"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/iots.jpg",
+            "size": 543044,
+            "hash": "cadc92e6c9a8a9e846f6c4db211fa52dafa4acee502c8cd367019a47c756862f"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/iots.png",
+            "size": 2101611,
+            "hash": "7a139c5368861cea81bb298c59f051ca25be7117b3f79bf4e28cc38961101e62"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/leading-autonomous-technology.webp",
+            "size": 93116,
+            "hash": "53afa48e1c03ac4a519d67f612ab6b75c69c26f0b90965139c510885b7910f7f"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/our.jpg",
+            "size": 19726473,
+            "hash": "79caf7b99bff266599c8d2f6cd5b33148105da3a70d8ba676c1e06cb13a2be31"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/plant-health.png",
+            "size": 417188,
+            "hash": "7e5e9299e96d0d2d60cd304d48a117d30ee406a73b9a45a1aeb133f813280819"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/property.jpg",
+            "size": 164961,
+            "hash": "bc2a0f21f437a51033fd062f9c0723c29fc7083f7fd998e140c7b0e576379dbb"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/property.png",
+            "size": 3304854,
+            "hash": "8e26f03839444c0fa3bfdb4ae9cc4037c82915eb89af2de1193f0ed57cbd85ad"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/property.webp",
+            "size": 127940,
+            "hash": "d52644aef4401b78d932f6e783c96281392c5d1193278e170ee252e9386afe80"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/proptech-automated.png",
+            "size": 948098,
+            "hash": "4efa6d321014434e2298f568b3a5afa46b0affa4b4e15fbb3898841fa8b328ac"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/proptech-hero.png",
+            "size": 5951678,
+            "hash": "b4e1155c65dcc82e11bc76ab5eb1c61f70248014d95b9ce4e725fed89fe71b9e"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/proptech-matching.png",
+            "size": 1831619,
+            "hash": "d54682c068efd658685d8a6e16aeaa73b404c6f0d22e296ba2f5f7bfc7ad2198"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/proptech-overview.png",
+            "size": 895767,
+            "hash": "e120bb7e6a865357039d04b04a44f3041fd52197561353e93c9e30f87068513f"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/proptech-platform.png",
+            "size": 2041009,
+            "hash": "0daa5f5178e306a73e52126f4c0e6f94f82a1ab546a93b3e378211b9052f0cac"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/proptech-utility.png",
+            "size": 833344,
+            "hash": "8ed026646d045ce30cda5723bedef63f0e78e8d8d6f544887809dd44941f5e0d"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/robotics-drones.jpg",
+            "size": 43803,
+            "hash": "539e55f48b86a64d8be2545cca5cfff21ecbf438a2730a6f8cb718b84e668080"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/robotics-hero.jpg",
+            "size": 2449478,
+            "hash": "1b8ad4c3c02e16078345d332d9ccaa7c9f9669a53bab0e953983c02ae486d0c8"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/robotics.png",
+            "size": 2087643,
+            "hash": "7fda707aa2de3ba15d878bc0ffa94b82334618881ba89f697877eff5c280eb59"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/robotics.webp",
+            "size": 227594,
+            "hash": "cfaa18adabf26429ac9a00d5f5471b7f4be855f40dc1d244d838be5b4ce02e3e"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/software-blockchain.jpg",
+            "size": 31929,
+            "hash": "60f25e339b33c64bda97981f968e150f6081a5151565cdea73155540469f5490"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/software-dashboard.jpg",
+            "size": 83986,
+            "hash": "ef7c6a411f959fbafe3b48e98b1b625d985aa712776da52689d992bba8326cd8"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/software-tech.jpg",
+            "size": 52759,
+            "hash": "e1ae4802a4a4835aa4ae67d66b9c0768ad059940409a487f40acc4028311e98b"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/software.png",
+            "size": 1822062,
+            "hash": "7f7b83b849711246ba9da298e7f812ed6af5f41c6e03a81d74541e7ade32f984"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/software.webp",
+            "size": 84140,
+            "hash": "2cb358f65d6c42c73f3aaed3c74bb95ee87c9f3be8e0445df94717d39b58106c"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/sydneya.jpg",
+            "size": 3819425,
+            "hash": "421206a59bf54b4d3112497be7879e5068bf302f0734e20d61f9264d0461b140"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/thum.png",
+            "size": 4023682,
+            "hash": "d5871a86c09c5c769d39fe66df3b65f1055b729a9baf932cfb7be25abcdcc7b7"
+        },
+        {
+            "type": "file",
+            "name": "assets/logo/Logo Dark.png",
+            "size": 211228,
+            "hash": "23446eae4db2ee46ee3ce32c2f93632d7fd56e7efc865e7b7c863fded77f1368"
+        },
+        {
+            "type": "file",
+            "name": "assets/logo/braiin-logo-black.png",
+            "size": 9071,
+            "hash": "752697be3b249c85317a6aaf7d6567694c4daf99f030386626b7b5a4e8b7a45c"
+        },
+        {
+            "type": "file",
+            "name": "assets/logo/braiin-logo.png",
+            "size": 8128,
+            "hash": "4a7b41547da3e9d3441f9ccdb2434c63216aef88c5d65c5213f964c4a588bb80"
+        },
+        {
+            "type": "file",
+            "name": "assets/logo/braiin-og-image.jpg",
+            "size": 58254,
+            "hash": "7bb7d6758ba7782da03da0cc396cd4846bc072d5c8f4d9e386630af703fdc13a"
+        }
+    ]
+}
