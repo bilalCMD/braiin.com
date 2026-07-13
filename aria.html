@@ -56,19 +56,20 @@
   .aria-subnav .sn-pdf:hover{border-bottom-color:transparent;opacity:.75}
   section[id]{scroll-margin-top:118px}
 
-  /* ─── ABOUT / BOILERPLATE BAND ─── */
-  .boiler{position:relative;background:var(--dark);padding:84px 5%;overflow:hidden}
-  .boiler::before{content:'';position:absolute;top:-160px;right:-120px;width:520px;height:420px;background:radial-gradient(ellipse,rgba(0,176,210,.14),transparent 70%);pointer-events:none}
-  .boiler::after{content:'';position:absolute;bottom:-180px;left:-140px;width:480px;height:400px;background:radial-gradient(ellipse,rgba(154,202,60,.09),transparent 70%);pointer-events:none}
-  .boiler .container{position:relative;z-index:2}
-  .boiler-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px}
-  .boiler-col:last-child{padding-left:64px;border-left:1px solid rgba(255,255,255,.09);margin-left:-64px}
-  .boiler-kick{display:inline-flex;align-items:center;gap:9px;font-size:10px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--cyan);margin-bottom:18px}
-  .boiler-kick i{width:22px;height:2px;border-radius:2px;background:var(--grad);display:block}
-  .boiler-col p{font-size:13.5px;color:rgba(255,255,255,.62);line-height:1.95}
-  .boiler-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-  .boiler-chip{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;color:rgba(255,255,255,.75);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:8px 14px}
-  .boiler-chip .dot{width:5px;height:5px;border-radius:50%;background:var(--lime);box-shadow:0 0 7px var(--lime)}
+  /* ─── ABOUT / BOILERPLATE ─── */
+  .boiler{background:#fff;padding:88px 5%}
+  .boiler-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
+  .boiler-col{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--g100);border-radius:16px;padding:34px 32px 32px;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
+  .boiler-col::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--grad)}
+  .boiler-col:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(13,17,23,.07);border-color:transparent}
+  .boiler-kick{display:inline-flex;align-items:center;gap:9px;font-size:10px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+  .boiler-kick i{width:20px;height:2px;border-radius:2px;background:var(--grad);display:block}
+  /* flex:1 pushes the chips to the bottom so both cards line up */
+  .boiler-col p{font-size:13.5px;color:var(--g500);line-height:1.95;flex:1}
+  .boiler-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+  .boiler-chip{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;color:var(--g600);background:var(--g50);border:1px solid var(--g100);border-radius:100px;padding:8px 14px;transition:all .25s}
+  .boiler-chip:hover{border-color:var(--cyan);color:var(--cyan-dk)}
+  .boiler-chip .dot{width:5px;height:5px;border-radius:50%;background:var(--lime);box-shadow:0 0 7px rgba(154,202,60,.7)}
   .boiler-chip svg{width:13px;height:13px;color:var(--cyan)}
 
   /* ─── CONTACT CARDS ─── */
@@ -173,8 +174,7 @@
     .flow-row{grid-template-columns:1fr}
     .eco-grid{grid-template-columns:1fr 1fr}
     .ct-grid{grid-template-columns:1fr}
-    .boiler-grid{grid-template-columns:1fr;gap:40px}
-    .boiler-col:last-child{padding-left:0;border-left:none;margin-left:0;padding-top:36px;border-top:1px solid rgba(255,255,255,.09)}
+    .boiler-grid{grid-template-columns:1fr;gap:14px}
     .aria-hero{padding:120px 5% 60px}
     .aria-subnav{top:0}
   }
@@ -191,11 +191,8 @@
     .ct-card b{color:var(--text) !important}
     .ct-card span{color:var(--g400) !important}
     .ct-card a{color:var(--cyan-dk) !important}
-    .boiler{background:#fff !important;padding:24px 0 !important;border-top:1px solid var(--g100)}
-    .boiler::before,.boiler::after{display:none}
-    .boiler-col p{color:var(--g500) !important}
-    .boiler-col:last-child{border-left-color:var(--g100) !important}
-    .boiler-chip{background:var(--g50) !important;border-color:var(--g100) !important;color:var(--g500) !important}
+    .boiler{padding:20px 0 !important}
+    .boiler-col::before{background:var(--cyan) !important}
     .boiler-chip .dot{background:var(--cyan) !important;box-shadow:none}
     .boiler-kick i{background:var(--cyan) !important}
     .boiler,.boiler-col{break-inside:avoid}
