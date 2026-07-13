@@ -46,6 +46,32 @@
   .btn-ghost{padding:14px 26px;border-radius:10px;font-size:12px;font-weight:600;color:#fff;border:1px solid rgba(255,255,255,.55);background:transparent;display:inline-flex;align-items:center;gap:8px;transition:all .3s;cursor:pointer;font-family:'Montserrat',sans-serif}
   .btn-ghost:hover{background:rgba(255,255,255,.16);border-color:#fff}
 
+  /* ─── STICKY SECTION NAV ─── */
+  .aria-subnav{position:sticky;top:68px;z-index:90;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--g100)}
+  .aria-subnav .container{display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none}
+  .aria-subnav .container::-webkit-scrollbar{display:none}
+  .aria-subnav a{font-size:12px;font-weight:600;color:var(--g400);padding:16px 14px;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s}
+  .aria-subnav a:hover{color:var(--cyan);border-bottom-color:var(--cyan)}
+  .aria-subnav .sn-pdf{margin-left:auto;display:inline-flex;align-items:center;gap:6px;color:var(--cyan);font-weight:700}
+  .aria-subnav .sn-pdf:hover{border-bottom-color:transparent;opacity:.75}
+  section[id]{scroll-margin-top:118px}
+
+  /* ─── ABOUT CARDS ─── */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .about-card{background:#fff;border:1px solid var(--g100);border-radius:14px;padding:30px}
+  .about-card h4{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:12px}
+  .about-card p{font-size:13px;color:var(--g500);line-height:1.9}
+
+  /* ─── CONTACT CARDS ─── */
+  .ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:660px;margin:32px auto 0;text-align:left}
+  .ct-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:22px;transition:all .3s}
+  .ct-card:hover{background:rgba(255,255,255,.09);border-color:var(--cyan)}
+  .ct-card h5{font-size:9.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--cyan);margin-bottom:10px}
+  .ct-card b{display:block;font-size:14px;font-weight:700;color:#fff;margin-bottom:2px}
+  .ct-card span{display:block;font-size:12px;color:rgba(255,255,255,.5);margin-bottom:8px}
+  .ct-card a{font-size:12.5px;font-weight:600;color:var(--lime)}
+  .ct-card a:hover{text-decoration:underline}
+
   /* ─── SHARED CARD ─── */
   .a-card{position:relative;background:#fff;border:1px solid var(--g100);border-radius:14px;padding:26px 22px;transition:transform .3s,box-shadow .3s,border-color .3s;overflow:hidden}
   .a-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .35s}
@@ -137,7 +163,9 @@
     .cap-grid,.comm-grid{grid-template-columns:1fr}
     .flow-row{grid-template-columns:1fr}
     .eco-grid{grid-template-columns:1fr 1fr}
+    .about-grid,.ct-grid{grid-template-columns:1fr}
     .aria-hero{padding:120px 5% 60px}
+    .aria-subnav{top:0}
   }
   @media(max-width:480px){
     .eco-grid{grid-template-columns:1fr}
@@ -146,7 +174,13 @@
   /* ═══ PRINT / SAVE-AS-PDF ═══ */
   @media print{
     @page{margin:13mm}
-    #header-placeholder,#footer-placeholder,.aria-actions,nav,footer{display:none !important}
+    #header-placeholder,#footer-placeholder,.aria-actions,nav,footer,.aria-subnav,.split-img{display:none !important}
+    .split{grid-template-columns:1fr !important}
+    .ct-card{background:var(--g50) !important;border:1px solid var(--g100) !important}
+    .ct-card b{color:var(--text) !important}
+    .ct-card span{color:var(--g400) !important}
+    .ct-card a{color:var(--cyan-dk) !important}
+    .about-card{border:1px solid var(--g100) !important}
     .eco-banner{min-height:0 !important;border:1px solid var(--g100)}
     .eco-banner img,.eco-banner::after{display:none !important}
     .eco-banner-inner{padding:24px !important;max-width:100% !important}
@@ -167,10 +201,16 @@
     .market .mc-l{color:var(--g400) !important}
     .market .note-box{background:var(--g50) !important;border:none !important;border-left:3px solid var(--cyan) !important}
     .market .note-box p{color:var(--g500) !important}
+    .market .note-box strong{color:var(--text) !important}
     .sec{padding:18px 0 !important}
     .reveal{opacity:1 !important;transform:none !important}
     .eco-grid{grid-template-columns:repeat(2,1fr)}
     .a-card,.flow-step,.eco-item,.note-box,.eco-banner{break-inside:avoid}
+    /* Flatten every gradient — Chrome rasterises them into multi-MB JPEGs when printing. */
+    .eyebrow .bar,.flow-n,.a-ico,.eco-tick,.flow-row::before{background:var(--cyan) !important}
+    .market .mc-n{background:none !important;-webkit-text-fill-color:var(--cyan-dk) !important;color:var(--cyan-dk) !important}
+    .a-ico,.flow-n,.eco-tick{color:#fff !important}
+    .btn-g{background:var(--cyan) !important}
     .a-card::before{display:none}
     .disclaimer details{display:block}
     .disclaimer summary::before{display:none}
@@ -188,17 +228,33 @@
     <div class="sec-title">ARIA — Agentic Real Estate<br>Intelligence and Automation</div>
     <p class="sec-desc">Braiin's agentic AI execution platform for property management, leasing, compliance, accounting support, customer engagement and more.</p>
     <div class="aria-actions">
-      <button type="button" class="btn-w" onclick="window.print()">
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
-        Download as PDF
-      </button>
+      <a href="aria.pdf" target="_blank" rel="noopener" class="btn-w">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6M9 15l3 3 3-3"/></svg>
+        Download One-Pager (PDF)
+      </a>
       <a href="mailto:ir@braiin.com" class="btn-ghost">Contact Investor Relations</a>
     </div>
   </div>
 </div>
 
+<!-- ═══════════ STICKY SECTION NAV ═══════════ -->
+<nav class="aria-subnav" aria-label="ARIA page sections">
+  <div class="container">
+    <a href="#overview">Overview</a>
+    <a href="#capabilities">Capabilities</a>
+    <a href="#execution">AI Execution</a>
+    <a href="#market">Market</a>
+    <a href="#ecosystem">Ecosystem</a>
+    <a href="#commercial">Commercial Model</a>
+    <a href="aria.pdf" target="_blank" rel="noopener" class="sn-pdf">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      PDF
+    </a>
+  </div>
+</nav>
+
 <!-- ═══════════ OVERVIEW ═══════════ -->
-<section class="sec">
+<section class="sec" id="overview">
   <div class="container">
     <div class="split reveal" style="align-items:center">
       <div>
@@ -216,7 +272,7 @@
 </section>
 
 <!-- ═══════════ CAPABILITIES ═══════════ -->
-<section class="sec" style="background:var(--g50)">
+<section class="sec" id="capabilities" style="background:var(--g50)">
   <div class="container reveal">
     <div class="eyebrow"><span class="bar"></span> An AI Workforce for Real Estate</div>
     <div class="sec-title">Replacing fragmented, manual work</div>
@@ -281,7 +337,7 @@
 </section>
 
 <!-- ═══════════ BEYOND CHATBOTS ═══════════ -->
-<section class="sec">
+<section class="sec" id="execution">
   <div class="container reveal">
     <div class="eyebrow"><span class="bar"></span> Moving Beyond Chatbots</div>
     <div class="sec-title">From answering questions to AI execution</div>
@@ -310,7 +366,7 @@
 </section>
 
 <!-- ═══════════ MARKET OPPORTUNITY ═══════════ -->
-<section class="market">
+<section class="market" id="market">
   <div class="container reveal">
     <div class="eyebrow"><span class="bar"></span> Market Opportunity</div>
     <div class="sec-title">A significant global opportunity</div>
@@ -333,7 +389,7 @@
 </section>
 
 <!-- ═══════════ PROPTECH ECOSYSTEM ═══════════ -->
-<section class="sec">
+<section class="sec" id="ecosystem">
   <div class="container reveal">
     <div class="eyebrow"><span class="bar"></span> Integrated With Braiin's PropTech Ecosystem</div>
     <div class="sec-title">An intelligent operating layer for the residential lifecycle</div>
@@ -364,7 +420,7 @@
 </section>
 
 <!-- ═══════════ COMMERCIAL MODEL ═══════════ -->
-<section class="sec" style="background:var(--g50)">
+<section class="sec" id="commercial" style="background:var(--g50)">
   <div class="container reveal">
     <div class="eyebrow"><span class="bar"></span> Commercial Model &amp; International Deployment</div>
     <div class="sec-title">A phased path to commercialisation</div>
@@ -403,16 +459,42 @@
   </div>
 </section>
 
+<!-- ═══════════ ABOUT ═══════════ -->
+<section class="sec" style="padding-top:90px;padding-bottom:90px">
+  <div class="container reveal">
+    <div class="about-grid">
+      <div class="about-card">
+        <h4>About ARIA</h4>
+        <p>ARIA — the Agentic Real Estate Intelligence and Automation — is an AI-native workforce designed to execute multi-step workflows across property management, leasing, sales, compliance, documentation, accounting support and customer engagement. ARIA combines natural-language interaction, workflow orchestration, document generation, data analysis and human-in-the-loop controls to help real estate organisations reduce repetitive administration, strengthen operational consistency and scale more efficiently.</p>
+      </div>
+      <div class="about-card">
+        <h4>About Braiin Limited</h4>
+        <p>Braiin Limited (NASDAQ: BRAI) is a global technology platform operating across AI, agritech, customer experience solutions, PropTech, and living infrastructure. Braiin's ecosystem combines embedded distribution, intelligent automation, and recurring revenue platforms designed to support the lifecycle of the home and connected consumer services.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════ CTA ═══════════ -->
 <section class="aria-cta">
   <div class="container reveal">
     <div class="eyebrow" style="justify-content:center"><span class="bar"></span> Get in Touch</div>
     <div class="sec-title">Interested in learning more?</div>
-    <p>If you're interested in learning more about ARIA or Braiin's other innovative solutions, please reach out to our Investor Relations team.</p>
-    <a href="mailto:ir@braiin.com" class="btn-g">
-      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
-      ir@braiin.com
-    </a>
+    <p>If you're interested in learning more about ARIA or Braiin's other innovative solutions, please reach out to our team.</p>
+    <div class="ct-grid">
+      <div class="ct-card">
+        <h5>Investor Relations</h5>
+        <b>Mike Mason</b>
+        <span>CORE IR &middot; (212) 655-0924</span>
+        <a href="mailto:ir@braiin.com">ir@braiin.com</a>
+      </div>
+      <div class="ct-card">
+        <h5>Public Relations</h5>
+        <b>Matthew Cossel</b>
+        <span>Core PR &middot; (212) 655-0924</span>
+        <a href="mailto:pr@braiin.com">pr@braiin.com</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -430,6 +512,10 @@
 fetch('header.html').then(r=>r.text()).then(h=>{document.getElementById('header-placeholder').innerHTML=h;document.getElementById('hamburger').addEventListener('click',function(){this.classList.toggle('open');document.getElementById('mobileMenu').classList.toggle('open');});window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',scrollY>50)});});
 fetch('footer.html').then(r=>r.text()).then(h=>{document.getElementById('footer-placeholder').innerHTML=h});
 document.addEventListener('DOMContentLoaded',()=>{const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}})},{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));});
+// Expand the forward-looking statements notice whenever the page is printed or rendered to PDF.
+const expandAll=()=>document.querySelectorAll('details').forEach(d=>d.open=true);
+window.addEventListener('beforeprint',expandAll);
+if(location.search.includes('pdf=1')){document.addEventListener('DOMContentLoaded',()=>{expandAll();document.querySelectorAll('.reveal').forEach(el=>el.classList.add('v'));});}
 </script>
 </body>
 </html>
