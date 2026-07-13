@@ -56,9 +56,11 @@ RewriteRule ^ /blogs/%1 [R=301,L]
 </IfModule>
 
 <IfModule mod_headers.c>
-  # ARIA one-pager must download on click, not open in the browser's PDF viewer
+  # ARIA one-pager must download on click, not open in the browser's PDF viewer.
+  # Filename is deliberately unquoted: the server passes escaped quotes through
+  # literally, and the browser then sanitises them into underscores.
   <Files "aria.pdf">
-    Header set Content-Disposition "attachment; filename=\"Braiin-ARIA-One-Pager.pdf\""
+    Header set Content-Disposition "attachment; filename=Braiin-ARIA-One-Pager.pdf"
   </Files>
 
   # Add Cache-Control header for assets (belt-and-suspenders alongside Expires)
