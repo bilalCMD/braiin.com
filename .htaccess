@@ -56,6 +56,11 @@ RewriteRule ^ /blogs/%1 [R=301,L]
 </IfModule>
 
 <IfModule mod_headers.c>
+  # ARIA one-pager must download on click, not open in the browser's PDF viewer
+  <Files "aria.pdf">
+    Header set Content-Disposition "attachment; filename=\"Braiin-ARIA-One-Pager.pdf\""
+  </Files>
+
   # Add Cache-Control header for assets (belt-and-suspenders alongside Expires)
   <FilesMatch "\.(webp|jpe?g|png|gif|svg|ico|woff2?)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
