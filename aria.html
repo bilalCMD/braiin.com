@@ -56,11 +56,20 @@
   .aria-subnav .sn-pdf:hover{border-bottom-color:transparent;opacity:.75}
   section[id]{scroll-margin-top:118px}
 
-  /* ─── ABOUT CARDS ─── */
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .about-card{background:#fff;border:1px solid var(--g100);border-radius:14px;padding:30px}
-  .about-card h4{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:12px}
-  .about-card p{font-size:13px;color:var(--g500);line-height:1.9}
+  /* ─── ABOUT / BOILERPLATE BAND ─── */
+  .boiler{position:relative;background:var(--dark);padding:84px 5%;overflow:hidden}
+  .boiler::before{content:'';position:absolute;top:-160px;right:-120px;width:520px;height:420px;background:radial-gradient(ellipse,rgba(0,176,210,.14),transparent 70%);pointer-events:none}
+  .boiler::after{content:'';position:absolute;bottom:-180px;left:-140px;width:480px;height:400px;background:radial-gradient(ellipse,rgba(154,202,60,.09),transparent 70%);pointer-events:none}
+  .boiler .container{position:relative;z-index:2}
+  .boiler-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+  .boiler-col:last-child{padding-left:64px;border-left:1px solid rgba(255,255,255,.09);margin-left:-64px}
+  .boiler-kick{display:inline-flex;align-items:center;gap:9px;font-size:10px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--cyan);margin-bottom:18px}
+  .boiler-kick i{width:22px;height:2px;border-radius:2px;background:var(--grad);display:block}
+  .boiler-col p{font-size:13.5px;color:rgba(255,255,255,.62);line-height:1.95}
+  .boiler-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+  .boiler-chip{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;color:rgba(255,255,255,.75);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:8px 14px}
+  .boiler-chip .dot{width:5px;height:5px;border-radius:50%;background:var(--lime);box-shadow:0 0 7px var(--lime)}
+  .boiler-chip svg{width:13px;height:13px;color:var(--cyan)}
 
   /* ─── CONTACT CARDS ─── */
   .ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:660px;margin:32px auto 0;text-align:left}
@@ -163,7 +172,9 @@
     .cap-grid,.comm-grid{grid-template-columns:1fr}
     .flow-row{grid-template-columns:1fr}
     .eco-grid{grid-template-columns:1fr 1fr}
-    .about-grid,.ct-grid{grid-template-columns:1fr}
+    .ct-grid{grid-template-columns:1fr}
+    .boiler-grid{grid-template-columns:1fr;gap:40px}
+    .boiler-col:last-child{padding-left:0;border-left:none;margin-left:0;padding-top:36px;border-top:1px solid rgba(255,255,255,.09)}
     .aria-hero{padding:120px 5% 60px}
     .aria-subnav{top:0}
   }
@@ -180,7 +191,14 @@
     .ct-card b{color:var(--text) !important}
     .ct-card span{color:var(--g400) !important}
     .ct-card a{color:var(--cyan-dk) !important}
-    .about-card{border:1px solid var(--g100) !important}
+    .boiler{background:#fff !important;padding:24px 0 !important;border-top:1px solid var(--g100)}
+    .boiler::before,.boiler::after{display:none}
+    .boiler-col p{color:var(--g500) !important}
+    .boiler-col:last-child{border-left-color:var(--g100) !important}
+    .boiler-chip{background:var(--g50) !important;border-color:var(--g100) !important;color:var(--g500) !important}
+    .boiler-chip .dot{background:var(--cyan) !important;box-shadow:none}
+    .boiler-kick i{background:var(--cyan) !important}
+    .boiler,.boiler-col{break-inside:avoid}
     .eco-banner{min-height:0 !important;border:1px solid var(--g100)}
     .eco-banner img,.eco-banner::after{display:none !important}
     .eco-banner-inner{padding:24px !important;max-width:100% !important}
@@ -459,17 +477,26 @@
   </div>
 </section>
 
-<!-- ═══════════ ABOUT ═══════════ -->
-<section class="sec" style="padding-top:90px;padding-bottom:90px">
+<!-- ═══════════ ABOUT / BOILERPLATE ═══════════ -->
+<section class="boiler">
   <div class="container reveal">
-    <div class="about-grid">
-      <div class="about-card">
-        <h4>About ARIA</h4>
+    <div class="boiler-grid">
+      <div class="boiler-col">
+        <span class="boiler-kick"><i></i> About ARIA</span>
         <p>ARIA — the Agentic Real Estate Intelligence and Automation — is an AI-native workforce designed to execute multi-step workflows across property management, leasing, sales, compliance, documentation, accounting support and customer engagement. ARIA combines natural-language interaction, workflow orchestration, document generation, data analysis and human-in-the-loop controls to help real estate organisations reduce repetitive administration, strengthen operational consistency and scale more efficiently.</p>
+        <div class="boiler-meta">
+          <span class="boiler-chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3l1.9 5.8L20 10l-5.1 3.3L16 20l-4-3.4L8 20l1.1-6.7L4 10l6.1-1.2z"/></svg> Agentic AI Execution</span>
+          <span class="boiler-chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> Real Estate &amp; PropTech</span>
+        </div>
       </div>
-      <div class="about-card">
-        <h4>About Braiin Limited</h4>
+      <div class="boiler-col">
+        <span class="boiler-kick"><i></i> About Braiin Limited</span>
         <p>Braiin Limited (NASDAQ: BRAI) is a global technology platform operating across AI, agritech, customer experience solutions, PropTech, and living infrastructure. Braiin's ecosystem combines embedded distribution, intelligent automation, and recurring revenue platforms designed to support the lifecycle of the home and connected consumer services.</p>
+        <div class="boiler-meta">
+          <span class="boiler-chip"><span class="dot"></span> NASDAQ: BRAI</span>
+          <span class="boiler-chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Subiaco, WA &middot; Australia</span>
+          <span class="boiler-chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg> ir@braiin.com</span>
+        </div>
       </div>
     </div>
   </div>
