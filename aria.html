@@ -70,18 +70,24 @@
   .flow-step:hover .flow-body{border-color:var(--cyan);box-shadow:0 12px 30px rgba(0,176,210,.09);transform:translateY(-3px)}
   .flow-body p{font-size:12.5px;color:var(--g500);line-height:1.65;font-weight:500}
 
-  /* ─── ECOSYSTEM PANEL ─── */
-  .eco-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-  .eco-visual{position:relative;border-radius:18px;overflow:hidden;min-height:460px}
-  .eco-visual img{width:100%;height:100%;min-height:460px;object-fit:cover;display:block}
-  .eco-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,176,210,.36),rgba(154,202,60,.28))}
-  .eco-badge{position:absolute;left:22px;bottom:22px;z-index:2;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-radius:12px;padding:16px 20px;max-width:250px}
-  .eco-badge b{display:block;font-size:12px;font-weight:800;color:var(--text);margin-bottom:3px}
-  .eco-badge span{font-size:11px;color:var(--g400);line-height:1.6}
-  .eco-list{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:26px;background:var(--g100);border:1px solid var(--g100);border-radius:14px;overflow:hidden}
-  .eco-item{display:flex;align-items:center;gap:10px;background:#fff;padding:15px 16px;font-size:12.5px;font-weight:600;color:var(--g600);line-height:1.4;transition:background .25s}
-  .eco-item:hover{background:var(--cyan-lt);color:var(--cyan-dk)}
-  .eco-item svg{width:15px;height:15px;color:var(--lime);flex:none}
+  /* ─── ECOSYSTEM ─── */
+  .eco-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:44px}
+  .eco-item{display:flex;flex-direction:column;gap:12px;background:#fff;border:1px solid var(--g100);border-radius:14px;padding:20px 18px;transition:transform .3s,box-shadow .3s,border-color .3s}
+  .eco-item:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(13,17,23,.07);border-color:var(--cyan)}
+  .eco-tick{width:30px;height:30px;border-radius:9px;background:var(--cyan-lt);color:var(--cyan);display:flex;align-items:center;justify-content:center;flex:none;transition:all .3s}
+  .eco-tick svg{width:15px;height:15px}
+  .eco-item:hover .eco-tick{background:var(--grad);color:#fff}
+  .eco-item span{font-size:12.5px;font-weight:600;color:var(--g600);line-height:1.55}
+
+  /* ─── ECOSYSTEM BANNER ─── */
+  .eco-banner{position:relative;margin-top:44px;border-radius:20px;overflow:hidden;min-height:340px;display:flex;align-items:center}
+  .eco-banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .eco-banner::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(13,17,23,.94) 0%,rgba(13,17,23,.86) 42%,rgba(0,176,210,.55) 78%,rgba(154,202,60,.42) 100%)}
+  .eco-banner-inner{position:relative;z-index:2;padding:52px 5% 52px 48px;max-width:700px}
+  .eco-kicker{display:inline-flex;align-items:center;gap:7px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:14px}
+  .eco-kicker::before{content:'';width:20px;height:2px;border-radius:2px;background:var(--grad)}
+  .eco-banner-inner h3{font-size:22px;font-weight:800;color:#fff;letter-spacing:-.6px;line-height:1.25;margin-bottom:14px}
+  .eco-banner-inner p{font-size:13.5px;color:rgba(255,255,255,.78);line-height:1.9}
 
   /* ─── COMMERCIAL MODEL ─── */
   .comm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
@@ -122,21 +128,31 @@
     .cap-grid,.comm-grid{grid-template-columns:1fr 1fr}
     .flow-row{grid-template-columns:1fr 1fr;gap:24px}
     .flow-row::before{display:none}
-    .eco-wrap{grid-template-columns:1fr;gap:32px}
-    .eco-visual{min-height:300px;order:-1}
-    .eco-visual img{min-height:300px}
+    .eco-grid{grid-template-columns:repeat(3,1fr)}
+    .eco-banner{min-height:0}
+    .eco-banner::after{background:linear-gradient(180deg,rgba(13,17,23,.92) 30%,rgba(0,176,210,.6) 100%)}
+    .eco-banner-inner{padding:40px 28px;max-width:100%}
   }
   @media(max-width:768px){
     .cap-grid,.comm-grid{grid-template-columns:1fr}
     .flow-row{grid-template-columns:1fr}
-    .eco-list{grid-template-columns:1fr}
+    .eco-grid{grid-template-columns:1fr 1fr}
     .aria-hero{padding:120px 5% 60px}
+  }
+  @media(max-width:480px){
+    .eco-grid{grid-template-columns:1fr}
   }
 
   /* ═══ PRINT / SAVE-AS-PDF ═══ */
   @media print{
     @page{margin:13mm}
-    #header-placeholder,#footer-placeholder,.aria-actions,nav,footer,.eco-visual{display:none !important}
+    #header-placeholder,#footer-placeholder,.aria-actions,nav,footer{display:none !important}
+    .eco-banner{min-height:0 !important;border:1px solid var(--g100)}
+    .eco-banner img,.eco-banner::after{display:none !important}
+    .eco-banner-inner{padding:24px !important;max-width:100% !important}
+    .eco-kicker{color:var(--cyan) !important}
+    .eco-banner-inner h3{color:var(--text) !important}
+    .eco-banner-inner p{color:var(--g500) !important}
     body{background:#fff}
     .aria-hero{background:#fff !important;color:var(--text) !important;padding:0 0 20px !important}
     .aria-hero::after{display:none}
@@ -153,8 +169,8 @@
     .market .note-box p{color:var(--g500) !important}
     .sec{padding:18px 0 !important}
     .reveal{opacity:1 !important;transform:none !important}
-    .eco-wrap{grid-template-columns:1fr}
-    .a-card,.flow-step,.eco-item,.note-box{break-inside:avoid}
+    .eco-grid{grid-template-columns:repeat(2,1fr)}
+    .a-card,.flow-step,.eco-item,.note-box,.eco-banner{break-inside:avoid}
     .a-card::before{display:none}
     .disclaimer details{display:block}
     .disclaimer summary::before{display:none}
@@ -319,34 +335,29 @@
 <!-- ═══════════ PROPTECH ECOSYSTEM ═══════════ -->
 <section class="sec">
   <div class="container reveal">
-    <div class="eco-wrap">
-      <div>
-        <div class="eyebrow"><span class="bar"></span> Integrated With Braiin's PropTech Ecosystem</div>
-        <h2 style="font-size:26px;font-weight:800;letter-spacing:-1px;margin-bottom:16px;line-height:1.2">An intelligent operating layer for the residential lifecycle</h2>
-        <p style="font-size:14px;color:var(--g500);line-height:1.95">Braiin intends to integrate ARIA across its broader Property Technology and Living Infrastructure ecosystem to deliver unique workflows and proprietary data sets few other agentic platforms can match. This is expected to create an intelligent operating layer connecting real estate workflows with:</p>
+    <div class="eyebrow"><span class="bar"></span> Integrated With Braiin's PropTech Ecosystem</div>
+    <div class="sec-title">An intelligent operating layer for the residential lifecycle</div>
+    <p class="sec-desc" style="max-width:860px">Braiin intends to integrate ARIA across its broader Property Technology and Living Infrastructure ecosystem to deliver unique workflows and proprietary data sets few other agentic platforms can match. This is expected to create an intelligent operating layer connecting real estate workflows with:</p>
 
-        <div class="eco-list">
-          <div class="eco-item"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Tenant &amp; purchaser onboarding</div>
-          <div class="eco-item"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Utility activation &amp; switching</div>
-          <div class="eco-item"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Broadband &amp; telecommunications</div>
-          <div class="eco-item"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Property &amp; tenancy documentation</div>
-          <div class="eco-item"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Customer-experience automation</div>
-          <div class="eco-item"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Embedded residential services</div>
-          <div class="eco-item"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Insurance &amp; household-service products</div>
-          <div class="eco-item"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Payments &amp; recurring transactions</div>
-          <div class="eco-item"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Property-management systems</div>
-          <div class="eco-item"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Tenant, landlord &amp; household engagement</div>
-        </div>
+    <div class="eco-grid">
+      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span>Tenant &amp; purchaser onboarding</span></div>
+      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span>Utility activation &amp; switching</span></div>
+      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span>Broadband &amp; telecommunications</span></div>
+      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span>Property &amp; tenancy documentation</span></div>
+      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span>Customer-experience automation</span></div>
+      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span>Embedded residential services</span></div>
+      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span>Insurance &amp; household-service products</span></div>
+      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span>Payments &amp; recurring household transactions</span></div>
+      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span>Property-management systems</span></div>
+      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span>Tenant, landlord &amp; household engagement</span></div>
+    </div>
 
-        <p style="font-size:14px;color:var(--g500);line-height:1.95;margin-top:26px">Braiin believes the integration can extend ARIA beyond administrative automation and position the platform as an intelligent orchestration layer supporting the broader residential lifecycle. Subject to commercial agreements and required integrations, the platform may also be embedded within real estate agency networks, property-management platforms, mortgage and brokerage channels and residential service ecosystems.</p>
-      </div>
-
-      <div class="eco-visual">
-        <img src="assets/images/property.webp" alt="Braiin Property Technology and Living Infrastructure ecosystem">
-        <div class="eco-badge">
-          <b>Living Infrastructure</b>
-          <span>Connecting real estate workflows across the entire residential lifecycle.</span>
-        </div>
+    <div class="eco-banner">
+      <img src="assets/images/property.webp" alt="Braiin Property Technology and Living Infrastructure ecosystem">
+      <div class="eco-banner-inner">
+        <span class="eco-kicker">Living Infrastructure</span>
+        <h3>Beyond administrative automation</h3>
+        <p>Braiin believes the integration can extend ARIA beyond administrative automation and position the platform as an intelligent orchestration layer supporting the broader residential lifecycle. Subject to commercial agreements and required integrations, the platform may also be embedded within real estate agency networks, property-management platforms, mortgage and brokerage channels and residential service ecosystems.</p>
       </div>
     </div>
   </div>
