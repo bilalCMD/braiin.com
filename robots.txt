@@ -1,0 +1,15 @@
+# robots.txt — braiin.com
+# Upload to the web root (Hostinger: public_html/robots.txt)
+
+User-agent: *
+Allow: /
+
+# Housekeeping: keep query-string duplicates and internal search
+# results out of the index.
+Disallow: /*?s=
+Disallow: /*?replytocom=
+Disallow: /search
+Disallow: /cgi-bin/
+
+Sitemap: https://braiin.com/sitemap.xml
+

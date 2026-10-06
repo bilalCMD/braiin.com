@@ -1,0 +1,1387 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+  Content Security Policy.
+  default-src 'none' means nothing loads unless explicitly allowed below.
+  connect-src is pinned to the one API origin, so even if a script were injected
+  through submission text it has no network channel to exfiltrate the admin key.
+  There are NO external scripts, fonts or stylesheets — the chart is hand-drawn
+  SVG — so there is no CDN anywhere in the supply chain.
+  (frame-ancestors is ignored in a <meta> CSP; a frame-buster in JS covers it.)
+-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src https://braiin-serverless-function.vercel.app; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data: https://braiin.com https://www.braiin.com; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="theme-color" content="#2e439a">
+<title>Braiin — Dashboard</title>
+
+<!-- Favicons -->
+<link rel="icon" type="image/webp" href="https://braiin.com/assets/images/braiin-favicon.webp">
+<link rel="apple-touch-icon" sizes="180x180" href="https://braiin.com/assets/images/braiin-favicon.webp">
+
+<style>
+/* ============================================================
+   BRAIIN — light theme only.
+   Series colours are validated: #12907f + #e8703a pass every
+   check on a white surface (CVD ΔE 8.9 protan / 31.8 tritan,
+   normal-vision 26.5, both ≥ 3:1 contrast).
+   Brand lime #8cc63f is UI accent only — at 2.05:1 it is too
+   light to carry data, but it is 8.2:1 behind dark ink.
+   ============================================================ */
+:root{
+  color-scheme: light;
+
+  --page:#f7f8f1; --surface:#ffffff; --sunk:#fafbf6; --field:#ffffff;
+  --ink:#14201a; --ink-2:#4a5a50; --muted:#6e7b72;
+  --hair:rgba(20,32,26,.10); --hair-2:rgba(20,32,26,.16);
+  --grid:#e8ece4; --axis:#cdd6cc; --hover:rgba(20,32,26,.04);
+
+  --brand:#0f7d6e; --brand-deep:#0d6b5f; --lime:#8cc63f; --lime-soft:#eef7e0;
+  --lime-ink:#3f6b12;
+  --brand-grad:linear-gradient(90deg,#0f7d6e 0%,#3f9a6a 45%,#8cc63f 100%);
+  --brand-grad-v:linear-gradient(180deg,#0f7d6e 0%,#8cc63f 100%);
+
+  --s1:#12907f; --s2:#e8703a;
+  --s1-soft:rgba(18,144,127,.13); --s2-soft:rgba(232,112,58,.13);
+  --s1-tint:#e6f4f1; --s2-tint:#fceee7;
+  --s1-ink:#0c6d61; --s2-ink:#a8481a;
+  --av1:#0f7d6e; --av2:#b8501c;
+
+  --good:#006300; --critical:#b3261e;
+
+  --shadow:0 1px 2px rgba(20,32,26,.05), 0 10px 28px -18px rgba(20,32,26,.28);
+  --shadow-lift:0 2px 4px rgba(20,32,26,.06), 0 16px 36px -20px rgba(20,32,26,.34);
+  --pop:0 28px 70px -20px rgba(20,32,26,.42);
+  --r:14px;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--page); color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:""; position:fixed; inset:0 0 auto 0; height:3px;
+  background:var(--brand-grad); z-index:50;
+}
+a{color:var(--brand); text-decoration:none}
+a:hover{text-decoration:underline}
+button{font:inherit; color:inherit}
+.hidden{display:none !important}
+.wrap{max-width:1280px; margin:0 auto; padding:26px 22px 72px}
+img{max-width:100%}
+.eyebrow{font-size:11px; color:var(--muted); text-transform:uppercase;
+  letter-spacing:.9px; font-weight:700}
+
+/* ---------- controls ---------- */
+.btn{
+  display:inline-flex; align-items:center; gap:7px; white-space:nowrap;
+  border:1px solid var(--hair); background:var(--surface); color:var(--ink);
+  padding:8px 14px; border-radius:9px; font-size:13px; font-weight:550;
+  cursor:pointer; transition:background .13s, border-color .13s, box-shadow .13s, transform .1s;
+}
+.btn:hover{background:var(--sunk); border-color:var(--hair-2); box-shadow:var(--shadow)}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible,.chip:focus-visible,input:focus-visible,
+.plot:focus-visible,th[data-sort]:focus-visible,tbody tr:focus-visible,
+.linkbtn:focus-visible,.eye:focus-visible{
+  outline:2px solid var(--brand); outline-offset:2px
+}
+.btn.primary{background:var(--brand); border-color:var(--brand); color:#fff; font-weight:600}
+.btn.primary:hover{background:var(--brand-deep); border-color:var(--brand-deep); color:#fff}
+.btn[disabled]{opacity:.5; cursor:not-allowed}
+.btn .ico{width:15px; height:15px; flex:none}
+
+/* ---------- login ---------- */
+.login{max-width:412px; margin:0 auto; padding:10vh 20px 40px}
+.login .logo-lg{display:block; height:44px; width:auto; margin:0 auto 20px}
+.login h1{font-size:20px; margin:0 0 5px; text-align:center; letter-spacing:-.015em; font-weight:650}
+.login .sub{text-align:center; color:var(--ink-2); margin:0 0 22px; font-size:13.5px}
+.card{background:var(--surface); border:1px solid var(--hair);
+  border-radius:var(--r); box-shadow:var(--shadow); overflow:hidden}
+.card .accent{height:3px; background:var(--brand-grad)}
+.login .card-in{padding:24px}
+label.lbl{display:block; font-size:12px; font-weight:600; color:var(--ink-2); margin-bottom:8px}
+.pw{position:relative}
+input[type=password],input[type=text],input[type=search]{
+  width:100%; padding:12px 13px; border:1px solid var(--hair-2); background:var(--field);
+  color:var(--ink); border-radius:9px; font-size:14px; outline:none; font-family:inherit;
+  transition:border-color .13s, box-shadow .13s;
+}
+input:focus{border-color:var(--brand); box-shadow:0 0 0 3px rgba(15,125,110,.13)}
+.pw input{padding-right:44px; letter-spacing:.06em}
+.eye{position:absolute; top:50%; right:7px; transform:translateY(-50%);
+  width:30px; height:30px; display:grid; place-items:center; background:none;
+  border:0; cursor:pointer; color:var(--muted); border-radius:7px; padding:0}
+.eye:hover{color:var(--ink); background:var(--hover)}
+.eye svg{width:18px; height:18px}
+.check{display:flex; align-items:center; gap:9px; margin-top:15px;
+  font-size:13px; color:var(--ink-2); cursor:pointer; user-select:none}
+.check input{margin:0; accent-color:var(--brand); flex:none; width:15px; height:15px}
+.login .btn.primary{width:100%; justify-content:center; margin-top:17px; padding:12px}
+.msg{margin-top:12px; font-size:13px; min-height:19px; text-align:center; color:var(--critical)}
+.msg.info{color:var(--ink-2)}
+.foot{text-align:center; color:var(--muted); font-size:12px; margin-top:26px; line-height:1.6}
+.spin{display:inline-block; width:13px; height:13px; border:2px solid var(--hair-2);
+  border-top-color:var(--brand); border-radius:50%; animation:sp .7s linear infinite;
+  vertical-align:-2px; margin-right:7px}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+/* ---------- header ---------- */
+.top{display:flex; align-items:center; justify-content:space-between; gap:18px;
+  flex-wrap:wrap; padding-bottom:18px; border-bottom:1px solid var(--hair); margin-bottom:22px}
+.brandbox{display:flex; align-items:center; gap:14px}
+.brandbox .logo{height:31px; width:auto; display:block}
+.brandbox .rule{width:1px; height:30px; background:var(--hair-2); flex:none}
+.brandbox h1{margin:0; font-size:16px; font-weight:650; letter-spacing:-.015em;
+  display:flex; align-items:center; gap:10px}
+.brandbox .meta{margin:2px 0 0; font-size:12px; color:var(--muted);
+  display:flex; align-items:center; gap:6px}
+.dot-live{width:6px; height:6px; border-radius:50%; background:var(--lime); flex:none;
+  box-shadow:0 0 0 0 rgba(140,198,63,.6); animation:pulse 2.6s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(140,198,63,.55)}70%{box-shadow:0 0 0 7px rgba(140,198,63,0)}100%{box-shadow:0 0 0 0 rgba(140,198,63,0)}}
+.badge{background:var(--lime-soft); color:var(--lime-ink); font-size:11px; font-weight:700;
+  padding:3px 9px; border-radius:999px; border:1px solid rgba(140,198,63,.45)}
+.tools{display:flex; gap:8px; flex-wrap:wrap}
+
+/* ---------- stat tiles ---------- */
+.tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:16px; margin-bottom:24px}
+.tile{position:relative; background:var(--surface); border:1px solid var(--hair);
+  border-radius:var(--r); padding:17px 20px 18px; box-shadow:var(--shadow);
+  overflow:hidden; transition:box-shadow .16s, transform .16s}
+.tile:hover{box-shadow:var(--shadow-lift); transform:translateY(-1px)}
+.tile .bar{position:absolute; left:0; top:0; bottom:0; width:4px}
+.tile.t1 .bar{background:var(--brand-grad-v)}
+.tile.t2 .bar{background:var(--s1)}
+.tile.t3 .bar{background:var(--lime)}
+.tile.t4 .bar{background:var(--s2)}
+.tile .v{font-size:34px; font-weight:700; letter-spacing:-.03em; margin-top:7px; line-height:1.05}
+.tile .d{font-size:12px; color:var(--muted); margin-top:4px}
+.tile .d.up{color:var(--good); font-weight:600}
+
+/* ---------- filter chips ---------- */
+.filterbar{margin-bottom:24px}
+.filterbar .eyebrow{margin-bottom:11px}
+.chips{display:flex; gap:9px; flex-wrap:wrap}
+.chip{display:inline-flex; align-items:center; gap:9px; border:1px solid var(--hair);
+  background:var(--surface); color:var(--ink); padding:9px 15px; border-radius:10px;
+  font-size:13px; font-weight:600; cursor:pointer; box-shadow:var(--shadow);
+  transition:border-color .13s, background .13s, color .13s, transform .1s}
+.chip:hover{border-color:var(--brand)}
+.chip:active{transform:translateY(1px)}
+.chip[aria-pressed="true"]{background:var(--brand); border-color:var(--brand); color:#fff}
+.chip .sw{width:9px; height:9px; border-radius:3px; flex:none}
+.chip[aria-pressed="true"] .sw{box-shadow:0 0 0 1.5px rgba(255,255,255,.7)}
+.chip .n{font-size:11px; font-weight:700; padding:2px 8px; border-radius:999px;
+  background:var(--lime-soft); color:var(--lime-ink); font-variant-numeric:tabular-nums}
+.chip[aria-pressed="true"] .n{background:rgba(255,255,255,.24); color:#fff}
+
+/* ---------- panels & chart ---------- */
+.panel{background:var(--surface); border:1px solid var(--hair); border-radius:var(--r);
+  box-shadow:var(--shadow); padding:18px 20px 16px; margin-bottom:18px}
+.phead{display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
+  flex-wrap:wrap}
+.phead h2{margin:0; font-size:12px; color:var(--ink-2); text-transform:uppercase;
+  letter-spacing:.9px; font-weight:700}
+.phead .cnt{font-size:12px; color:var(--muted); font-weight:500; text-transform:none;
+  letter-spacing:0; margin-left:8px}
+.hint{font-size:11.5px; color:var(--muted); margin-top:6px}
+.legend{display:flex; gap:15px; align-items:center; font-size:12px; color:var(--ink-2)}
+.legend span{display:inline-flex; align-items:center; gap:6px}
+.legend i{width:10px; height:10px; border-radius:3px; display:block}
+.linkbtn{background:none; border:0; padding:5px 8px; border-radius:7px; cursor:pointer;
+  font-size:12px; color:var(--muted); font-weight:550}
+.linkbtn:hover{color:var(--ink); background:var(--hover)}
+.plotwrap{position:relative; margin-top:14px}
+.plot{display:block; width:100%; touch-action:none}
+.plot:focus{outline:none}
+.tip{position:absolute; pointer-events:none; z-index:5; opacity:0; transform:translate(-50%,-100%);
+  background:var(--surface); border:1px solid var(--hair-2); border-radius:10px;
+  box-shadow:var(--pop); padding:9px 11px; font-size:12px; min-width:132px;
+  transition:opacity .1s; white-space:nowrap}
+.tip.on{opacity:1}
+.tip .t{font-weight:650; margin-bottom:6px; color:var(--ink)}
+.tip .r{display:flex; align-items:center; gap:7px; color:var(--ink-2); line-height:1.75}
+.tip .r i{width:9px; height:9px; border-radius:3px; flex:none}
+.tip .r b{margin-left:auto; font-weight:650; color:var(--ink);
+  font-variant-numeric:tabular-nums; padding-left:14px}
+.blank{color:var(--muted); font-size:13px; text-align:center; padding:40px 10px}
+
+.twin{margin-top:12px; max-height:250px; overflow:auto; border:1px solid var(--hair);
+  border-radius:10px}
+.twin table{font-size:12.5px}
+.twin th,.twin td{padding:8px 12px}
+.twin thead th{position:sticky; top:0; background:var(--sunk); z-index:1}
+
+/* ---------- table ---------- */
+.search{position:relative; flex:1; min-width:200px; max-width:340px}
+.search input{padding-left:35px}
+.search svg{position:absolute; left:12px; top:50%; transform:translateY(-50%);
+  width:15px; height:15px; color:var(--muted); pointer-events:none}
+.tscroll{overflow-x:auto; margin:14px -20px 0; padding:0 20px}
+table{width:100%; border-collapse:collapse; font-size:13.5px}
+th,td{text-align:left; padding:11px 12px; border-bottom:1px solid var(--hair); vertical-align:top}
+thead th{color:var(--muted); font-size:11px; font-weight:700; white-space:nowrap;
+  text-transform:uppercase; letter-spacing:.6px; border-bottom-color:var(--axis)}
+th[data-sort]{cursor:pointer; user-select:none}
+th[data-sort]:hover{color:var(--brand)}
+th .ar{font-size:9px; color:var(--brand); margin-left:4px}
+tbody tr{cursor:pointer; transition:background .1s}
+tbody tr:hover{background:var(--sunk)}
+tbody tr:last-child td{border-bottom:0}
+td.num,th.num{font-variant-numeric:tabular-nums}
+td.when{white-space:nowrap; color:var(--ink-2); font-variant-numeric:tabular-nums}
+td.msg{color:var(--ink-2); max-width:340px; overflow:hidden; text-overflow:ellipsis;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical}
+.tag{display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:650;
+  padding:3px 10px 3px 8px; border-radius:999px; white-space:nowrap}
+.tag i{width:7px; height:7px; border-radius:2px; flex:none}
+.tag.contact{background:var(--s1-tint); color:var(--s1-ink)}
+.tag.contact i{background:var(--s1)}
+.tag.webinar{background:var(--s2-tint); color:var(--s2-ink)}
+.tag.webinar i{background:var(--s2)}
+.who{display:flex; align-items:center; gap:10px; min-width:140px}
+.av{width:28px; height:28px; border-radius:50%; display:grid; place-items:center; flex:none;
+  font-size:10.5px; font-weight:700; color:#fff; background:var(--av1); letter-spacing:.02em}
+.av.webinar{background:var(--av2)}
+.newdot{display:inline-block; width:6px; height:6px; border-radius:50%;
+  background:var(--s2); margin-right:7px; vertical-align:1px}
+tr.isnew td.when{color:var(--ink); font-weight:600}
+
+/* ---------- modal ---------- */
+.modal{position:fixed; inset:0; z-index:60; display:flex; align-items:center;
+  justify-content:center; padding:20px}
+.veil{position:absolute; inset:0; background:rgba(20,32,26,.46); animation:fade .15s ease}
+.sheet{position:relative; width:100%; max-width:610px; max-height:90vh; overflow-y:auto;
+  background:var(--surface); border-radius:16px; box-shadow:var(--pop);
+  animation:pop .19s cubic-bezier(.22,.61,.36,1)}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0; transform:translateY(10px) scale(.99)}to{opacity:1; transform:none}}
+.sheet .accent{height:4px; background:var(--brand-grad); border-radius:16px 16px 0 0}
+.shead{display:flex; align-items:center; gap:14px; padding:20px 22px 17px;
+  border-bottom:1px solid var(--hair)}
+.shead .av{width:46px; height:46px; font-size:15px}
+.shead .nm{font-size:17.5px; font-weight:650; letter-spacing:-.015em}
+.shead .sb{font-size:12.5px; color:var(--muted); margin-top:2px}
+.x{position:absolute; top:16px; right:16px; width:30px; height:30px; border:0;
+  background:var(--hover); color:var(--ink-2); border-radius:50%; cursor:pointer;
+  display:grid; place-items:center; font-size:14px; line-height:1}
+.x:hover{background:var(--hair-2); color:var(--ink)}
+.sbody{padding:6px 22px 22px}
+.row{display:flex; gap:14px; padding:11px 0; border-bottom:1px solid var(--hair)}
+.row .l{width:106px; flex:none; font-size:12px; color:var(--muted); font-weight:550; padding-top:1px}
+.row .v{flex:1; font-size:13.5px; word-break:break-word}
+.mtitle{font-size:12px; color:var(--muted); font-weight:550; margin:17px 0 8px}
+.mbody{background:var(--sunk); border:1px solid var(--hair); border-radius:10px;
+  padding:13px 15px; font-size:13.5px; line-height:1.65; white-space:pre-wrap;
+  min-height:44px; max-height:260px; overflow:auto}
+.sact{display:flex; gap:10px; margin-top:19px; flex-wrap:wrap}
+.sact .btn{flex:1; justify-content:center; padding:10px}
+.said{text-align:center; font-size:12px; color:var(--good); min-height:16px; margin-top:10px; font-weight:550}
+
+@media(max-width:640px){
+  .wrap{padding:18px 14px 52px}
+  .tscroll{margin:14px -14px 0; padding:0 14px}
+  .search{max-width:none}
+  .tile .v{font-size:29px}
+  .brandbox .rule{display:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms !important; transition-duration:.001ms !important}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ SIGN IN ══════════════════ -->
+<section id="view-login" class="login">
+  <img class="logo-lg" src="https://braiin.com/assets/images/braiin-logo.webp" alt="Braiin">
+  <h1>Dashboard</h1>
+  <p class="sub">Enter your admin API key to continue.</p>
+
+  <div class="card">
+    <div class="accent"></div>
+    <div class="card-in">
+      <label class="lbl" for="key">Admin API key</label>
+      <div class="pw">
+        <input id="key" type="password" placeholder="••••••••••••••••" autocomplete="off"
+               spellcheck="false" autocapitalize="off" autocorrect="off" enterkeyhint="go">
+        <button type="button" class="eye" id="eye" aria-label="Show key" title="Show / hide">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+      </div>
+
+      <label class="check">
+        <input type="checkbox" id="persist">
+        <span>Keep me signed in on this device</span>
+      </label>
+
+      <button class="btn primary" id="signin">Open dashboard</button>
+      <div class="msg" id="loginMsg" role="status" aria-live="polite"></div>
+    </div>
+  </div>
+  <p class="foot">Braiin Limited — internal tool.<br>Submission data is never written to disk or browser storage.</p>
+</section>
+
+<!-- ══════════════════ DASHBOARD ══════════════════ -->
+<main id="view-app" class="wrap hidden">
+  <header class="top">
+    <div class="brandbox">
+      <img class="logo" src="https://braiin.com/assets/images/braiin-logo.webp" alt="Braiin">
+      <span class="rule"></span>
+      <div>
+        <h1>Dashboard <span class="badge hidden" id="newBadge"></span></h1>
+        <p class="meta"><span class="dot-live"></span><span id="status">Loading…</span></p>
+      </div>
+    </div>
+    <div class="tools">
+      <button class="btn" id="refreshBtn">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12a9 9 0 1 1-2.6-6.4M21 3v6h-6"/></svg>
+        Refresh
+      </button>
+      <button class="btn" id="csvBtn">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+        Export CSV
+      </button>
+      <button class="btn" id="lockBtn">Sign out</button>
+    </div>
+  </header>
+
+  <!-- 1 · stat tiles -->
+  <section class="tiles">
+    <div class="tile t1"><span class="bar"></span>
+      <div class="eyebrow">Total</div><div class="v" id="tTotal">0</div>
+      <div class="d" id="tTotalSub">all time</div></div>
+    <div class="tile t2"><span class="bar"></span>
+      <div class="eyebrow">This Week</div><div class="v" id="tWeek">0</div>
+      <div class="d">last 7 days</div></div>
+    <div class="tile t3"><span class="bar"></span>
+      <div class="eyebrow">Today</div><div class="v" id="tToday">0</div>
+      <div class="d" id="tTodaySub">—</div></div>
+    <div class="tile t4"><span class="bar"></span>
+      <div class="eyebrow">Unique Emails</div><div class="v" id="tUnique">0</div>
+      <div class="d">distinct addresses</div></div>
+  </section>
+
+  <!-- 2 · filter chips (scope everything below) -->
+  <section class="filterbar">
+    <div class="eyebrow" id="chipLabel">Filter by form</div>
+    <div class="chips" id="chips" role="group" aria-labelledby="chipLabel"></div>
+  </section>
+
+  <!-- 3 · trend -->
+  <section class="panel">
+    <div class="phead">
+      <h2 id="trendTitle">Submissions over time — last 30 days</h2>
+      <div style="display:flex;align-items:center;gap:15px">
+        <div class="legend" id="trendLegend"></div>
+        <button class="linkbtn" id="trendTableBtn" aria-expanded="false">Table view</button>
+      </div>
+    </div>
+    <div class="plotwrap" id="trendWrap">
+      <svg class="plot" id="trendSvg" height="256" tabindex="0" role="img"
+           aria-label="Daily submission counts over the last 30 days"></svg>
+      <div class="tip" id="trendTip" role="tooltip"></div>
+    </div>
+    <div class="twin hidden" id="trendTwin"></div>
+  </section>
+
+  <!-- 4 · table -->
+  <section class="panel">
+    <div class="phead">
+      <div>
+        <h2>All submissions <span class="cnt" id="tableCap"></span></h2>
+        <div class="hint">Click any row for full details &amp; reply · ● = new since your last visit</div>
+      </div>
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
+        <input id="q" type="search" placeholder="Search name, email, company, message…"
+               autocomplete="off" spellcheck="false" aria-label="Search submissions">
+      </div>
+    </div>
+    <div class="tscroll">
+      <table>
+        <thead>
+          <tr>
+            <th data-sort="ts" tabindex="0">Received</th>
+            <th data-sort="type" tabindex="0">Form</th>
+            <th data-sort="name" tabindex="0">Name</th>
+            <th data-sort="email" tabindex="0">Email</th>
+            <th data-sort="phone" tabindex="0">Phone</th>
+            <th data-sort="company" tabindex="0">Company</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <div class="blank hidden" id="tableBlank">No submissions match these filters.</div>
+  </section>
+
+  <p class="foot">Braiin Limited — Dashboard · fetched live, never cached to disk</p>
+</main>
+
+<!-- ══════════════════ DETAIL ══════════════════ -->
+<div class="modal hidden" id="modal" role="dialog" aria-modal="true" aria-labelledby="dName">
+  <div class="veil" id="veil"></div>
+  <div class="sheet">
+    <div class="accent"></div>
+    <button class="x" id="closeBtn" aria-label="Close">✕</button>
+    <div class="shead">
+      <span class="av" id="dAv">—</span>
+      <div><div class="nm" id="dName">—</div><div class="sb" id="dSub">—</div></div>
+    </div>
+    <div class="sbody" id="dRows"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ══════════════════════════════════════════════════════════════
+     CONFIG
+     ══════════════════════════════════════════════════════════════ */
+  var API = "https://braiin-serverless-function.vercel.app/api/submissions";
+
+  var PAGE_SIZE   = 1000;               // API maximum per request
+  var TREND_DAYS  = 30;                 // window shown in the trend chart
+  var REFRESH_MS  = 60 * 1000;          // background refresh
+  var IDLE_MS     = 20 * 60 * 1000;     // sign out after this much inactivity
+  var HIDDEN_MS   = 15 * 60 * 1000;     // sign out if the tab was hidden this long
+  var PERSIST_MS  = 8 * 60 * 60 * 1000; // "keep me signed in" lifetime
+
+  // One place that decides how each sheet is named in the UI.
+  var LABEL  = { contact: "Contact Form", webinar: "Webinar Form" };
+  var TYPES  = ["contact", "webinar"];
+
+  // Storage keys. NOTE: submission data (PII) is never persisted — only the
+  // key (when the operator opts in) and a "last seen" timestamp.
+  var K_SESSION = "braiin.k";
+  var K_PERSIST = "braiin.k8h";
+  var K_SEEN    = "braiin.seen";
+  var K_FAILS   = "braiin.fails";
+
+  /* ══════════════════════════════════════════════════════════════
+     HELPERS
+     ══════════════════════════════════════════════════════════════ */
+  var $ = function (id) { return document.getElementById(id); };
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;   // textContent, never innerHTML
+    return n;
+  }
+  var NS = "http://www.w3.org/2000/svg";
+  function sv(tag, attrs) {
+    var n = document.createElementNS(NS, tag);
+    for (var k in attrs) if (attrs[k] != null) n.setAttribute(k, attrs[k]);
+    return n;
+  }
+  function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
+  function css(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+
+  function startOfDay(d) { var x = new Date(d); x.setHours(0, 0, 0, 0); return x; }
+  function daysAgo(n) { var x = startOfDay(new Date()); x.setDate(x.getDate() - n); return x; }
+
+  function fmtDateTime(ms) {
+    return new Date(ms).toLocaleString(undefined, {
+      year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"
+    });
+  }
+  function fmtDay(ms, withYear) {
+    return new Date(ms).toLocaleDateString(undefined,
+      withYear ? { month: "short", day: "numeric", year: "numeric" }
+               : { month: "short", day: "numeric" });
+  }
+  function initials(name, email) {
+    var s = String(name || "").trim();
+    if (s) {
+      var p = s.split(/\s+/);
+      return ((p[0][0] || "") + (p.length > 1 ? p[p.length - 1][0] : "")).toUpperCase();
+    }
+    var e = String(email || "").trim();
+    return (e ? e[0] : "?").toUpperCase();
+  }
+  // Only linkify values that really look like an address / number, so a hostile
+  // value can never become a link with a scheme we did not intend.
+  var RE_EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  function telHref(p) {
+    var digits = String(p || "").replace(/[^\d+]/g, "");
+    return digits.length >= 6 ? "tel:" + digits : null;
+  }
+  // "contact-us.html" -> "Contact Us"
+  function prettyPage(p) {
+    if (!p) return "Unknown";
+    return p.replace(/\.html?$/i, "").replace(/[-_/]+/g, " ").trim()
+            .replace(/\b\w/g, function (c) { return c.toUpperCase(); }) || "Home";
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     CREDENTIAL HANDLING
+     The key lives in a closure variable while the page is open.
+     sessionStorage (tab-scoped, cleared on close) is the default;
+     localStorage is used only if the operator ticks the box, and then
+     only with a hard expiry that is re-checked on every boot.
+     ══════════════════════════════════════════════════════════════ */
+  var KEY = null;
+
+  function saveKey(k, persist) {
+    KEY = k;
+    try {
+      if (persist) {
+        localStorage.setItem(K_PERSIST, JSON.stringify({ k: k, exp: Date.now() + PERSIST_MS }));
+        sessionStorage.removeItem(K_SESSION);
+      } else {
+        sessionStorage.setItem(K_SESSION, k);
+        localStorage.removeItem(K_PERSIST);
+      }
+    } catch (e) { /* private mode — the key simply stays in memory */ }
+  }
+  function loadKey() {
+    try {
+      var s = sessionStorage.getItem(K_SESSION);
+      if (s) return s;
+      var raw = localStorage.getItem(K_PERSIST);
+      if (raw) {
+        var o = JSON.parse(raw);
+        if (o && o.k && typeof o.exp === "number" && o.exp > Date.now()) return o.k;
+        localStorage.removeItem(K_PERSIST); // expired
+      }
+    } catch (e) {}
+    return null;
+  }
+  function wipeKey() {
+    KEY = null;
+    try {
+      sessionStorage.removeItem(K_SESSION);
+      localStorage.removeItem(K_PERSIST);
+    } catch (e) {}
+  }
+
+  /* ---- failed-attempt backoff -------------------------------------------
+     This slows guessing at THIS form. It is not a substitute for rate
+     limiting in the serverless function — an attacker can skip the UI and
+     hit the API directly, so add a limiter server-side too.               */
+  var STEPS = [0, 0, 0, 5e3, 15e3, 60e3, 300e3];
+  function fails() {
+    try { return JSON.parse(sessionStorage.getItem(K_FAILS)) || { n: 0, until: 0 }; }
+    catch (e) { return { n: 0, until: 0 }; }
+  }
+  function noteFail() {
+    var f = fails(); f.n++;
+    f.until = Date.now() + STEPS[Math.min(f.n, STEPS.length - 1)];
+    try { sessionStorage.setItem(K_FAILS, JSON.stringify(f)); } catch (e) {}
+    return f;
+  }
+  function clearFails() { try { sessionStorage.removeItem(K_FAILS); } catch (e) {} }
+
+  /* ══════════════════════════════════════════════════════════════
+     API
+     ══════════════════════════════════════════════════════════════ */
+  function ApiError(status, message) { this.status = status; this.message = message; }
+  ApiError.prototype = Object.create(Error.prototype);
+
+  function explain(err) {
+    if (err instanceof ApiError) {
+      if (err.status === 401) return "That key was rejected by the server.";
+      if (err.status === 503) return "The API has no ADMIN_API_KEY configured — it is failing closed.";
+      if (err.status === 405) return "The API rejected the request method.";
+      if (err.status === 500) return "The API could not read the Google Sheet.";
+      return err.message || ("Request failed (" + err.status + ").");
+    }
+    // A blocked cross-origin request surfaces as an opaque TypeError with no detail.
+    return "Could not reach the API — the request was blocked or the network is unavailable.";
+  }
+
+  function fetchPage(sheet, offset) {
+    var url = API + "?sheet=" + encodeURIComponent(sheet) +
+              "&limit=" + PAGE_SIZE + "&offset=" + offset + "&order=desc";
+    return fetch(url, {
+      method: "GET",
+      mode: "cors",
+      cache: "no-store",
+      credentials: "omit",
+      referrerPolicy: "no-referrer",
+      headers: { "Authorization": "Bearer " + KEY }   // header, never the query string
+    }).then(function (res) {
+      return res.json().catch(function () { return {}; }).then(function (body) {
+        if (!res.ok || body.success !== true) throw new ApiError(res.status, body && body.error);
+        return body;
+      });
+    });
+  }
+
+  // Walk every page of one sheet: done when offset + count >= total.
+  function fetchSheet(sheet) {
+    var out = [], offset = 0;
+    function next() {
+      return fetchPage(sheet, offset).then(function (body) {
+        var rows = Array.isArray(body.data) ? body.data : [];
+        for (var i = 0; i < rows.length; i++) out.push(rows[i]);
+        var got = typeof body.count === "number" ? body.count : rows.length;
+        offset += got;
+        if (got === 0 || offset >= (body.total || 0) || out.length > 50000) return out;
+        return next();
+      });
+    }
+    return next();
+  }
+
+  /* ---- normalise both sheets into one shape ---- */
+  function str(v) { return v == null ? "" : String(v).trim(); }
+  function normalise(raw, type) {
+    var ts = Date.parse(raw.timestamp);
+    return {
+      type:     type,                                   // "contact" | "webinar"
+      ts:       isNaN(ts) ? 0 : ts,
+      tsRaw:    str(raw.timestamp),
+      name:     str(raw.name),
+      email:    str(raw.email),
+      phone:    str(raw.phone),
+      company:  str(raw.company),                       // contact only
+      message:  str(raw.message) || str(raw.question),  // the webinar sheet calls it "question"
+      consent:  str(raw.consent),                       // webinar only
+      // The API does not currently return a source page. If it ever starts to,
+      // the chip row below switches from "Filter by form" to "Filter by page"
+      // on its own — no other change needed.
+      page:     str(raw.page || raw.Page || raw.source)
+    };
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     STATE
+     ══════════════════════════════════════════════════════════════ */
+  var DATA = [];                    // in memory only — never persisted
+  var fSel = "all";                 // "all" | "form:contact" | "page:careers"
+  var query = "";
+  var sortKey = "ts", sortDir = -1;
+  var seenAt = 0, refreshTimer = null, idleTimer = null, hiddenAt = 0, busy = false;
+
+  try { seenAt = parseInt(localStorage.getItem(K_SEEN) || "0", 10) || 0; } catch (e) {}
+
+  function hasPages() {
+    for (var i = 0; i < DATA.length; i++) if (DATA[i].page) return true;
+    return false;
+  }
+  function matches(r) {
+    if (fSel === "all") return true;
+    var i = fSel.indexOf(":");
+    var kind = fSel.slice(0, i), val = fSel.slice(i + 1);
+    return kind === "form" ? r.type === val : (r.page || "unknown") === val;
+  }
+  function scoped() { return DATA.filter(matches); }
+
+  // Which series the chart should draw — a form filter narrows it to one.
+  function seriesTypes() {
+    return fSel.indexOf("form:") === 0 ? [fSel.slice(5)] : TYPES.slice();
+  }
+  function searched(rows) {
+    if (!query) return rows;
+    var q = query.toLowerCase();
+    return rows.filter(function (r) {
+      return (r.name + " " + r.email + " " + r.phone + " " + r.company + " " +
+              r.message + " " + LABEL[r.type]).toLowerCase().indexOf(q) > -1;
+    });
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     SESSION LIFECYCLE
+     ══════════════════════════════════════════════════════════════ */
+  function showApp() {
+    $("view-login").classList.add("hidden");
+    $("view-app").classList.remove("hidden");
+    $("key").value = "";
+    startRefresh(); armIdle();
+  }
+  function showLogin(note) {
+    stopRefresh();
+    if (idleTimer) { clearTimeout(idleTimer); idleTimer = null; }
+    DATA = [];                       // drop PII from memory
+    clear($("rows"));
+    closeDetail();
+    $("view-app").classList.add("hidden");
+    $("view-login").classList.remove("hidden");
+    $("key").value = "";
+    setMsg(note || "", note ? "info" : null);
+    $("key").focus();
+  }
+  function signOut(note) { wipeKey(); showLogin(note); }
+
+  function armIdle() {
+    if (idleTimer) clearTimeout(idleTimer);
+    idleTimer = setTimeout(function () {
+      signOut("Signed out after 20 minutes of inactivity.");
+    }, IDLE_MS);
+  }
+  ["pointerdown", "keydown", "wheel", "touchstart"].forEach(function (ev) {
+    window.addEventListener(ev, function () {
+      if (!$("view-app").classList.contains("hidden")) armIdle();
+    }, { passive: true });
+  });
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) { hiddenAt = Date.now(); return; }
+    if (hiddenAt && Date.now() - hiddenAt > HIDDEN_MS &&
+        !$("view-app").classList.contains("hidden")) {
+      signOut("Signed out — this tab was in the background for a while.");
+    }
+    hiddenAt = 0;
+  });
+  // Do not let this page be framed by another origin (meta CSP can't do frame-ancestors).
+  if (window.top !== window.self) { try { window.top.location = window.self.location; } catch (e) {} }
+
+  function startRefresh() {
+    stopRefresh();
+    refreshTimer = setInterval(function () {
+      if ($("modal").classList.contains("hidden")) load(true);
+    }, REFRESH_MS);
+  }
+  function stopRefresh() { if (refreshTimer) { clearInterval(refreshTimer); refreshTimer = null; } }
+
+  /* ══════════════════════════════════════════════════════════════
+     SIGN IN
+     ══════════════════════════════════════════════════════════════ */
+  function setMsg(text, kind) {
+    var n = $("loginMsg");
+    clear(n);
+    n.className = "msg" + (kind === "info" || kind === "busy" ? " info" : "");
+    if (kind === "busy") n.appendChild(el("span", "spin"));
+    if (text) n.appendChild(document.createTextNode(text));
+  }
+
+  function signIn() {
+    var f = fails();
+    if (f.until > Date.now()) {
+      setMsg("Too many failed attempts. Try again in " +
+             Math.ceil((f.until - Date.now()) / 1000) + "s.");
+      return;
+    }
+    var k = $("key").value.trim();
+    if (!k) { setMsg("Enter the admin API key."); return; }
+
+    setMsg("Logging in…", "busy");
+    $("signin").disabled = true;
+    KEY = k;
+
+    // Cheapest possible probe: one row.
+    fetch(API + "?sheet=contact&limit=1", {
+      mode: "cors", cache: "no-store", credentials: "omit", referrerPolicy: "no-referrer",
+      headers: { "Authorization": "Bearer " + k }
+    }).then(function (res) {
+      return res.json().catch(function () { return {}; }).then(function (b) {
+        if (!res.ok || b.success !== true) throw new ApiError(res.status, b && b.error);
+      });
+    }).then(function () {
+      clearFails();
+      saveKey(k, $("persist").checked);
+      setMsg("");
+      showApp();
+      load(false);
+    }).catch(function (err) {
+      KEY = null;
+      var f2 = (err instanceof ApiError && err.status === 401) ? noteFail() : fails();
+      var extra = (err instanceof ApiError && err.status === 401 && f2.n >= 3)
+        ? " (" + f2.n + " failed attempts)" : "";
+      setMsg(explain(err) + extra);
+    }).then(function () { $("signin").disabled = false; });
+  }
+
+  $("signin").addEventListener("click", signIn);
+  $("key").addEventListener("keydown", function (e) { if (e.key === "Enter") signIn(); });
+  $("eye").addEventListener("click", function () {
+    var i = $("key"), show = i.type === "password";
+    i.type = show ? "text" : "password";
+    this.setAttribute("aria-label", show ? "Hide key" : "Show key");
+    i.focus();
+  });
+  $("lockBtn").addEventListener("click", function () { signOut("Signed out."); });
+
+  /* ══════════════════════════════════════════════════════════════
+     LOAD
+     ══════════════════════════════════════════════════════════════ */
+  function load(quiet) {
+    if (!KEY) { showLogin(); return; }
+    if (busy) return;
+    busy = true;
+    if (!quiet) $("status").textContent = "Loading…";
+    $("refreshBtn").disabled = true;
+
+    Promise.all([fetchSheet("contact"), fetchSheet("webinar")])
+      .then(function (res) {
+        var merged = [];
+        res[0].forEach(function (r) { merged.push(normalise(r, "contact")); });
+        res[1].forEach(function (r) { merged.push(normalise(r, "webinar")); });
+        DATA = merged;
+        render();
+        $("status").textContent = "Live · updated " +
+          new Date().toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" });
+      })
+      .catch(function (err) {
+        if (err instanceof ApiError && err.status === 401) {
+          signOut("Your key is no longer accepted. Please sign in again.");
+        } else {
+          $("status").textContent = explain(err);
+        }
+      })
+      .then(function () { busy = false; $("refreshBtn").disabled = false; });
+  }
+  $("refreshBtn").addEventListener("click", function () { load(false); });
+
+  /* ══════════════════════════════════════════════════════════════
+     FILTER CHIPS — page chips if the API supplies a page, else form chips
+     ══════════════════════════════════════════════════════════════ */
+  function buildChips() {
+    var box = $("chips");
+    clear(box);
+    var byPage = hasPages();
+    $("chipLabel").textContent = byPage ? "Filter by page" : "Filter by form";
+
+    function chip(value, label, count, colour) {
+      var b = el("button", "chip");
+      b.type = "button";
+      b.setAttribute("aria-pressed", fSel === value ? "true" : "false");
+      if (colour) { var sw = el("span", "sw"); sw.style.background = colour; b.appendChild(sw); }
+      b.appendChild(document.createTextNode(label));
+      b.appendChild(el("span", "n", String(count)));
+      b.addEventListener("click", function () {
+        fSel = (fSel === value) ? "all" : value;   // click again to clear
+        render();
+      });
+      box.appendChild(b);
+    }
+
+    if (byPage) {
+      var tally = {};
+      DATA.forEach(function (r) {
+        var k = r.page || "unknown";
+        tally[k] = (tally[k] || 0) + 1;
+      });
+      chip("all", "All Pages", DATA.length, null);
+      Object.keys(tally).sort(function (a, b) { return tally[b] - tally[a]; })
+        .forEach(function (p) { chip("page:" + p, prettyPage(p), tally[p], null); });
+    } else {
+      chip("all", "All Forms", DATA.length, null);
+      TYPES.forEach(function (t) {
+        chip("form:" + t, LABEL[t],
+             DATA.filter(function (r) { return r.type === t; }).length,
+             t === "contact" ? css("--s1") : css("--s2"));
+      });
+    }
+  }
+  $("q").addEventListener("input", function () { query = this.value; renderTable(); });
+
+  /* ══════════════════════════════════════════════════════════════
+     RENDER
+     ══════════════════════════════════════════════════════════════ */
+  function render() {
+    buildChips();
+    renderTiles(); renderTrend(); renderTable();
+
+    var fresh = seenAt ? DATA.filter(function (r) { return r.ts > seenAt; }).length : 0;
+    var badge = $("newBadge");
+    badge.textContent = fresh + " new";
+    badge.classList.toggle("hidden", !(seenAt && fresh));
+  }
+
+  function renderTiles() {
+    var rows = scoped();
+    var today = startOfDay(new Date()).getTime();
+    var week  = daysAgo(6).getTime();
+    var todayN = 0, weekN = 0, emails = {};
+    rows.forEach(function (r) {
+      if (r.ts >= today) todayN++;
+      if (r.ts >= week) weekN++;
+      if (r.email) emails[r.email.toLowerCase()] = 1;
+    });
+
+    $("tTotal").textContent = rows.length.toLocaleString();
+    $("tTotalSub").textContent = fSel === "all" ? "all time" : "in this filter";
+    $("tWeek").textContent = weekN.toLocaleString();
+    $("tToday").textContent = todayN.toLocaleString();
+    var sub = $("tTodaySub");
+    sub.textContent = todayN ? "new since midnight" : "nothing yet today";
+    sub.className = "d" + (todayN ? " up" : "");
+    $("tUnique").textContent = Object.keys(emails).length.toLocaleString();
+  }
+
+  /* ---------- chart geometry ---------- */
+  function niceMax(v) {
+    if (v <= 4) return Math.max(v, 4);
+    var mag = Math.pow(10, Math.floor(Math.log10(v)));
+    var n = v / mag;
+    var step = n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10;
+    return step * mag;
+  }
+
+  /* ---------- trend: fixed 30-day window, one y-axis ---------- */
+  var trendState = null;
+
+  function buildBuckets(rows) {
+    var buckets = [];
+    for (var i = TREND_DAYS - 1; i >= 0; i--) {
+      var start = daysAgo(i).getTime();
+      buckets.push({ start: start, end: start + 864e5, contact: 0, webinar: 0 });
+    }
+    var first = buckets[0].start;
+    rows.forEach(function (r) {
+      if (r.ts < first) return;
+      var idx = Math.floor((r.ts - first) / 864e5);
+      if (idx >= 0 && idx < buckets.length) buckets[idx][r.type]++;
+    });
+    return buckets;
+  }
+
+  function renderTrend() {
+    var svg = $("trendSvg"), wrap = $("trendWrap");
+    clear(svg);
+    var B = buildBuckets(scoped());
+    var shown = seriesTypes();
+
+    // A legend is present for 2 series and dropped for 1 — the title names it.
+    var lg = $("trendLegend");
+    clear(lg);
+    if (shown.length > 1) {
+      shown.forEach(function (t) {
+        var s = el("span");
+        var i = el("i");
+        i.style.background = t === "contact" ? css("--s1") : css("--s2");
+        s.appendChild(i);
+        s.appendChild(document.createTextNode(LABEL[t]));
+        lg.appendChild(s);
+      });
+    }
+    $("trendTitle").textContent = "Submissions over time — last " + TREND_DAYS + " days" +
+      (shown.length === 1 ? " · " + LABEL[shown[0]] : "");
+
+    var W = Math.max(320, wrap.clientWidth || 640), H = 256;
+    svg.setAttribute("width", W);
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    var L = 42, R = 16, T = 14, Bm = 32;
+    var pw = W - L - R, ph = H - T - Bm;
+
+    var peak = 0;
+    B.forEach(function (b) {
+      shown.forEach(function (t) { peak = Math.max(peak, b[t]); });
+    });
+    var top = niceMax(peak);
+    var xAt = function (i) { return L + (pw * i) / (B.length - 1); };
+    var yAt = function (v) { return T + ph - (v / top) * ph; };
+
+    var muted = css("--muted"), gridC = css("--grid"), axisC = css("--axis"),
+        surf = css("--surface"), c1 = css("--s1"), c2 = css("--s2");
+
+    // gridlines + y ticks — solid hairlines, one shade off the surface
+    var ticks = 4;
+    for (var t = 0; t <= ticks; t++) {
+      var val = Math.round((top / ticks) * t), y = yAt(val);
+      svg.appendChild(sv("line", { x1: L, x2: L + pw, y1: y, y2: y,
+        stroke: t === 0 ? axisC : gridC, "stroke-width": 1, "shape-rendering": "crispEdges" }));
+      var lab = sv("text", { x: L - 10, y: y + 4, "text-anchor": "end",
+        fill: muted, "font-size": 11, "font-variant-numeric": "tabular-nums" });
+      lab.textContent = val;
+      svg.appendChild(lab);
+    }
+
+    // x labels — thinned so they never collide
+    var every = Math.ceil(B.length / Math.max(2, Math.floor(pw / 78)));
+    B.forEach(function (b, i) {
+      if (i % every !== 0 && i !== B.length - 1) return;
+      if (i !== B.length - 1 && (B.length - 1 - i) < every * 0.6) return;
+      var tx = sv("text", { x: xAt(i), y: H - 11, "text-anchor": "middle",
+        fill: muted, "font-size": 11 });
+      tx.textContent = fmtDay(b.start);
+      svg.appendChild(tx);
+    });
+
+    function series(field, colour, soft) {
+      var line = "";
+      B.forEach(function (b, i) {
+        line += (i ? "L" : "M") + xAt(i).toFixed(1) + "," + yAt(b[field]).toFixed(1);
+      });
+      var area = line + "L" + xAt(B.length - 1).toFixed(1) + "," + yAt(0) +
+                 "L" + xAt(0).toFixed(1) + "," + yAt(0) + "Z";
+      svg.appendChild(sv("path", { d: area, fill: soft, stroke: "none" }));
+      svg.appendChild(sv("path", { d: line, fill: "none", stroke: colour,
+        "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }));
+      B.forEach(function (b, i) {
+        if (!b[field]) return;
+        svg.appendChild(sv("circle", { cx: xAt(i), cy: yAt(b[field]), r: 4,
+          fill: colour, stroke: surf, "stroke-width": 2 }));
+      });
+    }
+    if (shown.indexOf("contact") > -1) series("contact", c1, css("--s1-soft"));
+    if (shown.indexOf("webinar") > -1) series("webinar", c2, css("--s2-soft"));
+
+    // hover / focus layer
+    var hair = sv("line", { y1: T, y2: T + ph, stroke: axisC, "stroke-width": 1,
+      opacity: 0, "shape-rendering": "crispEdges" });
+    svg.appendChild(hair);
+    var f1 = sv("circle", { r: 5.5, fill: c1, stroke: surf, "stroke-width": 2, opacity: 0 });
+    var f2 = sv("circle", { r: 5.5, fill: c2, stroke: surf, "stroke-width": 2, opacity: 0 });
+    svg.appendChild(f1); svg.appendChild(f2);
+
+    var hit = sv("rect", { x: L, y: T, width: pw, height: ph, fill: "transparent" });
+    svg.appendChild(hit);
+
+    trendState = { B: B, shown: shown, xAt: xAt, yAt: yAt, L: L, pw: pw, W: W,
+                   hair: hair, f1: f1, f2: f2, idx: -1, c1: c1, c2: c2 };
+
+    // Per-render listeners go on `hit`, which is recreated each time. Listeners
+    // belonging on the persistent <svg> are bound once at init — binding them
+    // here would stack up a new copy on every re-render.
+    hit.addEventListener("pointermove", function (e) { trendFocus(indexFromEvent(e)); });
+    hit.addEventListener("pointerleave", trendHide);
+
+    renderTrendTwin(B, shown);
+  }
+
+  function indexFromEvent(e) {
+    var st = trendState;
+    if (!st) return -1;
+    var box = $("trendSvg").getBoundingClientRect();
+    if (!box.width) return -1;
+    var mx = (e.clientX - box.left) * (st.W / box.width);
+    var step = st.pw / (st.B.length - 1);
+    return Math.max(0, Math.min(st.B.length - 1, Math.round((mx - st.L) / step)));
+  }
+
+  function trendFocus(i) {
+    var st = trendState;
+    if (!st || i < 0 || i >= st.B.length) return trendHide();
+    st.idx = i;
+    var b = st.B[i], x = st.xAt(i);
+    st.hair.setAttribute("x1", x); st.hair.setAttribute("x2", x);
+    st.hair.setAttribute("opacity", 1);
+    st.f1.setAttribute("cx", x); st.f1.setAttribute("cy", st.yAt(b.contact));
+    st.f2.setAttribute("cx", x); st.f2.setAttribute("cy", st.yAt(b.webinar));
+    st.f1.setAttribute("opacity", st.shown.indexOf("contact") > -1 ? 1 : 0);
+    st.f2.setAttribute("opacity", st.shown.indexOf("webinar") > -1 ? 1 : 0);
+
+    var tip = $("trendTip");
+    clear(tip);
+    tip.appendChild(el("div", "t", fmtDay(b.start, true)));
+    st.shown.forEach(function (t) {
+      var row = el("div", "r");
+      var sw = el("i");
+      sw.style.background = t === "contact" ? st.c1 : st.c2;
+      row.appendChild(sw);
+      row.appendChild(document.createTextNode(LABEL[t]));
+      row.appendChild(el("b", null, String(b[t])));
+      tip.appendChild(row);
+    });
+    tip.classList.add("on");
+    var wrapW = $("trendWrap").clientWidth || st.W;
+    tip.style.left = Math.min(Math.max(x, 82), Math.max(82, wrapW - 82)) + "px";
+    var hi = 0;
+    st.shown.forEach(function (t) { hi = Math.max(hi, b[t]); });
+    tip.style.top = Math.max(6, Math.min(st.yAt(hi) - 12, 200)) + "px";
+  }
+
+  function trendHide() {
+    var st = trendState;
+    $("trendTip").classList.remove("on");
+    if (!st) return;
+    st.idx = -1;
+    st.hair.setAttribute("opacity", 0);
+    st.f1.setAttribute("opacity", 0);
+    st.f2.setAttribute("opacity", 0);
+  }
+
+  // Keyboard focus reveals exactly what hover does.
+  $("trendSvg").addEventListener("blur", trendHide);
+  $("trendSvg").addEventListener("keydown", function (e) {
+    var st = trendState;
+    if (!st || (e.key !== "ArrowLeft" && e.key !== "ArrowRight")) return;
+    e.preventDefault();
+    var i = st.idx < 0 ? st.B.length - 1 : st.idx + (e.key === "ArrowRight" ? 1 : -1);
+    trendFocus(Math.max(0, Math.min(st.B.length - 1, i)));
+  });
+
+  // the chart's table-view twin
+  function renderTrendTwin(B, shown) {
+    var box = $("trendTwin");
+    clear(box);
+    var tbl = el("table");
+    var thead = el("thead"), htr = el("tr");
+    var heads = ["Day"].concat(shown.map(function (t) { return LABEL[t]; }));
+    if (shown.length > 1) heads.push("Total");
+    heads.forEach(function (h, i) { htr.appendChild(el("th", i ? "num" : null, h)); });
+    thead.appendChild(htr); tbl.appendChild(thead);
+
+    var tb = el("tbody");
+    for (var i = B.length - 1; i >= 0; i--) {
+      var b = B[i], tr = el("tr");
+      tr.style.cursor = "default";
+      tr.appendChild(el("td", null, fmtDay(b.start, true)));
+      var sum = 0;
+      shown.forEach(function (t) { sum += b[t]; tr.appendChild(el("td", "num", String(b[t]))); });
+      if (shown.length > 1) tr.appendChild(el("td", "num", String(sum)));
+      tb.appendChild(tr);
+    }
+    tbl.appendChild(tb);
+    box.appendChild(tbl);
+  }
+  $("trendTableBtn").addEventListener("click", function () {
+    var closed = $("trendTwin").classList.toggle("hidden");
+    this.setAttribute("aria-expanded", closed ? "false" : "true");
+    this.textContent = closed ? "Table view" : "Hide table";
+  });
+
+  /* ---------- table ---------- */
+  function renderTable() {
+    var rows = searched(scoped());
+    rows.sort(function (a, b) {
+      var x = a[sortKey], y = b[sortKey];
+      if (sortKey !== "ts") { x = String(x || "").toLowerCase(); y = String(y || "").toLowerCase(); }
+      return x < y ? -sortDir : x > y ? sortDir : (b.ts - a.ts);
+    });
+
+    $("tableCap").textContent = rows.length
+      ? rows.length.toLocaleString() + (rows.length === 1 ? " row" : " rows")
+      : "";
+    $("tableBlank").classList.toggle("hidden", rows.length > 0);
+
+    document.querySelectorAll("th[data-sort]").forEach(function (th) {
+      var k = th.getAttribute("data-sort");
+      var base = th.getAttribute("data-label") || th.textContent.replace(/[▲▼]/g, "").trim();
+      th.setAttribute("data-label", base);
+      clear(th);
+      th.appendChild(document.createTextNode(base));
+      if (sortKey === k) th.appendChild(el("span", "ar", sortDir > 0 ? "▲" : "▼"));
+      th.setAttribute("aria-sort", sortKey === k ? (sortDir > 0 ? "ascending" : "descending") : "none");
+    });
+
+    var tb = $("rows");
+    clear(tb);
+    var frag = document.createDocumentFragment();
+
+    rows.forEach(function (r) {
+      var isNew = seenAt > 0 && r.ts > seenAt;
+      var tr = el("tr");
+      if (isNew) tr.className = "isnew";
+      tr.tabIndex = 0;
+
+      var td = el("td", "when");
+      if (isNew) {
+        var dot = el("span", "newdot");
+        dot.title = "New since your last visit";
+        td.appendChild(dot);
+      }
+      td.appendChild(document.createTextNode(r.ts ? fmtDateTime(r.ts) : "—"));
+      tr.appendChild(td);
+
+      var tdType = el("td");
+      var tag = el("span", "tag " + r.type);
+      tag.appendChild(el("i"));
+      tag.appendChild(document.createTextNode(LABEL[r.type]));
+      tdType.appendChild(tag);
+      tr.appendChild(tdType);
+
+      var tdWho = el("td");
+      var who = el("div", "who");
+      who.appendChild(el("span", "av" + (r.type === "webinar" ? " webinar" : ""),
+                         initials(r.name, r.email)));
+      who.appendChild(document.createTextNode(r.name || "—"));
+      tdWho.appendChild(who);
+      tr.appendChild(tdWho);
+
+      var tdMail = el("td");
+      if (r.email && RE_EMAIL.test(r.email)) {
+        var a = el("a", null, r.email);
+        a.href = "mailto:" + encodeURIComponent(r.email);
+        a.rel = "noopener noreferrer";
+        tdMail.appendChild(a);
+      } else { tdMail.textContent = r.email || "—"; }
+      tr.appendChild(tdMail);
+
+      tr.appendChild(el("td", null, r.phone || "—"));
+      tr.appendChild(el("td", null, r.company || "—"));
+      tr.appendChild(el("td", "msg", r.message || "—"));
+
+      tr.addEventListener("click", function (e) {
+        if (e.target.tagName === "A") return;
+        openDetail(r);
+      });
+      tr.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDetail(r); }
+      });
+      frag.appendChild(tr);
+    });
+    tb.appendChild(frag);
+  }
+
+  document.querySelectorAll("th[data-sort]").forEach(function (th) {
+    function go() {
+      var k = th.getAttribute("data-sort");
+      if (sortKey === k) sortDir *= -1; else { sortKey = k; sortDir = k === "ts" ? -1 : 1; }
+      renderTable();
+    }
+    th.addEventListener("click", go);
+    th.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); }
+    });
+  });
+
+  /* ══════════════════════════════════════════════════════════════
+     DETAIL SHEET
+     ══════════════════════════════════════════════════════════════ */
+  var lastFocus = null;
+
+  function detailRow(label, value) {
+    var row = el("div", "row");
+    row.appendChild(el("div", "l", label));
+    var v = el("div", "v");
+    if (typeof value === "string") v.textContent = value || "—";
+    else v.appendChild(value);
+    row.appendChild(v);
+    return row;
+  }
+
+  function openDetail(r) {
+    lastFocus = document.activeElement;
+    $("dAv").textContent = initials(r.name, r.email);
+    $("dAv").className = "av" + (r.type === "webinar" ? " webinar" : "");
+    $("dName").textContent = r.name || "(no name given)";
+    $("dSub").textContent = LABEL[r.type] + " · " + (r.ts ? fmtDateTime(r.ts) : "unknown date");
+
+    var box = $("dRows");
+    clear(box);
+
+    if (r.email && RE_EMAIL.test(r.email)) {
+      var a = el("a", null, r.email);
+      a.href = "mailto:" + encodeURIComponent(r.email);
+      a.rel = "noopener noreferrer";
+      box.appendChild(detailRow("Email", a));
+    } else box.appendChild(detailRow("Email", r.email));
+
+    var th = telHref(r.phone);
+    if (th) {
+      var ta = el("a", null, r.phone);
+      ta.href = th; ta.rel = "noopener noreferrer";
+      box.appendChild(detailRow("Phone", ta));
+    } else box.appendChild(detailRow("Phone", r.phone));
+
+    if (r.type === "contact") box.appendChild(detailRow("Company", r.company));
+    if (r.type === "webinar") box.appendChild(detailRow("Consent", r.consent));
+    if (r.page) box.appendChild(detailRow("Page", prettyPage(r.page)));
+    box.appendChild(detailRow("Form", LABEL[r.type]));
+    box.appendChild(detailRow("Received", r.ts ? fmtDateTime(r.ts) : r.tsRaw));
+
+    box.appendChild(el("div", "mtitle", r.type === "webinar" ? "Question" : "Message"));
+    box.appendChild(el("div", "mbody", r.message || "(none)"));
+
+    var acts = el("div", "sact");
+    if (r.email && RE_EMAIL.test(r.email)) {
+      var reply = el("a", "btn primary", "Reply by email");
+      reply.href = "mailto:" + encodeURIComponent(r.email) + "?subject=" +
+                   encodeURIComponent("Re: your " + (r.type === "webinar"
+                     ? "webinar registration" : "enquiry") + " to Braiin");
+      reply.rel = "noopener noreferrer";
+      acts.appendChild(reply);
+    }
+    var copy = el("button", "btn", "Copy details");
+    copy.type = "button";
+    copy.addEventListener("click", function () {
+      var text = [
+        "Form: " + LABEL[r.type],
+        "Received: " + (r.ts ? fmtDateTime(r.ts) : r.tsRaw),
+        "Name: " + r.name, "Email: " + r.email, "Phone: " + r.phone,
+        r.type === "contact" ? "Company: " + r.company : "Consent: " + r.consent,
+        "", r.message
+      ].join("\n");
+      var said = $("copyState");
+      (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject())
+        .then(function () { said.textContent = "Copied to clipboard"; })
+        .catch(function () { said.textContent = "Copy failed — select the text manually."; });
+    });
+    acts.appendChild(copy);
+    box.appendChild(acts);
+    var said = el("div", "said");
+    said.id = "copyState";
+    box.appendChild(said);
+
+    $("modal").classList.remove("hidden");
+    $("closeBtn").focus();
+  }
+  function closeDetail() {
+    $("modal").classList.add("hidden");
+    if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) {} }
+    lastFocus = null;
+  }
+  $("closeBtn").addEventListener("click", closeDetail);
+  $("veil").addEventListener("click", closeDetail);
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !$("modal").classList.contains("hidden")) closeDetail();
+  });
+
+  /* ══════════════════════════════════════════════════════════════
+     CSV EXPORT
+     Values starting with = + - @ are quote-prefixed so a submitted
+     string cannot become a live formula in Excel or Sheets.
+     ══════════════════════════════════════════════════════════════ */
+  function csvCell(v) {
+    var s = v == null ? "" : String(v);
+    if (/^[=+\-@\t\r]/.test(s)) s = "'" + s;
+    return '"' + s.replace(/"/g, '""') + '"';
+  }
+  $("csvBtn").addEventListener("click", function () {
+    var rows = searched(scoped());
+    var lines = [["Received (ISO)", "Received (local)", "Form", "Name", "Email",
+                  "Phone", "Company", "Consent", "Message"].map(csvCell).join(",")];
+    rows.forEach(function (r) {
+      lines.push([r.tsRaw, r.ts ? fmtDateTime(r.ts) : "", LABEL[r.type],
+                  r.name, r.email, r.phone, r.company, r.consent, r.message]
+        .map(csvCell).join(","));
+    });
+    var blob = new Blob(["﻿" + lines.join("\r\n")], { type: "text/csv;charset=utf-8" });
+    var url = URL.createObjectURL(blob);
+    var a = el("a");
+    a.href = url;
+    a.download = "braiin-submissions-" + new Date().toISOString().slice(0, 10) + ".csv";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  });
+
+  /* ---- responsive redraw ---- */
+  var rTimer = null;
+  window.addEventListener("resize", function () {
+    if (rTimer) clearTimeout(rTimer);
+    rTimer = setTimeout(function () {
+      if (DATA.length && !$("view-app").classList.contains("hidden")) renderTrend();
+    }, 140);
+  });
+
+  /* ══════════════════════════════════════════════════════════════
+     BOOT
+     ══════════════════════════════════════════════════════════════ */
+  KEY = loadKey();
+  if (KEY) { showApp(); load(false); } else { showLogin(); }
+
+  // Mark this visit once the operator has had a moment to see what is new.
+  setTimeout(function () {
+    try { localStorage.setItem(K_SEEN, String(Date.now())); } catch (e) {}
+  }, 4000);
+})();
+</script>
+</body>
+</html>
