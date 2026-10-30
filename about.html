@@ -5,15 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About Braiin Limited | Global AI Platform Company | NASDAQ</title>
 <meta name="description" content="Braiin Limited (NASDAQ: BRAI) is a global AI platform company in Western Australia, automating agriculture, property technology & customer experience.">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=1.0.0">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=2.0.0">
+<script>document.documentElement.classList.add('js')</script>
+<script src="site.js?v=2.0.0" defer></script>
 
 <!-- Favicons -->
-<link rel="icon" type="image/x-icon" href="assets/images/braiin-favicon.webp">
+<link rel="icon" type="image/webp" href="assets/images/braiin-favicon.webp">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/images/braiin-favicon.webp">
-<meta name="theme-color" content="#2e439a">
+<meta name="theme-color" content="#06101D">
 
+<style>
+  /* Page-scoped: balance odd 3-up stat/kpi rows when they collapse to 2 columns */
+  @media (max-width:1024px){.pg-about .stats[style*="--cols:3"] .stat:last-child{grid-column:1/-1;border-bottom:0}}
+  @media (max-width:720px){.pg-about .kpis[style*="--cols:3"] .kpi:last-child{grid-column:1/-1}}
+</style>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5NN79C0SY"></script>
@@ -21,131 +30,204 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-M5NN79C0SY');
 </script>
-
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ═══ HEADER (loaded from header.html) ═══ -->
 <div id="header-placeholder"></div>
 
-<div class="page-hero">
+<main id="main" class="pg-about">
+
+<!-- ═══ HERO ═══ -->
+<section class="page-hero">
   <div class="container">
-    <div class="eyebrow"><span class="bar"></span> About Braiin</div>
-    <div class="sec-title">A global AI platform company<br>listed on NASDAQ</div>
-    <p class="sec-desc">Delivering automation and predictive analytics across precision agriculture, customer experience, and property technology.</p>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>About</span></nav>
+    <div class="eyebrow">About Braiin</div>
+    <h1 class="h1">A global AI platform company<br>listed on <span class="text-grad">NASDAQ</span></h1>
+    <p class="lede">Delivering automation and predictive analytics across precision agriculture, customer experience, and property technology.</p>
+    <div class="btn-row">
+      <a href="investors.html" class="btn btn--primary">Investor Relations <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="contact.html" class="btn btn--outline-light">Contact Us</a>
+    </div>
   </div>
-</div>
+</section>
 
-<section class="sec">
+<!-- ═══ OVERVIEW ═══ -->
+<section class="section">
   <div class="container">
-    <div class="split reveal">
-      <div class="split-img"><img src="assets/images/Image_enhancement.jpg" alt="Braiin"></div>
-      <div>
-        <h2 style="font-size:26px;font-weight:800;letter-spacing:-.8px;margin-bottom:14px;line-height:1.2">Intelligent automation for analog industries</h2>
-        <p style="font-size:14px;color:var(--g500);line-height:1.9;margin-bottom:14px">Braiin Limited (NASDAQ: BRAI) is a global AI platform company delivering automation and predictive analytics across precision agriculture, customer experience, and property technology.</p>
-        <p style="font-size:14px;color:var(--g500);line-height:1.9;margin-bottom:14px">Our integrated platforms combine autonomous robotics, IoT, and machine learning to modernize traditionally analog industries. Headquartered in Western Australia, the Company maintains operations across seven countries with approximately 800 global employees.</p>
-        <p style="font-size:14px;color:var(--g500);line-height:1.9">With offices in the US, Australia, India, Sri Lanka, and the Philippines, Braiin has over 240 full-time software specialists across artificial intelligence and modern coding frameworks.</p>
+    <div class="split">
+      <div class="media media--accent reveal" style="--ratio:5/4">
+        <img src="assets/images/Image_enhancement.jpg" alt="Braiin" loading="lazy">
+      </div>
+      <div class="reveal">
+        <div class="eyebrow">Who We Are</div>
+        <h2 class="h2">Intelligent automation for analog industries</h2>
+        <div class="prose mt-s">
+          <p>Braiin Limited (NASDAQ: BRAI) is a global AI platform company delivering automation and predictive analytics across precision agriculture, customer experience, and property technology.</p>
+          <p>Our integrated platforms combine autonomous robotics, IoT, and machine learning to modernize traditionally analog industries. Headquartered in Western Australia, the Company maintains operations across seven countries with approximately 800 global employees.</p>
+          <p>With offices in the US, Australia, India, Sri Lanka, and the Philippines, Braiin has over 240 full-time software specialists across artificial intelligence and modern coding frameworks.</p>
+        </div>
       </div>
     </div>
-    <div class="stats-bar reveal" style="grid-template-columns:repeat(3,1fr)">
-      <div class="sb"><div class="sb-n">~800</div><div class="sb-l">Employees</div></div>
-      <div class="sb"><div class="sb-n">240+</div><div class="sb-l">Engineers</div></div>
-      <div class="sb"><div class="sb-n">$200B+</div><div class="sb-l">Addressable Market</div></div>
+    <div class="stats mt-l reveal" style="--cols:3">
+      <div class="stat"><div class="stat__n">~800</div><div class="stat__l">Employees</div></div>
+      <div class="stat"><div class="stat__n text-grad">240+</div><div class="stat__l">Engineers</div></div>
+      <div class="stat"><div class="stat__n">$200B+</div><div class="stat__l">Addressable Market</div></div>
     </div>
   </div>
 </section>
 
-<!-- Products section: Customer Experience first, Agriculture second, Property Technology third -->
-<section class="sec" style="background:var(--g50)">
-  <div class="container reveal">
-    <div class="eyebrow"><span class="bar"></span> Our Sectors</div>
-    <div class="sec-title">Products addressing a $200B market</div>
-    <p class="sec-desc">Braiin operates across three high-growth verticals, each underpinned by our core AI and automation capabilities.</p>
-   
-    <div class="cap-row">
-      <a href="customer-experience.html" class="cap-card"><div class="cap-img" style="background:var(--dark)"><img src="assets/images/customer.png" alt="CX"></div><div class="cap-body"><h3>Customer Experience</h3><p>AI-powered automation and analytics for managing customer interactions across digital channels.</p></div></a>
-      <a href="agriculture.html" class="cap-card"><div class="cap-img"><img src="assets/images/agriculture.png" alt="Agriculture"></div><div class="cap-body"><h3>Agriculture</h3><p>Autonomous robotics, IoT sensors, and AI-driven predictive analytics for end-to-end farm management.</p></div></a>
-      <a href="property-technology.html" class="cap-card"><div class="cap-img"><img src="assets/images/property.png" alt="PropTech"></div><div class="cap-body"><h3>Property Technology</h3><p>Intelligent digital infrastructure for managing essential property services and tenant operations.</p></div></a>
+<!-- ═══ OUR SECTORS — Customer Experience first, Agriculture second, Property Technology third ═══ -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Our Sectors</div>
+      <h2 class="h2">Products addressing a $200B market</h2>
+      <p class="lede">Braiin operates across three high-growth verticals, each underpinned by our core AI and automation capabilities.</p>
+    </div>
+    <div class="grid grid-3 reveal-stagger">
+      <a href="customer-experience.html" class="card card--media">
+        <div class="card__img"><img src="assets/images/customer.png" alt="CX" loading="lazy"></div>
+        <div class="card__body">
+          <div class="card__num">Division 01</div>
+          <h3 class="card__title">Customer Experience</h3>
+          <p class="card__text">AI-powered automation and analytics for managing customer interactions across digital channels.</p>
+          <span class="link-arrow card__link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a href="agriculture.html" class="card card--media">
+        <div class="card__img"><img src="assets/images/agriculture.png" alt="Agriculture" loading="lazy"></div>
+        <div class="card__body">
+          <div class="card__num">Division 02</div>
+          <h3 class="card__title">Agriculture</h3>
+          <p class="card__text">Autonomous robotics, IoT sensors, and AI-driven predictive analytics for end-to-end farm management.</p>
+          <span class="link-arrow card__link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a href="property-technology.html" class="card card--media">
+        <div class="card__img"><img src="assets/images/property.png" alt="PropTech" loading="lazy"></div>
+        <div class="card__body">
+          <div class="card__num">Division 03</div>
+          <h3 class="card__title">Property Technology</h3>
+          <p class="card__text">Intelligent digital infrastructure for managing essential property services and tenant operations.</p>
+          <span class="link-arrow card__link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
 
-<section class="sec">
-  <div class="container reveal">
-    <div class="eyebrow"><span class="bar"></span> Leadership</div>
-    <div class="sec-title">Experienced management team</div>
-    <p class="sec-desc">A proven leadership team with deep experience in SaaS, AI, autonomous systems, and public company management.</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px">
-      <div style="padding:32px;border:1px solid var(--g100);border-radius:var(--radius);background:white;text-align:center">
-        <div style="width:64px;height:64px;border-radius:50%;background:var(--grad);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:white">NB</div>
-        <h3 style="font-size:16px;font-weight:700;margin-bottom:2px">Natraj Balasubramanian</h3>
-        <p style="font-size:11px;font-weight:600;color:var(--cyan);letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px">Chief Executive Officer</p>
-        <p style="font-size:12px;color:var(--g400);line-height:1.75">Experienced technology entrepreneur with a strong background in SaaS, AI, and scaling businesses across multiple industries. He has successfully raised capital, led acquisitions, and built high-growth technology platforms.</p>
+<!-- ═══ LEADERSHIP ═══ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Leadership</div>
+      <h2 class="h2">Experienced management team</h2>
+      <p class="lede">A proven leadership team with deep experience in SaaS, AI, autonomous systems, and public company management.</p>
+    </div>
+    <div class="grid grid-3 reveal-stagger">
+      <article class="person">
+        <div class="person__avatar" aria-hidden="true">NB</div>
+        <h3 class="person__name">Natraj Balasubramanian</h3>
+        <p class="person__role">Chief Executive Officer</p>
+        <p class="person__bio">Experienced technology entrepreneur with a strong background in SaaS, AI, and scaling businesses across multiple industries. He has successfully raised capital, led acquisitions, and built high-growth technology platforms.</p>
+      </article>
+      <article class="person">
+        <div class="person__avatar" aria-hidden="true">NS</div>
+        <h3 class="person__name">Neil Saligrama</h3>
+        <p class="person__role">President &amp; COO</p>
+        <p class="person__bio">Seasoned operational leader with deep expertise in scaling technology businesses across multiple geographies and managing global teams.</p>
+      </article>
+      <article class="person">
+        <div class="person__avatar" aria-hidden="true">JS</div>
+        <h3 class="person__name">Jay Stephenson</h3>
+        <p class="person__role">Chief Financial Officer</p>
+        <p class="person__bio">Experienced CFO with public company expertise in financial reporting, compliance, capital markets, and strategic financial planning for growth-stage companies.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINANCIAL PERFORMANCE ═══ -->
+<section class="section section--dark">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow">Financial Performance</div>
+      <h2 class="h2">A profitable, growing platform</h2>
+      <p class="lede">~29% revenue CAGR from CY2022-2025, with expanding EBITDA margins and strong contract visibility.</p>
+    </div>
+    <div class="stats stats--dark reveal" style="--cols:4">
+      <div class="stat"><div class="stat__n">~$85M</div><div class="stat__l">Revenue FY2025E</div></div>
+      <div class="stat"><div class="stat__n text-grad">~$11.5M</div><div class="stat__l">Adj. EBITDA FY2025E</div></div>
+      <div class="stat"><div class="stat__n text-grad">~29%</div><div class="stat__l">Revenue CAGR</div></div>
+      <div class="stat"><div class="stat__n">~30%</div><div class="stat__l">YoY Revenue Growth</div></div>
+    </div>
+    <div class="kpis mt-s reveal-stagger" style="--cols:3">
+      <div class="kpi"><div class="stat__n">~$34.3M</div><div class="stat__l">5-Year Binding Contracts</div></div>
+      <div class="kpi"><div class="stat__n">~$112M</div><div class="stat__l">Non-Binding MOUs</div></div>
+      <div class="kpi"><div class="stat__n">65%</div><div class="stat__l">Insider Ownership</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GROWTH STRATEGY ═══ -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Growth Strategy</div>
+      <h2 class="h2">Rapid expansion through synergistic M&amp;A</h2>
+      <p class="lede">Leveraging public currency to acquire naturally synergistic targets while maintaining business continuity and operational excellence.</p>
+    </div>
+    <div class="grid grid-4 reveal-stagger" style="--gap:20px">
+      <article class="card">
+        <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg></span>
+        <h3 class="card__title">Maximize Synergies</h3>
+        <p class="card__text">Leveraging public currency to acquire naturally synergistic M&amp;A targets across our three verticals.</p>
+      </article>
+      <article class="card">
+        <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <h3 class="card__title">Build Partnerships</h3>
+        <p class="card__text">Continuity of management for at least 3 years. Alignment of interest as public company consolidates businesses.</p>
+      </article>
+      <article class="card">
+        <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></span>
+        <h3 class="card__title">Focus on Growth</h3>
+        <p class="card__text">Account-wise cross selling, systems and process consolidation. Aggressive yet feasible revenue and cost synergy initiatives.</p>
+      </article>
+      <article class="card">
+        <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></span>
+        <h3 class="card__title">Harness Synergies</h3>
+        <p class="card__text">Foster BD planning, encourage cross-functional collaboration, and ensure sales and operations continuity throughout integration.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="section">
+  <div class="container">
+    <div class="cta-band reveal">
+      <div class="cta-band__grid">
+        <div>
+          <div class="eyebrow">Investor Relations</div>
+          <h2>Publicly traded on NASDAQ</h2>
+          <p>Access SEC filings, press releases, governance documents, stock data, and financial reports on our Investor Relations portal.</p>
+        </div>
+        <div class="btn-row">
+          <a href="investors.html" class="btn btn--light">Investor Relations <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="contact.html" class="btn btn--outline-light">Contact Us</a>
+        </div>
       </div>
-      <div style="padding:32px;border:1px solid var(--g100);border-radius:var(--radius);background:white;text-align:center">
-        <div style="width:64px;height:64px;border-radius:50%;background:var(--grad);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:white">NS</div>
-        <h3 style="font-size:16px;font-weight:700;margin-bottom:2px">Neil Saligrama</h3>
-        <p style="font-size:11px;font-weight:600;color:var(--cyan);letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px">President & COO</p>
-        <p style="font-size:12px;color:var(--g400);line-height:1.75">Seasoned operational leader with deep expertise in scaling technology businesses across multiple geographies and managing global teams.</p>
-      </div>
-      <div style="padding:32px;border:1px solid var(--g100);border-radius:var(--radius);background:white;text-align:center">
-        <div style="width:64px;height:64px;border-radius:50%;background:var(--grad);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:white">JS</div>
-        <h3 style="font-size:16px;font-weight:700;margin-bottom:2px">Jay Stephenson</h3>
-        <p style="font-size:11px;font-weight:600;color:var(--cyan);letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px">Chief Financial Officer</p>
-        <p style="font-size:12px;color:var(--g400);line-height:1.75">Experienced CFO with public company expertise in financial reporting, compliance, capital markets, and strategic financial planning for growth-stage companies.</p>
-      </div>
     </div>
   </div>
 </section>
 
-<section class="sec" style="background:var(--dark);padding:80px 5%">
-  <div class="container reveal">
-    <div style="text-align:center;margin-bottom:36px">
-      <div class="eyebrow" style="justify-content:center;color:var(--cyan)"><span class="bar"></span> Financial Performance</div>
-      <div class="sec-title" style="color:white">A profitable, growing platform</div>
-      <p class="sec-desc" style="margin:0 auto;color:rgba(255,255,255,.4)">~29% revenue CAGR from CY2022-2025, with expanding EBITDA margins and strong contract visibility.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.06);border-radius:14px;overflow:hidden">
-      <div style="background:rgba(255,255,255,.03);padding:28px 16px;text-align:center"><div style="font-size:28px;font-weight:800;color:white">~$85M</div><div style="font-size:9px;font-weight:600;color:rgba(255,255,255,.3);letter-spacing:.8px;text-transform:uppercase;margin-top:4px">Revenue FY2025E</div></div>
-      <div style="background:rgba(255,255,255,.03);padding:28px 16px;text-align:center"><div style="font-size:28px;font-weight:800;color:var(--cyan)">~$11.5M</div><div style="font-size:9px;font-weight:600;color:rgba(255,255,255,.3);letter-spacing:.8px;text-transform:uppercase;margin-top:4px">Adj. EBITDA FY2025E</div></div>
-      <div style="background:rgba(255,255,255,.03);padding:28px 16px;text-align:center"><div style="font-size:28px;font-weight:800;color:var(--lime)">~29%</div><div style="font-size:9px;font-weight:600;color:rgba(255,255,255,.3);letter-spacing:.8px;text-transform:uppercase;margin-top:4px">Revenue CAGR</div></div>
-      <div style="background:rgba(255,255,255,.03);padding:28px 16px;text-align:center"><div style="font-size:28px;font-weight:800;color:white">~30%</div><div style="font-size:9px;font-weight:600;color:rgba(255,255,255,.3);letter-spacing:.8px;text-transform:uppercase;margin-top:4px">YoY Revenue Growth</div></div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px">
-      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:24px;text-align:center"><div style="font-size:22px;font-weight:800;color:white">~$34.3M</div><div style="font-size:9px;color:rgba(255,255,255,.3);font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-top:2px">5-Year Binding Contracts</div></div>
-      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:24px;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--cyan)">~$112M</div><div style="font-size:9px;color:rgba(255,255,255,.3);font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-top:2px">Non-Binding MOUs</div></div>
-      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:24px;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--lime)">65%</div><div style="font-size:9px;color:rgba(255,255,255,.3);font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-top:2px">Insider Ownership</div></div>
-    </div>
-  </div>
-</section>
+</main>
 
-<section class="sec" style="background:var(--g50)">
-  <div class="container reveal">
-    <div class="eyebrow"><span class="bar"></span> Growth Strategy</div>
-    <div class="sec-title">Rapid expansion through synergistic M&A</div>
-    <p class="sec-desc">Leveraging public currency to acquire naturally synergistic targets while maintaining business continuity and operational excellence.</p>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px">
-      <div style="padding:24px;border:1px solid var(--g100);border-radius:var(--radius);background:white"><h4 style="font-size:13px;font-weight:700;margin-bottom:6px">Maximize Synergies</h4><p style="font-size:11.5px;color:var(--g400);line-height:1.7">Leveraging public currency to acquire naturally synergistic M&A targets across our three verticals.</p></div>
-      <div style="padding:24px;border:1px solid var(--g100);border-radius:var(--radius);background:white"><h4 style="font-size:13px;font-weight:700;margin-bottom:6px">Build Partnerships</h4><p style="font-size:11.5px;color:var(--g400);line-height:1.7">Continuity of management for at least 3 years. Alignment of interest as public company consolidates businesses.</p></div>
-      <div style="padding:24px;border:1px solid var(--g100);border-radius:var(--radius);background:white"><h4 style="font-size:13px;font-weight:700;margin-bottom:6px">Focus on Growth</h4><p style="font-size:11.5px;color:var(--g400);line-height:1.7">Account-wise cross selling, systems and process consolidation. Aggressive yet feasible revenue and cost synergy initiatives.</p></div>
-      <div style="padding:24px;border:1px solid var(--g100);border-radius:var(--radius);background:white"><h4 style="font-size:13px;font-weight:700;margin-bottom:6px">Harness Synergies</h4><p style="font-size:11.5px;color:var(--g400);line-height:1.7">Foster BD planning, encourage cross-functional collaboration, and ensure sales and operations continuity throughout integration.</p></div>
-    </div>
-  </div>
-</section>
-
+<!-- ═══ FOOTER (loaded from footer.html) ═══ -->
 <div id="footer-placeholder"></div>
-<script>
-fetch('header.html').then(r=>r.text()).then(h=>{
-  document.getElementById('header-placeholder').innerHTML=h;
-  document.getElementById('hamburger').addEventListener('click',function(){this.classList.toggle('open');document.getElementById('mobileMenu').classList.toggle('open');});
-  window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',scrollY>50)});
-});
-fetch('footer.html').then(r=>r.text()).then(h=>{document.getElementById('footer-placeholder').innerHTML=h});
-document.addEventListener('DOMContentLoaded',()=>{
-  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}})},{threshold:.08});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-});
-</script>
 </body>
 </html>

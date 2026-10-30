@@ -5,15 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agriculture Drones & AI Farm Management | Braiin Limited</title>
 <meta name="description" content="Braiin delivers precision agriculture, autonomous crop spraying drones, IoT sensing & AI analytics — purpose-built for AgTech and large-scale farming">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=1.0.0">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=2.0.0">
+<script>document.documentElement.classList.add('js')</script>
+<script src="site.js?v=2.0.0" defer></script>
 
 <!-- Favicons -->
-<link rel="icon" type="image/x-icon" href="assets/images/braiin-favicon.webp">
+<link rel="icon" type="image/webp" href="assets/images/braiin-favicon.webp">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/images/braiin-favicon.webp">
-<meta name="theme-color" content="#2e439a">
-
+<meta name="theme-color" content="#06101D">
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5NN79C0SY"></script>
@@ -21,210 +24,332 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-M5NN79C0SY');
 </script>
-
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ═══ HEADER (loaded from header.html) ═══ -->
 <div id="header-placeholder"></div>
 
-<div class="page-hero lime">
+<main id="main" class="pg-agri">
+
+<!-- ═══ HERO ═══ -->
+<section class="page-hero page-hero--split lime">
   <div class="container">
-    <div class="eyebrow"><span class="bar"></span> Agriculture Division</div>
-    <div class="sec-title">Precision Agriculture &<br>Autonomous Farming</div>
-    <p class="sec-desc">Combining artificial intelligence, robotics, and data analytics to support modern precision agriculture across large-scale farming operations.</p>
+    <div>
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>Agriculture</span></nav>
+      <div class="eyebrow">Agriculture Division</div>
+      <h1 class="h1">Precision Agriculture&nbsp;&amp;<br>Autonomous Farming</h1>
+      <p class="lede">Combining artificial intelligence, robotics, and data analytics to support modern precision agriculture across large-scale farming operations.</p>
+      <div class="btn-row">
+        <a href="robotics.html" class="btn btn--primary">Robotics <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="iots.html" class="btn btn--outline-light">IoTs</a>
+      </div>
+    </div>
+    <div class="page-hero__media">
+      <img src="assets/images/drone_robotics.webp" alt="Agriculture" fetchpriority="high">
+    </div>
   </div>
-</div>
+</section>
 
-<section class="sec">
+<!-- ═══ OVERVIEW ═══ -->
+<section class="section">
   <div class="container">
-    <div class="split reveal">
-      <div>
-        <div class="eyebrow"><span class="bar"></span> Overview</div>
-        <h2 style="font-size:24px;font-weight:800;letter-spacing:-.8px;margin-bottom:14px;line-height:1.2">AI-powered farm management</h2>
-        <p style="font-size:14px;color:var(--g500);line-height:1.9;margin-bottom:14px">BRAIIN's Agriculture platform combines artificial intelligence, robotics, and data analytics to support modern precision agriculture. The platform enables farmers and agricultural organisations to monitor crops, automate field operations, and generate insights that improve productivity and resource efficiency.</p>
-        <p style="font-size:14px;color:var(--g500);line-height:1.9">Using autonomous systems, environmental monitoring technologies, and advanced analytics, the BRAIIN platform provides real-time visibility into crop health, environmental conditions, and operational performance.</p>
+    <div class="split split--top">
+      <div class="reveal">
+        <div class="eyebrow">Overview</div>
+        <h2 class="h2">AI-powered farm management</h2>
       </div>
-      <div class="split-img"><img src="assets/images/drone_robotics.webp" alt="Agriculture"></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" style="background:var(--g50)">
-  <div class="container reveal">
-    <div class="eyebrow"><span class="bar"></span> Platform Capabilities</div>
-    <div class="sec-title">End-to-end agricultural intelligence</div>
-    <div class="cap-row">
-      <div class="cap-card">
-        <div class="cap-img"><img src="assets/images/drone-robot-spraying.webp" alt="Drone Spraying"></div>
-        <div class="cap-body"><h3>Autonomous Crop Spraying</h3><p>BRAIIN's autonomous drone systems enable precise crop spraying across large agricultural areas.</p><ul><li>Drones apply targeted treatments with high accuracy</li><li>Reduces labour requirements and improves efficiency</li><li>Automated aerial systems cover large areas quickly</li></ul></div>
-      </div>
-      <div class="cap-card">
-        <div class="cap-img"><img src="assets/images/ag-monitoring.jpg" alt="Environmental Monitoring"></div>
-        <div class="cap-body"><h3>Environmental Monitoring</h3><p>Sensors and analytics systems monitor environmental conditions affecting crop performance.</p><ul><li>Monitor soil conditions, moisture levels, and environmental data</li><li>Identify patterns that impact crop health</li><li>Continuous operational visibility from field data</li></ul></div>
-      </div>
-      <div class="cap-card">
-        <div class="cap-img"><img src="assets/images/Image_enhancement.jpg" alt="Platform"></div>
-        <div class="cap-body"><h3>BRAIIN Agriculture Platform</h3><p>A unified platform connects robotics, sensors, and analytics for intelligent agricultural insights.</p><ul><li>Collect and analyse data from multiple sources</li><li>AI models identify patterns and risks</li><li>Helps optimise management strategies</li></ul></div>
+      <div class="prose reveal">
+        <p>BRAIIN's Agriculture platform combines artificial intelligence, robotics, and data analytics to support modern precision agriculture. The platform enables farmers and agricultural organisations to monitor crops, automate field operations, and generate insights that improve productivity and resource efficiency.</p>
+        <p>Using autonomous systems, environmental monitoring technologies, and advanced analytics, the BRAIIN platform provides real-time visibility into crop health, environmental conditions, and operational performance.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sec">
+<!-- ═══ PLATFORM CAPABILITIES ═══ -->
+<section class="section section--alt">
   <div class="container">
-    <div class="split reverse reveal">
-      <div>
-        <div class="eyebrow"><span class="bar"></span> Intelligent Farm Management</div>
-        <h2 style="font-size:24px;font-weight:800;letter-spacing:-.8px;margin-bottom:14px;line-height:1.2">Integrated robotics, monitoring & AI</h2>
-        <p style="font-size:14px;color:var(--g500);line-height:1.9;margin-bottom:20px">The platform collects and analyses agricultural data from drones, sensors, and operational systems to generate insights that improve crop management and farm productivity.</p>
-        <div class="feat-grid">
-          <div class="feat-card"><h4><span class="fc-dot"></span>Autonomous Drones</h4><p>Crop spraying and aerial field monitoring via certified autonomous systems.</p></div>
-          <div class="feat-card"><h4><span class="fc-dot"></span>Environmental Sensors</h4><p>Track soil and climate conditions in real-time across the farm.</p></div>
-          <div class="feat-card"><h4><span class="fc-dot"></span>AI-Driven Analytics</h4><p>Identify crop health patterns and risks through machine learning.</p></div>
-          <div class="feat-card"><h4><span class="fc-dot"></span>Farm Integration</h4><p>Connect with farm management workflows and agricultural systems.</p></div>
+    <div class="section-head reveal">
+      <div class="eyebrow">Platform Capabilities</div>
+      <h2 class="h2">End-to-end agricultural intelligence</h2>
+    </div>
+    <div class="grid grid-3 reveal-stagger">
+      <article class="card card--media card--hover">
+        <div class="card__img"><img src="assets/images/drone-robot-spraying.webp" alt="Drone Spraying" loading="lazy"></div>
+        <div class="card__body">
+          <h3 class="card__title">Autonomous Crop Spraying</h3>
+          <p class="card__text">BRAIIN's autonomous drone systems enable precise crop spraying across large agricultural areas.</p>
+          <ul class="checklist checklist--compact">
+            <li>Drones apply targeted treatments with high accuracy</li>
+            <li>Reduces labour requirements and improves efficiency</li>
+            <li>Automated aerial systems cover large areas quickly</li>
+          </ul>
         </div>
-      </div>
-      <div class="split-img"><img src="assets/images/Image_enhancement.jpg" alt="IoT"></div>
+      </article>
+      <article class="card card--media card--hover">
+        <div class="card__img"><img src="assets/images/ag-monitoring.jpg" alt="Environmental Monitoring" loading="lazy"></div>
+        <div class="card__body">
+          <h3 class="card__title">Environmental Monitoring</h3>
+          <p class="card__text">Sensors and analytics systems monitor environmental conditions affecting crop performance.</p>
+          <ul class="checklist checklist--compact">
+            <li>Monitor soil conditions, moisture levels, and environmental data</li>
+            <li>Identify patterns that impact crop health</li>
+            <li>Continuous operational visibility from field data</li>
+          </ul>
+        </div>
+      </article>
+      <article class="card card--media card--hover">
+        <div class="card__img"><img src="assets/images/Image_enhancement.jpg" alt="Platform" loading="lazy"></div>
+        <div class="card__body">
+          <h3 class="card__title">BRAIIN Agriculture Platform</h3>
+          <p class="card__text">A unified platform connects robotics, sensors, and analytics for intelligent agricultural insights.</p>
+          <ul class="checklist checklist--compact">
+            <li>Collect and analyse data from multiple sources</li>
+            <li>AI models identify patterns and risks</li>
+            <li>Helps optimise management strategies</li>
+          </ul>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="sec" style="background:var(--lime);padding:80px 5%">
-  <div class="container reveal">
-    <div style="text-align:center;margin-bottom:40px">
-      <div class="eyebrow" style="color:rgba(0,0,0,.4)"><span class="bar" style="background:rgba(0,0,0,.2)"></span> Operational Impact</div>
-      <div class="sec-title" style="color:white">Measurable results for farmers</div>
-      <p class="sec-desc" style="margin:0 auto;color:rgba(255,255,255,.7)">Technology that delivers quantifiable improvements across every metric that matters in agriculture.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
-      <div style="background:rgba(255,255,255,.92);border-radius:14px;padding:28px;text-align:center"><div style="font-size:36px;font-weight:800;color:var(--text);letter-spacing:-1.5px">15x</div><div style="font-size:10px;font-weight:600;color:var(--g400);letter-spacing:.5px;text-transform:uppercase;margin-top:4px">Faster Than Traditional Spraying</div><p style="font-size:11px;color:var(--g400);line-height:1.6;margin-top:8px">Technology enables crop spraying at 15x the speed of traditional methods.</p></div>
-      <div style="background:rgba(255,255,255,.92);border-radius:14px;padding:28px;text-align:center"><div style="font-size:36px;font-weight:800;color:var(--text);letter-spacing:-1.5px">30%</div><div style="font-size:10px;font-weight:600;color:var(--g400);letter-spacing:.5px;text-transform:uppercase;margin-top:4px">Cost Savings</div><p style="font-size:11px;color:var(--g400);line-height:1.6;margin-top:8px">10 drones and pilots can cover in one day what requires hundreds of hours of human labor.</p></div>
-      <div style="background:rgba(255,255,255,.92);border-radius:14px;padding:28px;text-align:center"><div style="font-size:36px;font-weight:800;color:var(--text);letter-spacing:-1.5px">20-25%</div><div style="font-size:10px;font-weight:600;color:var(--g400);letter-spacing:.5px;text-transform:uppercase;margin-top:4px">Yield Increase</div><p style="font-size:11px;color:var(--g400);line-height:1.6;margin-top:8px">Increase in crop productivity improving yields throughout the entire crop cycle.</p></div>
-      <div style="background:rgba(255,255,255,.92);border-radius:14px;padding:28px;text-align:center"><div style="font-size:36px;font-weight:800;color:var(--text);letter-spacing:-1.5px">85%</div><div style="font-size:10px;font-weight:600;color:var(--g400);letter-spacing:.5px;text-transform:uppercase;margin-top:4px">Less Water Usage</div><p style="font-size:11px;color:var(--g400);line-height:1.6;margin-top:8px">Less inputs: 85% less water, 50% less biologics. Sensors serve only areas in need.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ROBOTICS CONTENT -->
-<section class="sec">
+<!-- ═══ INTELLIGENT FARM MANAGEMENT ═══ -->
+<section class="section">
   <div class="container">
-    <div class="split reveal">
-      <div>
-        <div class="eyebrow"><span class="bar"></span> Raptor300 Robotics Platform</div>
-        <h2 style="font-size:24px;font-weight:800;letter-spacing:-.8px;margin-bottom:14px;line-height:1.2">Market-leading autonomous drone technology</h2>
-        <p style="font-size:14px;color:var(--g500);line-height:1.9;margin-bottom:14px">BRAIIN's Raptor300 is a market-leading autonomous agriculture drone platform providing end-to-end solutions to improve farming productivity. It provides users a dashboard with detailed maps of plantations and actionable insights.</p>
-        <p style="font-size:14px;color:var(--g500);line-height:1.9;margin-bottom:14px">The first company globally to be certified in a country to operate fully autonomous aerial robots for crop spraying. Two provisional patents have been filed with the United States Patent Office utilising Machine Learning/AI and Robotics for Unmanned Aerial Systems.</p>
-        <div class="feat-grid">
-          <div class="feat-card"><h4><span class="fc-dot"></span>Autonomous Spraying</h4><p>Fully autonomous agricultural drones covering 2–3 hectares per hour, carrying 15kg of chemicals.</p></div>
-          <div class="feat-card"><h4><span class="fc-dot"></span>15x Faster</h4><p>Efficient spraying up to 15x the speed of humans with up to 30% cost savings on chemicals.</p></div>
-          <div class="feat-card"><h4><span class="fc-dot"></span>Quality Control</h4><p>Reporting of efficiency metrics including path flown, plant coverage, and spray utilisation.</p></div>
-          <div class="feat-card"><h4><span class="fc-dot"></span>US Patent Filed</h4><p>Two provisional patents filed with USPTO for ML/AI and Robotics for Unmanned Aerial Systems.</p></div>
+    <div class="split reverse">
+      <div class="reveal">
+        <div class="eyebrow">Intelligent Farm Management</div>
+        <h2 class="h2">Integrated robotics, monitoring &amp; AI</h2>
+        <p class="lede">The platform collects and analyses agricultural data from drones, sensors, and operational systems to generate insights that improve crop management and farm productivity.</p>
+        <div class="grid grid-2 mt-m reveal-stagger" style="--gap:16px">
+          <div class="card card--surface">
+            <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="5" r="2.5"/><circle cx="19" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="m7 7 3 3M17 7l-3 3M7 17l3-3M17 17l-3-3"/><rect x="10" y="10" width="4" height="4" rx="1"/></svg></span>
+            <h3 class="card__title">Autonomous Drones</h3>
+            <p class="card__text">Crop spraying and aerial field monitoring via certified autonomous systems.</p>
+          </div>
+          <div class="card card--surface">
+            <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+            <h3 class="card__title">Environmental Sensors</h3>
+            <p class="card__text">Track soil and climate conditions in real-time across the farm.</p>
+          </div>
+          <div class="card card--surface">
+            <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></span>
+            <h3 class="card__title">AI-Driven Analytics</h3>
+            <p class="card__text">Identify crop health patterns and risks through machine learning.</p>
+          </div>
+          <div class="card card--surface">
+            <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 10 5-10 5L2 7l10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg></span>
+            <h3 class="card__title">Farm Integration</h3>
+            <p class="card__text">Connect with farm management workflows and agricultural systems.</p>
+          </div>
         </div>
       </div>
-      <div class="split-img"><img src="assets/images/leading-autonomous-technology.webp" alt="Braiin Robotics"></div>
+      <div class="media media--accent reveal" style="--ratio:4/5">
+        <img src="assets/images/Image_enhancement.jpg" alt="IoT" loading="lazy">
+      </div>
     </div>
   </div>
 </section>
 
-<section class="sec" style="background:var(--dark);padding:80px 5%">
-  <div class="container reveal">
-    <div style="text-align:center;margin-bottom:48px">
-      <div class="eyebrow" style="justify-content:center;color:var(--cyan)"><span class="bar"></span> Mapping &amp; Analysis</div>
-      <div class="sec-title" style="color:white">Intelligent aerial intelligence</div>
-      <p class="sec-desc" style="margin:0 auto;color:rgba(255,255,255,.5)">Comprehensive drone-based mapping, scanning, and analytics delivered through a single user-friendly dashboard.</p>
+<!-- ═══ OPERATIONAL IMPACT ═══ -->
+<section class="section section--dark">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow">Operational Impact</div>
+      <h2 class="h2">Measurable results for farmers</h2>
+      <p class="lede">Technology that delivers quantifiable improvements across every metric that matters in agriculture.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
-
-      <!-- Card 1 -->
-      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;transition:all .35s" onmouseover="this.style.background='rgba(255,255,255,.09)';this.style.transform='translateY(-4px)'" onmouseout="this.style.background='rgba(255,255,255,.05)';this.style.transform='none'">
-        <div style="height:200px;overflow:hidden;position:relative">
-          <img src="assets/images/aerial-imagery.png" alt="HD Aerial Imagery" style="width:100%;height:100%;object-fit:cover">
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5),transparent)"></div>
-          <div style="position:absolute;bottom:16px;left:20px">
-            <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:50px;background:rgba(0,176,210,.25);border:1px solid rgba(0,176,210,.4);font-size:10px;font-weight:700;color:var(--cyan);letter-spacing:1px;text-transform:uppercase">Aerial</span>
-          </div>
-        </div>
-        <div style="padding:24px">
-          <h3 style="font-size:16px;font-weight:700;color:white;margin-bottom:10px">High Definition Aerial Imagery</h3>
-          <p style="font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:16px">Immediate and comprehensive high-definition aerial imagery providing invaluable analysis across large farming areas.</p>
-          <div style="display:flex;flex-direction:column;gap:8px">
-            <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:rgba(255,255,255,.6)"><span style="width:5px;height:5px;border-radius:50%;background:var(--cyan);flex-shrink:0"></span>Multi-spectral imaging capability</div>
-            <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:rgba(255,255,255,.6)"><span style="width:5px;height:5px;border-radius:50%;background:var(--cyan);flex-shrink:0"></span>Full farm coverage in a single flight</div>
-            <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:rgba(255,255,255,.6)"><span style="width:5px;height:5px;border-radius:50%;background:var(--cyan);flex-shrink:0"></span>High-resolution orthomosaic maps</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;transition:all .35s" onmouseover="this.style.background='rgba(255,255,255,.09)';this.style.transform='translateY(-4px)'" onmouseout="this.style.background='rgba(255,255,255,.05)';this.style.transform='none'">
-        <div style="height:200px;overflow:hidden;position:relative">
-          <img src="assets/images/plant-health.png" alt="Plant Health Scanning" style="width:100%;height:100%;object-fit:cover">
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5),transparent)"></div>
-          <div style="position:absolute;bottom:16px;left:20px">
-            <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:50px;background:rgba(154,202,60,.2);border:1px solid rgba(154,202,60,.4);font-size:10px;font-weight:700;color:var(--lime);letter-spacing:1px;text-transform:uppercase">Health</span>
-          </div>
-        </div>
-        <div style="padding:24px">
-          <h3 style="font-size:16px;font-weight:700;color:white;margin-bottom:10px">Plant &amp; Land Health Scanning</h3>
-          <p style="font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:16px">Effective monitoring of plant health through multi-spectral camera systems including FPV, thermal, and zoom installations.</p>
-          <div style="display:flex;flex-direction:column;gap:8px">
-            <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:rgba(255,255,255,.6)"><span style="width:5px;height:5px;border-radius:50%;background:var(--lime);flex-shrink:0"></span>FPV, thermal &amp; zoom camera systems</div>
-            <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:rgba(255,255,255,.6)"><span style="width:5px;height:5px;border-radius:50%;background:var(--lime);flex-shrink:0"></span>NDVI crop stress detection</div>
-            <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:rgba(255,255,255,.6)"><span style="width:5px;height:5px;border-radius:50%;background:var(--lime);flex-shrink:0"></span>Early disease and pest identification</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;transition:all .35s" onmouseover="this.style.background='rgba(255,255,255,.09)';this.style.transform='translateY(-4px)'" onmouseout="this.style.background='rgba(255,255,255,.05)';this.style.transform='none'">
-        <div style="height:200px;overflow:hidden;position:relative">
-          <img src="assets/images/software-dashboard.jpg" alt="BRAIIN Software" style="width:100%;height:100%;object-fit:cover">
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5),transparent)"></div>
-          <div style="position:absolute;bottom:16px;left:20px">
-            <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:50px;background:rgba(0,176,210,.25);border:1px solid rgba(0,176,210,.4);font-size:10px;font-weight:700;color:var(--cyan);letter-spacing:1px;text-transform:uppercase">AI Platform</span>
-          </div>
-        </div>
-        <div style="padding:24px">
-          <h3 style="font-size:16px;font-weight:700;color:white;margin-bottom:10px">Intelligent BRAIIN Software</h3>
-          <p style="font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:16px">Single dashboard for actionable insights — 3D terrain mapping, real-time plant health index, water drainage mapping, and hazard identification.</p>
-          <div style="display:flex;flex-direction:column;gap:8px">
-            <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:rgba(255,255,255,.6)"><span style="width:5px;height:5px;border-radius:50%;background:var(--cyan);flex-shrink:0"></span>Single dashboard for actionable insights</div>
-            <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:rgba(255,255,255,.6)"><span style="width:5px;height:5px;border-radius:50%;background:var(--cyan);flex-shrink:0"></span>Each drone run improves AI quality</div>
-            <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:rgba(255,255,255,.6)"><span style="width:5px;height:5px;border-radius:50%;background:var(--cyan);flex-shrink:0"></span>3D terrain &amp; water drainage mapping</div>
-          </div>
-        </div>
-      </div>
-
+    <div class="kpis reveal-stagger" style="--cols:4">
+      <div class="kpi"><div class="stat__n text-grad">15x</div><div class="stat__l">Faster Than Traditional Spraying</div><p class="card__text mt-s">Technology enables crop spraying at 15x the speed of traditional methods.</p></div>
+      <div class="kpi"><div class="stat__n">30%</div><div class="stat__l">Cost Savings</div><p class="card__text mt-s">10 drones and pilots can cover in one day what requires hundreds of hours of human labor.</p></div>
+      <div class="kpi"><div class="stat__n text-grad">20-25%</div><div class="stat__l">Yield Increase</div><p class="card__text mt-s">Increase in crop productivity improving yields throughout the entire crop cycle.</p></div>
+      <div class="kpi"><div class="stat__n">85%</div><div class="stat__l">Less Water Usage</div><p class="card__text mt-s">Less inputs: 85% less water, 50% less biologics. Sensors serve only areas in need.</p></div>
     </div>
   </div>
 </section>
 
-<!-- MARKET OPPORTUNITY -->
-<section class="sec">
-  <div class="container reveal">
-    <div class="eyebrow"><span class="bar"></span> Market Opportunity</div>
-    <div class="sec-title">Precision agriculture: a rapidly growing market</div>
-    <p class="sec-desc">The global precision agriculture market is growing rapidly, driven by labor shortages, falling margins, and climate pressures.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px">
-      <div style="padding:24px;border:1px solid var(--g100);border-radius:var(--radius)"><h4 style="font-size:13px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:var(--cyan)"></span>Labor Shortages &amp; Rising Costs</h4><p style="font-size:12px;color:var(--g400);line-height:1.75">Labor accounts for +60% of agriculture costs, forecast to increase further with labor shortages due to an ever-growing global population.</p></div>
-      <div style="padding:24px;border:1px solid var(--g100);border-radius:var(--radius)"><h4 style="font-size:13px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:var(--lime)"></span>Stagnant Yields &amp; Falling Margins</h4><p style="font-size:12px;color:var(--g400);line-height:1.75">Agriculture margins are being squeezed from every angle with rising costs and falling margins across global farming operations.</p></div>
-      <div style="padding:24px;border:1px solid var(--g100);border-radius:var(--radius)"><h4 style="font-size:13px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:var(--cyan)"></span>Worker Safety</h4><p style="font-size:12px;color:var(--g400);line-height:1.75">Farm workers are exposed to multiple hazards including pesticides, fertilizers, and paints. Autonomous spraying dramatically reduces exposure.</p></div>
-      <div style="padding:24px;border:1px solid var(--g100);border-radius:var(--radius)"><h4 style="font-size:13px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:var(--lime)"></span>Climate &amp; Water Scarcity</h4><p style="font-size:12px;color:var(--g400);line-height:1.75">Over 80% of croplands expected to experience water scarcity. Braiin's precision technology uses 85% less water.</p></div>
+<!-- ═══ RAPTOR300 ROBOTICS PLATFORM ═══ -->
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <div class="eyebrow">Raptor300 Robotics Platform</div>
+        <h2 class="h2">Market-leading autonomous drone technology</h2>
+        <div class="prose mt-s">
+          <p>BRAIIN's Raptor300 is a market-leading autonomous agriculture drone platform providing end-to-end solutions to improve farming productivity. It provides users a dashboard with detailed maps of plantations and actionable insights.</p>
+          <p>The first company globally to be certified in a country to operate fully autonomous aerial robots for crop spraying. Two provisional patents have been filed with the United States Patent Office utilising Machine Learning/AI and Robotics for Unmanned Aerial Systems.</p>
+        </div>
+        <div class="btn-row mt-m">
+          <a href="robotics.html" class="link-arrow">Explore Robotics <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="media media--accent reveal" style="--ratio:4/3">
+        <img src="assets/images/leading-autonomous-technology.webp" alt="Braiin Robotics" loading="lazy">
+      </div>
     </div>
-    <div style="margin-top:24px;padding:24px;border-radius:var(--radius);background:var(--g50);border:1px solid var(--g100)">
-      <p style="font-size:13px;font-weight:600;color:var(--text)">100+ customers including some of the largest tea producers, agriculture technology distributors, and VARs in Asia</p>
-      <p style="font-size:11px;color:var(--g400);margin-top:4px">Operating across India, Sri Lanka, and through dealer networks and value-added resellers.</p>
+    <div class="grid grid-4 mt-l reveal-stagger" style="--gap:20px">
+      <div class="card">
+        <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7s-6 6.4-6 10.8a6 6 0 0 0 12 0C18 9.1 12 2.7 12 2.7Z"/></svg></span>
+        <h3 class="card__title">Autonomous Spraying</h3>
+        <p class="card__text">Fully autonomous agricultural drones covering 2–3 hectares per hour, carrying 15kg of chemicals.</p>
+      </div>
+      <div class="card">
+        <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg></span>
+        <h3 class="card__title">15x Faster</h3>
+        <p class="card__text">Efficient spraying up to 15x the speed of humans with up to 30% cost savings on chemicals.</p>
+      </div>
+      <div class="card">
+        <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 5-5"/></svg></span>
+        <h3 class="card__title">Quality Control</h3>
+        <p class="card__text">Reporting of efficiency metrics including path flown, plant coverage, and spray utilisation.</p>
+      </div>
+      <div class="card">
+        <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg></span>
+        <h3 class="card__title">US Patent Filed</h3>
+        <p class="card__text">Two provisional patents filed with USPTO for ML/AI and Robotics for Unmanned Aerial Systems.</p>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ═══ MAPPING & ANALYSIS ═══ -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow">Mapping &amp; Analysis</div>
+      <h2 class="h2">Intelligent aerial intelligence</h2>
+      <p class="lede">Comprehensive drone-based mapping, scanning, and analytics delivered through a single user-friendly dashboard.</p>
+    </div>
+    <div class="grid grid-3 reveal-stagger">
+      <article class="card card--media card--hover">
+        <div class="card__img"><img src="assets/images/aerial-imagery.png" alt="HD Aerial Imagery" loading="lazy"></div>
+        <div class="card__body">
+          <div class="eyebrow">Aerial</div>
+          <h3 class="card__title">High Definition Aerial Imagery</h3>
+          <p class="card__text">Immediate and comprehensive high-definition aerial imagery providing invaluable analysis across large farming areas.</p>
+          <ul class="checklist checklist--compact">
+            <li>Multi-spectral imaging capability</li>
+            <li>Full farm coverage in a single flight</li>
+            <li>High-resolution orthomosaic maps</li>
+          </ul>
+        </div>
+      </article>
+      <article class="card card--media card--hover">
+        <div class="card__img"><img src="assets/images/plant-health.png" alt="Plant Health Scanning" loading="lazy"></div>
+        <div class="card__body">
+          <div class="eyebrow">Health</div>
+          <h3 class="card__title">Plant &amp; Land Health Scanning</h3>
+          <p class="card__text">Effective monitoring of plant health through multi-spectral camera systems including FPV, thermal, and zoom installations.</p>
+          <ul class="checklist checklist--compact">
+            <li>FPV, thermal &amp; zoom camera systems</li>
+            <li>NDVI crop stress detection</li>
+            <li>Early disease and pest identification</li>
+          </ul>
+        </div>
+      </article>
+      <article class="card card--media card--hover">
+        <div class="card__img"><img src="assets/images/software-dashboard.jpg" alt="BRAIIN Software" loading="lazy"></div>
+        <div class="card__body">
+          <div class="eyebrow">AI Platform</div>
+          <h3 class="card__title">Intelligent BRAIIN Software</h3>
+          <p class="card__text">Single dashboard for actionable insights — 3D terrain mapping, real-time plant health index, water drainage mapping, and hazard identification.</p>
+          <ul class="checklist checklist--compact">
+            <li>Single dashboard for actionable insights</li>
+            <li>Each drone run improves AI quality</li>
+            <li>3D terrain &amp; water drainage mapping</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MARKET OPPORTUNITY ═══ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Market Opportunity</div>
+      <h2 class="h2">Precision agriculture: a rapidly growing market</h2>
+      <p class="lede">The global precision agriculture market is growing rapidly, driven by labor shortages, falling margins, and climate pressures.</p>
+    </div>
+    <div class="grid grid-2 reveal-stagger" style="--gap:20px">
+      <div class="card">
+        <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <h3 class="card__title">Labor Shortages &amp; Rising Costs</h3>
+        <p class="card__text">Labor accounts for +60% of agriculture costs, forecast to increase further with labor shortages due to an ever-growing global population.</p>
+      </div>
+      <div class="card">
+        <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 17-8.5-8.5-5 5L2 7"/><path d="M16 17h6v-6"/></svg></span>
+        <h3 class="card__title">Stagnant Yields &amp; Falling Margins</h3>
+        <p class="card__text">Agriculture margins are being squeezed from every angle with rising costs and falling margins across global farming operations.</p>
+      </div>
+      <div class="card">
+        <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg></span>
+        <h3 class="card__title">Worker Safety</h3>
+        <p class="card__text">Farm workers are exposed to multiple hazards including pesticides, fertilizers, and paints. Autonomous spraying dramatically reduces exposure.</p>
+      </div>
+      <div class="card">
+        <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 16.6A5 5 0 0 0 18 7h-1.3A8 8 0 1 0 4 15.3"/><path d="M8 19v2M8 13v2M16 19v2M16 13v2M12 21v2M12 15v2"/></svg></span>
+        <h3 class="card__title">Climate &amp; Water Scarcity</h3>
+        <p class="card__text">Over 80% of croplands expected to experience water scarcity. Braiin's precision technology uses 85% less water.</p>
+      </div>
+    </div>
+    <div class="card card--surface mt-s reveal">
+      <p class="card__text"><strong>100+ customers including some of the largest tea producers, agriculture technology distributors, and VARs in Asia</strong></p>
+      <p class="fine-print mt-s">Operating across India, Sri Lanka, and through dealer networks and value-added resellers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPLORE THE DIVISION ═══ -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Explore the Division</div>
+      <h2 class="h2">Robotics &amp; IoTs</h2>
+    </div>
+    <div class="grid grid-2 reveal-stagger" style="--gap:20px">
+      <a href="robotics.html" class="tile">
+        <span class="icon-badge icon-badge--solid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="5" r="2.5"/><circle cx="19" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="m7 7 3 3M17 7l-3 3M7 17l3-3M17 17l-3-3"/><rect x="10" y="10" width="4" height="4" rx="1"/></svg></span>
+        <div>
+          <h3>Robotics</h3>
+          <p>Autonomous Aerial Robotics for Precision Agriculture</p>
+        </div>
+        <span class="tile__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+      </a>
+      <a href="iots.html" class="tile">
+        <span class="icon-badge icon-badge--solid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><path d="M12 20h.01"/></svg></span>
+        <div>
+          <h3>IoTs</h3>
+          <p>Connected Devices &amp; Wireless Infrastructure</p>
+        </div>
+        <span class="tile__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+      </a>
+    </div>
+    <div class="cta-band mt-l reveal">
+      <div class="cta-band__grid">
+        <div>
+          <div class="eyebrow">Agriculture Division</div>
+          <h2>Talk to our Agriculture team</h2>
+          <p>Get in touch to discuss autonomous spraying, mapping and analysis, or IoT connectivity for your operation.</p>
+        </div>
+        <div class="btn-row">
+          <a href="contact.html" class="btn btn--light">Contact Us <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="investors.html" class="btn btn--outline-light">Investors</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER (loaded from footer.html) ═══ -->
 <div id="footer-placeholder"></div>
-<script>
-fetch('header.html').then(r=>r.text()).then(h=>{document.getElementById('header-placeholder').innerHTML=h;document.getElementById('hamburger').addEventListener('click',function(){this.classList.toggle('open');document.getElementById('mobileMenu').classList.toggle('open');});window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',scrollY>50)});});
-fetch('footer.html').then(r=>r.text()).then(h=>{document.getElementById('footer-placeholder').innerHTML=h});
-document.addEventListener('DOMContentLoaded',()=>{const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}})},{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));});
-</script>
 </body>
 </html>

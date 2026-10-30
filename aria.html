@@ -5,13 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ARIA — Agentic AI Workforce for Real Estate | Braiin Limited (NASDAQ: BRAI)</title>
 <meta name="description" content="Introducing ARIA (Agentic Real Estate Intelligence and Automation) — Braiin's agentic AI execution platform for property management, leasing, compliance, accounting support and customer engagement.">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=1.0.0">
-
-<!-- Favicons -->
-<link rel="icon" type="image/x-icon" href="assets/images/braiin-favicon.webp">
-<link rel="apple-touch-icon" sizes="180x180" href="assets/images/braiin-favicon.webp">
-<meta name="theme-color" content="#2e439a">
 
 <!-- Open Graph -->
 <meta property="og:title" content="Introducing ARIA — Braiin's Agentic AI Workforce for Real Estate">
@@ -19,6 +12,18 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://braiin.com/aria">
 <meta property="og:image" content="https://braiin.com/assets/logo/braiin-og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=2.0.0">
+<script>document.documentElement.classList.add('js')</script>
+<script src="site.js?v=2.0.0" defer></script>
+
+<!-- Favicons -->
+<link rel="icon" type="image/webp" href="assets/images/braiin-favicon.webp">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/images/braiin-favicon.webp">
+<meta name="theme-color" content="#06101D">
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5NN79C0SY"></script>
@@ -30,231 +35,210 @@
 </script>
 
 <style>
-  /* ══════════ ARIA PAGE ══════════ */
+  /* ══════════ ARIA PAGE (page-scoped, built on style.css v2 tokens) ══════════ */
 
-  /* ─── HERO ─── */
-  .aria-hero{background:linear-gradient(135deg,#00B0D2 0%,#4BBFA0 55%,#9ACA3C 100%);padding:140px 5% 80px}
-  .aria-hero::after{content:'';position:absolute;left:-120px;bottom:-160px;width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,.07)}
-  .aria-hero .container{position:relative;z-index:2}
-  .aria-hero .sec-title{max-width:820px;letter-spacing:-2px}
-  .aria-hero .sec-desc{max-width:640px;color:rgba(255,255,255,.9);font-size:15px}
-  .aria-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(6px);color:#fff;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:7px 15px;border-radius:100px;margin-bottom:18px}
-  .aria-tag .dot{width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 8px rgba(255,255,255,.9)}
-  .aria-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-  .btn-w{padding:14px 26px;border-radius:10px;font-size:12px;font-weight:700;color:var(--text);background:#fff;display:inline-flex;align-items:center;gap:8px;transition:all .3s;border:none;cursor:pointer;font-family:'Montserrat',sans-serif}
-  .btn-w:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(0,0,0,.18)}
-  .btn-ghost{padding:14px 26px;border-radius:10px;font-size:12px;font-weight:600;color:#fff;border:1px solid rgba(255,255,255,.55);background:transparent;display:inline-flex;align-items:center;gap:8px;transition:all .3s;cursor:pointer;font-family:'Montserrat',sans-serif}
-  .btn-ghost:hover{background:rgba(255,255,255,.16);border-color:#fff}
+  /* Hero status pill */
+  .pg-aria .aria-tag{display:inline-flex;align-items:center;gap:10px;padding:6px 14px;border-radius:var(--r-pill);background:rgba(255,255,255,.06);border:1px solid var(--ink-line);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--on-ink-muted);margin-bottom:24px}
+  .pg-aria .aria-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 3px rgba(154,202,60,.22);animation:pulse 2.4s infinite}
+  .pg-aria .page-hero .btn svg:not(.arr){width:17px;height:17px}
 
-  /* ─── STICKY SECTION NAV ─── */
-  .aria-subnav{position:sticky;top:68px;z-index:90;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--g100)}
-  .aria-subnav .container{display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none}
-  .aria-subnav .container::-webkit-scrollbar{display:none}
-  .aria-subnav a{font-size:12px;font-weight:600;color:var(--g400);padding:16px 14px;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s}
-  .aria-subnav a:hover{color:var(--cyan);border-bottom-color:var(--cyan)}
-  .aria-subnav .sn-pdf{margin-left:auto;display:inline-flex;align-items:center;gap:6px;color:var(--cyan);font-weight:700}
-  .aria-subnav .sn-pdf:hover{border-bottom-color:transparent;opacity:.75}
-  section[id]{scroll-margin-top:118px}
+  /* Sticky section nav — sits directly under the fixed site nav */
+  .pg-aria .aria-subnav{position:sticky;top:var(--nav-h);z-index:150;background:rgba(255,255,255,.92);-webkit-backdrop-filter:saturate(1.6) blur(18px);backdrop-filter:saturate(1.6) blur(18px);border-bottom:1px solid var(--line);box-shadow:0 8px 24px -20px rgba(10,22,38,.4)}
+  .pg-aria .aria-subnav .container{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;max-width:1320px}
+  .pg-aria .aria-subnav .container::-webkit-scrollbar{display:none}
+  .pg-aria .aria-subnav a{position:relative;display:inline-flex;align-items:center;gap:6px;height:52px;padding:0 14px;font-size:14px;font-weight:500;color:var(--muted);white-space:nowrap;transition:color .2s}
+  .pg-aria .aria-subnav a::after{content:'';position:absolute;left:14px;right:14px;bottom:0;height:2px;border-radius:2px;background:var(--grad);transform:scaleX(0);transition:transform .25s var(--ease)}
+  .pg-aria .aria-subnav a:hover{color:var(--text)}
+  .pg-aria .aria-subnav a:hover::after{transform:scaleX(1)}
+  .pg-aria .aria-subnav .sn-pdf{margin-left:auto;height:36px;padding:0 16px;border-radius:var(--r-pill);background:var(--brand-50);color:var(--brand-700);font-weight:600}
+  .pg-aria .aria-subnav .sn-pdf::after{display:none}
+  .pg-aria .aria-subnav .sn-pdf:hover{background:var(--brand-100);color:var(--brand-700)}
+  .pg-aria section[id]{scroll-margin-top:56px}
 
-  /* ─── ABOUT / BOILERPLATE ─── */
-  .boiler{background:#fff;padding:88px 5%}
-  .boiler-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
-  .boiler-col{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--g100);border-radius:16px;padding:34px 32px 32px;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
-  .boiler-col::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--grad)}
-  .boiler-col:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(13,17,23,.07);border-color:transparent}
-  .boiler-kick{display:inline-flex;align-items:center;gap:9px;font-size:10px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
-  .boiler-kick i{width:20px;height:2px;border-radius:2px;background:var(--grad);display:block}
-  /* flex:1 pushes the chips to the bottom so both cards line up */
-  .boiler-col p{font-size:13.5px;color:var(--g500);line-height:1.95;flex:1}
-  .boiler-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
-  .boiler-chip{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;color:var(--g600);background:var(--g50);border:1px solid var(--g100);border-radius:100px;padding:8px 14px;transition:all .25s}
-  .boiler-chip:hover{border-color:var(--cyan);color:var(--cyan-dk)}
-  .boiler-chip .dot{width:5px;height:5px;border-radius:50%;background:var(--lime);box-shadow:0 0 7px rgba(154,202,60,.7)}
-  .boiler-chip svg{width:13px;height:13px;color:var(--cyan)}
+  /* Two-column section heads (title left, long intro right) */
+  .pg-aria .aria-head{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,5vw,72px);align-items:start;max-width:none}
+  .pg-aria .aria-head .lede{margin-top:0;max-width:none}
+  .pg-aria .aria-head .prose{max-width:none}
 
-  /* ─── CONTACT CARDS ─── */
-  .ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:660px;margin:32px auto 0;text-align:left}
-  .ct-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:22px;transition:all .3s}
-  .ct-card:hover{background:rgba(255,255,255,.09);border-color:var(--cyan)}
-  .ct-card h5{font-size:9.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--cyan);margin-bottom:10px}
-  .ct-card b{display:block;font-size:14px;font-weight:700;color:#fff;margin-bottom:2px}
-  .ct-card span{display:block;font-size:12px;color:rgba(255,255,255,.5);margin-bottom:8px}
-  .ct-card a{font-size:12.5px;font-weight:600;color:var(--lime)}
-  .ct-card a:hover{text-decoration:underline}
+  /* Capability / commercial cards */
+  .pg-aria .a-card{padding:26px}
+  .pg-aria .a-card .icon-badge{margin-bottom:18px;transition:background .3s,color .3s}
+  .pg-aria .a-card:hover .icon-badge{background:var(--grad);color:#fff}
+  .pg-aria .a-card h3{font-size:16px;font-weight:700;line-height:1.45;letter-spacing:-.01em;color:var(--text)}
 
-  /* ─── SHARED CARD ─── */
-  .a-card{position:relative;background:#fff;border:1px solid var(--g100);border-radius:14px;padding:26px 22px;transition:transform .3s,box-shadow .3s,border-color .3s;overflow:hidden}
-  .a-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .35s}
-  .a-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(13,17,23,.08);border-color:transparent}
-  .a-card:hover::before{transform:scaleX(1)}
-  .a-ico{width:42px;height:42px;border-radius:11px;background:var(--cyan-lt);color:var(--cyan);display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:all .35s}
-  .a-ico svg{width:20px;height:20px}
-  .a-card:hover .a-ico{background:var(--grad);color:#fff;transform:scale(1.06)}
-  .a-card h4{font-size:13.5px;font-weight:700;line-height:1.45;color:var(--text)}
+  /* Note / callout box */
+  .pg-aria .note-box{margin-top:32px;padding:24px 28px;border-left:3px solid var(--brand);background:#fff;border-radius:var(--r);box-shadow:var(--shadow-sm)}
+  .pg-aria .note-box p{font-size:15px;color:var(--muted);line-height:1.8}
+  .pg-aria .note-box strong{color:var(--text)}
+  .pg-aria .section:not(.section--alt):not(.section--dark) .note-box{background:var(--surface);box-shadow:none}
+  .pg-aria .section--dark .note-box{background:rgba(255,255,255,.04);border:1px solid var(--ink-line);border-left:3px solid var(--brand);box-shadow:none}
+  .pg-aria .section--dark .note-box p{color:var(--on-ink-muted)}
+  .pg-aria .section--dark .note-box strong{color:#fff}
 
-  /* ─── CAPABILITIES GRID ─── */
-  .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+  /* Workflow stepper */
+  .pg-aria .flow{margin-top:48px;display:flex;flex-direction:column;gap:32px}
+  .pg-aria .flow-row{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+  .pg-aria .flow-row::before{content:'';position:absolute;top:21px;left:12.5%;right:12.5%;height:2px;background:var(--grad);opacity:.3;z-index:0}
+  .pg-aria .flow-step{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .pg-aria .flow-n{width:42px;height:42px;border-radius:12px;background:var(--grad);color:#fff;font-family:var(--f-display);font-size:15px;font-weight:800;display:grid;place-items:center;box-shadow:0 0 0 6px #fff,0 8px 20px -6px rgba(0,176,210,.55);margin-bottom:18px;transition:transform .3s var(--ease)}
+  .pg-aria .flow-step:hover .flow-n{transform:scale(1.08)}
+  .pg-aria .flow-body{width:100%;flex:1;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px 18px;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s}
+  .pg-aria .flow-step:hover .flow-body{border-color:transparent;box-shadow:var(--shadow);transform:translateY(-3px)}
+  .pg-aria .flow-body p{font-size:14.5px;color:var(--muted);line-height:1.6;font-weight:500}
 
-  /* ─── WORKFLOW STEPPER ─── */
-  .flow{margin-top:48px;display:flex;flex-direction:column;gap:34px}
-  .flow-row{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-  .flow-row::before{content:'';position:absolute;top:19px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,var(--cyan),var(--lime));opacity:.28;z-index:0}
-  .flow-step{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center}
-  .flow-n{width:38px;height:38px;border-radius:50%;background:var(--grad);color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px #fff,0 6px 16px rgba(0,176,210,.28);margin-bottom:16px;transition:transform .3s}
-  .flow-step:hover .flow-n{transform:scale(1.12)}
-  .flow-body{width:100%;background:#fff;border:1px solid var(--g100);border-radius:14px;padding:20px 18px;transition:all .3s;flex:1;display:flex;align-items:center;justify-content:center}
-  .flow-step:hover .flow-body{border-color:var(--cyan);box-shadow:0 12px 30px rgba(0,176,210,.09);transform:translateY(-3px)}
-  .flow-body p{font-size:12.5px;color:var(--g500);line-height:1.65;font-weight:500}
+  /* Ecosystem checklist tiles */
+  .pg-aria .eco-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+  .pg-aria .eco-item{display:flex;flex-direction:column;gap:14px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px 18px;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s}
+  .pg-aria .eco-item:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:transparent}
+  .pg-aria .eco-tick{width:32px;height:32px;border-radius:10px;background:var(--grad-soft);color:var(--brand-700);display:grid;place-items:center;flex:none;transition:background .3s,color .3s}
+  .pg-aria .eco-tick svg{width:15px;height:15px}
+  .pg-aria .eco-item:hover .eco-tick{background:var(--grad);color:#fff}
+  .pg-aria .eco-item span{font-size:14px;font-weight:600;color:var(--text);line-height:1.5}
 
-  /* ─── ECOSYSTEM ─── */
-  .eco-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:44px}
-  .eco-item{display:flex;flex-direction:column;gap:12px;background:#fff;border:1px solid var(--g100);border-radius:14px;padding:20px 18px;transition:transform .3s,box-shadow .3s,border-color .3s}
-  .eco-item:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(13,17,23,.07);border-color:var(--cyan)}
-  .eco-tick{width:30px;height:30px;border-radius:9px;background:var(--cyan-lt);color:var(--cyan);display:flex;align-items:center;justify-content:center;flex:none;transition:all .3s}
-  .eco-tick svg{width:15px;height:15px}
-  .eco-item:hover .eco-tick{background:var(--grad);color:#fff}
-  .eco-item span{font-size:12.5px;font-weight:600;color:var(--g600);line-height:1.55}
+  /* Ecosystem banner */
+  .pg-aria .eco-banner{position:relative;margin-top:40px;border-radius:var(--r-lg);overflow:hidden;min-height:360px;display:flex;align-items:center;background:var(--ink);box-shadow:var(--shadow);isolation:isolate}
+  .pg-aria .eco-banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+  .pg-aria .eco-banner::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(6,16,29,.95) 0%,rgba(6,16,29,.86) 45%,rgba(0,176,210,.45) 80%,rgba(154,202,60,.35) 100%)}
+  .pg-aria .eco-banner-inner{padding:clamp(32px,5vw,56px);max-width:720px}
+  .pg-aria .eco-banner-inner .eyebrow{color:var(--lime)}
+  .pg-aria .eco-banner-inner h3{font-size:clamp(22px,2.4vw,30px);color:#fff;margin-bottom:14px}
+  .pg-aria .eco-banner-inner p{font-size:16px;color:var(--on-ink-muted);line-height:1.8}
 
-  /* ─── ECOSYSTEM BANNER ─── */
-  .eco-banner{position:relative;margin-top:44px;border-radius:20px;overflow:hidden;min-height:340px;display:flex;align-items:center}
-  .eco-banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-  .eco-banner::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(13,17,23,.94) 0%,rgba(13,17,23,.86) 42%,rgba(0,176,210,.55) 78%,rgba(154,202,60,.42) 100%)}
-  .eco-banner-inner{position:relative;z-index:2;padding:52px 5% 52px 48px;max-width:700px}
-  .eco-kicker{display:inline-flex;align-items:center;gap:7px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:14px}
-  .eco-kicker::before{content:'';width:20px;height:2px;border-radius:2px;background:var(--grad)}
-  .eco-banner-inner h3{font-size:22px;font-weight:800;color:#fff;letter-spacing:-.6px;line-height:1.25;margin-bottom:14px}
-  .eco-banner-inner p{font-size:13.5px;color:rgba(255,255,255,.78);line-height:1.9}
+  /* About boilerplate */
+  .pg-aria .boiler-col{overflow:hidden}
+  .pg-aria .boiler-col::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--grad)}
+  .pg-aria .boiler-col .card__text{flex:1}
+  .pg-aria .boiler-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+  .pg-aria .boiler-chip{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:var(--r-pill);padding:7px 14px}
+  .pg-aria .boiler-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 3px rgba(154,202,60,.2)}
+  .pg-aria .boiler-chip svg{width:14px;height:14px;color:var(--brand-700)}
 
-  /* ─── COMMERCIAL MODEL ─── */
-  .comm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+  /* Contact cards inside the CTA band */
+  .pg-aria .ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .pg-aria .ct-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:22px;transition:background .3s,border-color .3s}
+  .pg-aria .ct-card:hover{background:rgba(255,255,255,.09);border-color:var(--brand)}
+  .pg-aria .ct-card h3{font-family:var(--f-body);font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:12px}
+  .pg-aria .ct-card b{display:block;font-family:var(--f-display);font-size:18px;font-weight:700;color:#fff;margin-bottom:4px}
+  .pg-aria .ct-card span{display:block;font-size:13.5px;color:var(--on-ink-faint);margin-bottom:10px}
+  .pg-aria .ct-card a{font-size:14px;font-weight:600;color:var(--lime)}
+  .pg-aria .ct-card a:hover{text-decoration:underline}
+  .pg-aria .cta-band__grid{grid-template-columns:1fr 1.1fr}
 
-  /* ─── NOTE BOX ─── */
-  .note-box{margin-top:32px;padding:22px 26px;border-left:3px solid var(--cyan);background:#fff;border-radius:10px;box-shadow:0 4px 20px rgba(13,17,23,.04)}
-  .note-box p{font-size:13px;color:var(--g500);line-height:1.85}
-  .market .note-box{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);border-left:3px solid #fff;box-shadow:none}
-  .market .note-box p{color:rgba(255,255,255,.88)}
-
-  /* ─── MARKET TWEAKS ─── */
-  .market{background:linear-gradient(150deg,#0D1117 0%,#0f2a35 60%,#0D1117 100%)}
-  .market .mc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
-  .market .mc:hover{background:rgba(255,255,255,.09);border-color:var(--cyan)}
-  .market .mc-n{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-size:28px}
-  .market .mc-l{color:rgba(255,255,255,.55)}
-
-  /* ─── CTA ─── */
-  .aria-cta{background:var(--dark);padding:96px 5%;text-align:center;position:relative;overflow:hidden}
-  .aria-cta::before{content:'';position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(0,176,210,.16),transparent 70%)}
-  .aria-cta .container{position:relative;z-index:2}
-  .aria-cta .sec-title{color:#fff}
-  .aria-cta .eyebrow{color:var(--cyan);justify-content:center}
-  .aria-cta p{font-size:14px;color:rgba(255,255,255,.6);line-height:1.85;max-width:560px;margin:0 auto 30px}
-
-  /* ─── DISCLAIMER ─── */
-  .disclaimer{padding:44px 5% 56px;background:var(--g50);border-top:1px solid var(--g100)}
-  .disclaimer details{max-width:1200px;margin:0 auto}
-  .disclaimer summary{font-size:10.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--g400);cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;transition:color .2s}
-  .disclaimer summary:hover{color:var(--cyan)}
-  .disclaimer summary::-webkit-details-marker{display:none}
-  .disclaimer summary::before{content:'+';font-size:15px;font-weight:700;color:var(--cyan);line-height:1}
-  .disclaimer details[open] summary::before{content:'−'}
-  .disclaimer p{font-size:11px;color:var(--g400);line-height:1.9;margin-top:14px}
+  /* Forward-looking statements disclosure */
+  .pg-aria .disclosure{background:var(--surface)}
+  .pg-aria .disclosure summary{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);cursor:pointer;list-style:none;transition:color .2s}
+  .pg-aria .disclosure summary:hover{color:var(--brand-700)}
+  .pg-aria .disclosure summary::-webkit-details-marker{display:none}
+  .pg-aria .disclosure summary::before{content:'+';flex-shrink:0;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--brand-50);color:var(--brand-700);font-size:15px;line-height:1}
+  .pg-aria .disclosure details[open] summary::before{content:'\2212'}
+  .pg-aria .disclosure p{margin-top:14px}
 
   /* ─── RESPONSIVE ─── */
   @media(max-width:1024px){
-    .cap-grid,.comm-grid{grid-template-columns:1fr 1fr}
-    .flow-row{grid-template-columns:1fr 1fr;gap:24px}
-    .flow-row::before{display:none}
-    .eco-grid{grid-template-columns:repeat(3,1fr)}
-    .eco-banner{min-height:0}
-    .eco-banner::after{background:linear-gradient(180deg,rgba(13,17,23,.92) 30%,rgba(0,176,210,.6) 100%)}
-    .eco-banner-inner{padding:40px 28px;max-width:100%}
+    .pg-aria .aria-head{grid-template-columns:1fr;gap:0}
+    .pg-aria .aria-head .lede{margin-top:18px}
+    .pg-aria .flow-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+    .pg-aria .flow-row::before{display:none}
+    .pg-aria .eco-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .pg-aria .eco-banner{min-height:0}
+    .pg-aria .eco-banner::after{background:linear-gradient(180deg,rgba(6,16,29,.93) 30%,rgba(0,176,210,.55) 100%)}
+    .pg-aria .cta-band__grid{grid-template-columns:1fr}
   }
-  @media(max-width:768px){
-    .cap-grid,.comm-grid{grid-template-columns:1fr}
-    .flow-row{grid-template-columns:1fr}
-    .eco-grid{grid-template-columns:1fr 1fr}
-    .ct-grid{grid-template-columns:1fr}
-    .boiler-grid{grid-template-columns:1fr;gap:14px}
-    .aria-hero{padding:120px 5% 60px}
-    .aria-subnav{top:0}
-  }
-  @media(max-width:480px){
-    .eco-grid{grid-template-columns:1fr}
+  @media(max-width:720px){
+    .pg-aria .flow-row{grid-template-columns:1fr;gap:12px}
+    .pg-aria .flow{gap:12px;margin-top:36px}
+    .pg-aria .flow-step{flex-direction:row;align-items:center;gap:14px;text-align:left}
+    .pg-aria .flow-n{margin-bottom:0;flex-shrink:0;box-shadow:0 8px 20px -8px rgba(0,176,210,.55)}
+    .pg-aria .flow-body{justify-content:flex-start;padding:16px 18px}
+    .pg-aria .eco-grid{grid-template-columns:1fr;gap:10px}
+    .pg-aria .eco-item{flex-direction:row;align-items:center;padding:14px 16px}
+    .pg-aria .a-card{flex-direction:row;align-items:center;gap:16px;padding:18px 20px}
+    .pg-aria .a-card .icon-badge{margin:0;width:44px;height:44px}
+    .pg-aria .a-card h3{font-size:15px}
+    .pg-aria .ct-grid{grid-template-columns:1fr}
+    .pg-aria .aria-subnav a{height:48px;padding:0 12px;font-size:13.5px}
+    .pg-aria .aria-subnav .sn-pdf{height:32px}
+    .pg-aria .page-hero .btn-row .btn{flex:1 1 100%}
   }
 
   /* ═══ PRINT / SAVE-AS-PDF ═══ */
   @media print{
     @page{margin:13mm}
-    #header-placeholder,#footer-placeholder,.aria-actions,nav,footer,.aria-subnav,.split-img{display:none !important}
-    .split{grid-template-columns:1fr !important}
-    .ct-card{background:var(--g50) !important;border:1px solid var(--g100) !important}
-    .ct-card b{color:var(--text) !important}
-    .ct-card span{color:var(--g400) !important}
-    .ct-card a{color:var(--cyan-dk) !important}
-    .boiler{padding:20px 0 !important}
-    .boiler-col::before{background:var(--cyan) !important}
-    .boiler-chip .dot{background:var(--cyan) !important;box-shadow:none}
-    .boiler-kick i{background:var(--cyan) !important}
-    .boiler,.boiler-col{break-inside:avoid}
-    .eco-banner{min-height:0 !important;border:1px solid var(--g100)}
-    .eco-banner img,.eco-banner::after{display:none !important}
-    .eco-banner-inner{padding:24px !important;max-width:100% !important}
-    .eco-kicker{color:var(--cyan) !important}
-    .eco-banner-inner h3{color:var(--text) !important}
-    .eco-banner-inner p{color:var(--g500) !important}
+    #header-placeholder,#footer-placeholder,.nav,.mobile-nav,.footer,.aria-actions,.aria-subnav,.crumbs,.pg-aria .media{display:none !important}
     body{background:#fff}
-    .aria-hero{background:#fff !important;color:var(--text) !important;padding:0 0 20px !important}
-    .aria-hero::after{display:none}
-    .aria-hero .sec-title,.aria-hero .sec-desc{color:var(--text) !important}
-    .aria-tag{background:var(--g50) !important;color:var(--text) !important;border-color:var(--g200) !important}
-    .aria-tag .dot{background:var(--cyan) !important;box-shadow:none}
-    .market,.aria-cta{background:#fff !important;padding:20px 0 !important}
-    .market::before,.aria-cta::before{display:none}
-    .market .sec-title,.market .sec-desc,.market p,.aria-cta .sec-title,.aria-cta p{color:var(--text) !important}
-    .market .eyebrow,.aria-cta .eyebrow{color:var(--g400) !important}
-    .market .mc{background:var(--g50) !important;border:1px solid var(--g100) !important}
-    .market .mc-l{color:var(--g400) !important}
-    .market .note-box{background:var(--g50) !important;border:none !important;border-left:3px solid var(--cyan) !important}
-    .market .note-box p{color:var(--g500) !important}
-    .market .note-box strong{color:var(--text) !important}
-    .sec{padding:18px 0 !important}
-    .reveal{opacity:1 !important;transform:none !important}
-    .eco-grid{grid-template-columns:repeat(2,1fr)}
-    .a-card,.flow-step,.eco-item,.note-box,.eco-banner{break-inside:avoid}
+    .pg-aria .split{grid-template-columns:1fr !important}
+    .pg-aria .section,.pg-aria .section--tight{padding:18px 0 !important;background:#fff !important}
+    .pg-aria .section--dark::before,.pg-aria .page-hero::before,.pg-aria .page-hero::after,.pg-aria .cta-band::before{display:none !important}
+    .pg-aria .page-hero{padding:0 0 20px !important;background:#fff !important}
+    .pg-aria .page-hero h1,.pg-aria .page-hero .lede,.pg-aria .section--dark h2,.pg-aria .section--dark p,.pg-aria .section--dark .lede,.pg-aria .cta-band h2,.pg-aria .cta-band p{color:var(--text) !important}
+    .pg-aria .aria-tag{background:var(--surface) !important;color:var(--text) !important;border-color:var(--line-2) !important}
+    .pg-aria .aria-tag .dot{background:var(--brand) !important;box-shadow:none;animation:none}
+    .pg-aria .section--dark .eyebrow,.pg-aria .cta-band .eyebrow{color:var(--muted) !important}
+    .pg-aria .section--dark .kpi{background:var(--surface) !important;border:1px solid var(--line) !important}
+    .pg-aria .section--dark .kpi .stat__l{color:var(--muted) !important}
+    .pg-aria .text-grad{background:none !important;-webkit-text-fill-color:var(--brand-700) !important;color:var(--brand-700) !important}
+    .pg-aria .section--dark .kpi .stat__n:not(.text-grad){color:var(--text) !important}
+    .pg-aria h2,.pg-aria h3,.pg-aria .eyebrow{break-after:avoid;page-break-after:avoid}
+    .pg-aria .section-head{break-inside:avoid;margin-bottom:24px}
+    .pg-aria .section--dark .note-box{background:var(--surface) !important;border:none !important;border-left:3px solid var(--brand) !important}
+    .pg-aria .section--dark .note-box p{color:var(--muted) !important}
+    .pg-aria .section--dark .note-box strong{color:var(--text) !important}
+    .pg-aria .cta-band{background:#fff !important;padding:0 !important;border-radius:0}
+    .pg-aria .ct-card{background:var(--surface) !important;border:1px solid var(--line) !important}
+    .pg-aria .ct-card b{color:var(--text) !important}
+    .pg-aria .ct-card span{color:var(--muted) !important}
+    .pg-aria .ct-card a{color:var(--brand-700) !important}
+    .pg-aria .boiler-col::before{background:var(--brand) !important}
+    .pg-aria .boiler-chip .dot{background:var(--brand) !important;box-shadow:none}
+    .pg-aria .boiler-col{break-inside:avoid}
+    .pg-aria .eco-banner{min-height:0 !important;border:1px solid var(--line);background:#fff !important;box-shadow:none}
+    .pg-aria .eco-banner img,.pg-aria .eco-banner::after{display:none !important}
+    .pg-aria .eco-banner-inner{padding:24px !important;max-width:100% !important}
+    .pg-aria .eco-banner-inner .eyebrow{color:var(--brand-700) !important}
+    .pg-aria .eco-banner-inner h3{color:var(--text) !important}
+    .pg-aria .eco-banner-inner p{color:var(--muted) !important}
+    .reveal,.reveal-stagger>*{opacity:1 !important;transform:none !important}
+    .pg-aria .eco-grid{grid-template-columns:repeat(2,1fr)}
+    .pg-aria .a-card,.pg-aria .flow-step,.pg-aria .eco-item,.pg-aria .note-box,.pg-aria .eco-banner,.pg-aria .kpi{break-inside:avoid}
+    .pg-aria .card,.pg-aria .kpi,.pg-aria .flow-body,.pg-aria .eco-item{box-shadow:none !important}
     /* Flatten every gradient — Chrome rasterises them into multi-MB JPEGs when printing. */
-    .eyebrow .bar,.flow-n,.a-ico,.eco-tick,.flow-row::before{background:var(--cyan) !important}
-    .market .mc-n{background:none !important;-webkit-text-fill-color:var(--cyan-dk) !important;color:var(--cyan-dk) !important}
-    .a-ico,.flow-n,.eco-tick{color:#fff !important}
-    .btn-g{background:var(--cyan) !important}
-    .a-card::before{display:none}
-    .disclaimer details{display:block}
-    .disclaimer summary::before{display:none}
-    .disclaimer p{display:block !important}
+    .eyebrow::before,.pg-aria .flow-n,.pg-aria .icon-badge,.pg-aria .eco-tick,.pg-aria .flow-row::before,.pg-aria .boiler-col::before{background:var(--brand) !important}
+    .pg-aria .icon-badge,.pg-aria .flow-n,.pg-aria .eco-tick{color:#fff !important;box-shadow:none !important}
+    .pg-aria .disclosure{background:#fff !important}
+    .pg-aria .disclosure details{display:block}
+    .pg-aria .disclosure summary::before{display:none}
+    .pg-aria .disclosure p{display:block !important}
   }
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ═══ HEADER (loaded from header.html) ═══ -->
 <div id="header-placeholder"></div>
 
+<main id="main" class="pg-aria">
+
 <!-- ═══════════ HERO ═══════════ -->
-<div class="page-hero aria-hero">
+<section class="page-hero">
   <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><a href="property-technology.html">Property Technology</a><span aria-hidden="true">/</span><span>ARIA</span></nav>
     <span class="aria-tag"><span class="dot"></span> Now Launching · NASDAQ: BRAI</span>
-    <div class="sec-title">ARIA — Agentic Real Estate<br>Intelligence and Automation</div>
-    <p class="sec-desc">Braiin's agentic AI execution platform for property management, leasing, compliance, accounting support, customer engagement and more.</p>
-    <div class="aria-actions">
-      <a href="aria.pdf" target="_blank" rel="noopener" class="btn-w">
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6M9 15l3 3 3-3"/></svg>
+    <h1 class="h1">ARIA — Agentic Real Estate<br><span class="text-grad">Intelligence and Automation</span></h1>
+    <p class="lede">Braiin's agentic AI execution platform for property management, leasing, compliance, accounting support, customer engagement and more.</p>
+    <div class="btn-row aria-actions">
+      <a href="aria.pdf" target="_blank" rel="noopener" class="btn btn--light">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6M9 15l3 3 3-3"/></svg>
         View One-Pager (PDF)
       </a>
-      <a href="aria.pdf" download="Braiin-ARIA-One-Pager.pdf" class="btn-ghost">
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+      <a href="aria.pdf" download="Braiin-ARIA-One-Pager.pdf" class="btn btn--outline-light">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
         Download
       </a>
-      <a href="mailto:ir@braiin.com" class="btn-ghost">Contact Investor Relations</a>
+      <a href="mailto:ir@braiin.com" class="btn btn--outline-light">Contact Investor Relations</a>
     </div>
   </div>
-</div>
+</section>
 
 <!-- ═══════════ STICKY SECTION NAV ═══════════ -->
 <nav class="aria-subnav" aria-label="ARIA page sections">
@@ -266,111 +250,125 @@
     <a href="#ecosystem">Ecosystem</a>
     <a href="#commercial">Commercial Model</a>
     <a href="aria.pdf" target="_blank" rel="noopener" class="sn-pdf">
-      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
       PDF
     </a>
   </div>
 </nav>
 
 <!-- ═══════════ OVERVIEW ═══════════ -->
-<section class="sec" id="overview">
+<section class="section" id="overview">
   <div class="container">
-    <div class="split reveal" style="align-items:center">
-      <div>
-        <div class="eyebrow"><span class="bar"></span> Overview</div>
-        <h2 style="font-size:26px;font-weight:800;letter-spacing:-1px;margin-bottom:16px;line-height:1.2">An AI-native workforce built for global real estate</h2>
-        <p style="font-size:14px;color:var(--g500);line-height:1.95;margin-bottom:15px">Braiin is proud to announce the launch of <strong style="color:var(--text)">ARIA (Agentic Real Estate Intelligence and Automation)</strong>, an AI-native workforce designed specifically for the global real estate industry.</p>
-        <p style="font-size:14px;color:var(--g500);line-height:1.95;margin-bottom:15px">ARIA is designed to move beyond conventional generative AI assistants that primarily answer questions or produce content. Instead, ARIA is intended to understand an operational objective, plan the required steps, coordinate information across connected systems, execute the underlying workflow and escalate material decisions or exceptions for human review.</p>
-        <p style="font-size:14px;color:var(--g500);line-height:1.95">The platform leverages groundbreaking agent orchestration built upon Braiin's deep domain knowledge, combining real estate workflow infrastructure with Braiin's broader capabilities across artificial intelligence, customer experience automation, PropTech, embedded distribution and connected residential services.</p>
+    <div class="split split--wide-text">
+      <div class="reveal">
+        <div class="eyebrow">Overview</div>
+        <h2 class="h2">An AI-native workforce built for global real estate</h2>
+        <div class="prose mt-m">
+          <p>Braiin is proud to announce the launch of <strong>ARIA (Agentic Real Estate Intelligence and Automation)</strong>, an AI-native workforce designed specifically for the global real estate industry.</p>
+          <p>ARIA is designed to move beyond conventional generative AI assistants that primarily answer questions or produce content. Instead, ARIA is intended to understand an operational objective, plan the required steps, coordinate information across connected systems, execute the underlying workflow and escalate material decisions or exceptions for human review.</p>
+          <p>The platform leverages groundbreaking agent orchestration built upon Braiin's deep domain knowledge, combining real estate workflow infrastructure with Braiin's broader capabilities across artificial intelligence, customer experience automation, PropTech, embedded distribution and connected residential services.</p>
+        </div>
       </div>
-      <div class="split-img" style="border-radius:18px">
-        <img src="assets/images/ai_ml.webp" alt="Braiin ARIA — agentic artificial intelligence platform" style="width:100%;height:400px;object-fit:cover">
+      <div class="media media--accent reveal" style="--ratio:4/5">
+        <img src="assets/images/ai_ml.webp" alt="Braiin ARIA — agentic artificial intelligence platform" loading="lazy">
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════ CAPABILITIES ═══════════ -->
-<section class="sec" id="capabilities" style="background:var(--g50)">
-  <div class="container reveal">
-    <div class="eyebrow"><span class="bar"></span> An AI Workforce for Real Estate</div>
-    <div class="sec-title">Replacing fragmented, manual work</div>
-    <p class="sec-desc" style="max-width:820px">Real estate agencies and property-management businesses frequently operate across fragmented property-management platforms, CRM systems, accounting software, email, electronic-signature platforms, compliance tools, forms and document repositories — forcing employees to manually transfer information between systems, chase missing documents, prepare agreements, review leases and reconcile transactions.</p>
-    <p style="font-size:14px;color:var(--g500);line-height:1.95;margin-top:20px;max-width:820px">ARIA is designed to operate as an intelligent digital member of a real estate team, completing repetitive and process-driven work while maintaining appropriate human oversight. Its intended capabilities include:</p>
-
-    <div class="cap-grid">
-      <div class="a-card">
-        <div class="a-ico"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div>
-        <h4>Preparing draft property, tenancy and leasing documents using existing agency data</h4>
+<section class="section section--alt" id="capabilities">
+  <div class="container">
+    <div class="section-head aria-head reveal">
+      <div>
+        <div class="eyebrow">An AI Workforce for Real Estate</div>
+        <h2 class="h2">Replacing fragmented, manual work</h2>
       </div>
-      <div class="a-card">
-        <div class="a-ico"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h4>Reviewing leases, forms and documentation for missing information, inconsistencies and potential compliance issues</h4>
-      </div>
-      <div class="a-card">
-        <div class="a-ico"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <h4>Coordinating follow-ups with tenants, landlords, vendors, applicants and internal team members</h4>
-      </div>
-      <div class="a-card">
-        <div class="a-ico"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg></div>
-        <h4>Preparing comparative market analyses, property statistics and branded client reports</h4>
-      </div>
-      <div class="a-card">
-        <div class="a-ico"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M12 10h2M16 10h.01M8 14h2M12 14h2M16 14h.01M8 18h8"/></svg></div>
-        <h4>Supporting owner-statement preparation and rent and expense reconciliation</h4>
-      </div>
-      <div class="a-card">
-        <div class="a-ico"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg></div>
-        <h4>Analysing rent-roll and agency data to identify operational risks and potential growth opportunities</h4>
-      </div>
-      <div class="a-card">
-        <div class="a-ico"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-        <h4>Managing routine tenant and landlord communications</h4>
-      </div>
-      <div class="a-card">
-        <div class="a-ico"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
-        <h4>Supporting listing preparation and property appraisal workflows</h4>
-      </div>
-      <div class="a-card">
-        <div class="a-ico"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-        <h4>Monitoring document and transaction status</h4>
-      </div>
-      <div class="a-card">
-        <div class="a-ico"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
-        <h4>Coordinating electronic-signature and lodgement processes</h4>
-      </div>
-      <div class="a-card">
-        <div class="a-ico"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-        <h4>Creating auditable records of actions, approvals and identified exceptions</h4>
-      </div>
-      <div class="a-card">
-        <div class="a-ico"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M12 3l1.9 5.8L20 10l-5.1 3.3L16 20l-4-3.4L8 20l1.1-6.7L4 10l6.1-1.2z"/></svg></div>
-        <h4>Building customised operational workflows through natural-language instructions</h4>
+      <div>
+        <p class="lede">Real estate agencies and property-management businesses frequently operate across fragmented property-management platforms, CRM systems, accounting software, email, electronic-signature platforms, compliance tools, forms and document repositories — forcing employees to manually transfer information between systems, chase missing documents, prepare agreements, review leases and reconcile transactions.</p>
+        <div class="prose mt-s"><p>ARIA is designed to operate as an intelligent digital member of a real estate team, completing repetitive and process-driven work while maintaining appropriate human oversight. Its intended capabilities include:</p></div>
       </div>
     </div>
 
-    <div class="note-box">
-      <p>ARIA is designed to extend AI-based assistance across mission-critical processes for property managers, real estate agents and administrative staff — <strong style="color:var(--text)">augmenting rather than replacing professional judgment</strong>. Material legal, financial, compliance and customer decisions will remain subject to appropriate human review and approval.</p>
+    <div class="grid grid-3 reveal-stagger" style="--gap:16px">
+      <div class="card card--hover a-card">
+        <div class="icon-badge"><svg fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div>
+        <h3>Preparing draft property, tenancy and leasing documents using existing agency data</h3>
+      </div>
+      <div class="card card--hover a-card">
+        <div class="icon-badge"><svg fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Reviewing leases, forms and documentation for missing information, inconsistencies and potential compliance issues</h3>
+      </div>
+      <div class="card card--hover a-card">
+        <div class="icon-badge"><svg fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Coordinating follow-ups with tenants, landlords, vendors, applicants and internal team members</h3>
+      </div>
+      <div class="card card--hover a-card">
+        <div class="icon-badge"><svg fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg></div>
+        <h3>Preparing comparative market analyses, property statistics and branded client reports</h3>
+      </div>
+      <div class="card card--hover a-card">
+        <div class="icon-badge"><svg fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M12 10h2M16 10h.01M8 14h2M12 14h2M16 14h.01M8 18h8"/></svg></div>
+        <h3>Supporting owner-statement preparation and rent and expense reconciliation</h3>
+      </div>
+      <div class="card card--hover a-card">
+        <div class="icon-badge"><svg fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg></div>
+        <h3>Analysing rent-roll and agency data to identify operational risks and potential growth opportunities</h3>
+      </div>
+      <div class="card card--hover a-card">
+        <div class="icon-badge"><svg fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Managing routine tenant and landlord communications</h3>
+      </div>
+      <div class="card card--hover a-card">
+        <div class="icon-badge"><svg fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+        <h3>Supporting listing preparation and property appraisal workflows</h3>
+      </div>
+      <div class="card card--hover a-card">
+        <div class="icon-badge"><svg fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h3>Monitoring document and transaction status</h3>
+      </div>
+      <div class="card card--hover a-card">
+        <div class="icon-badge"><svg fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
+        <h3>Coordinating electronic-signature and lodgement processes</h3>
+      </div>
+      <div class="card card--hover a-card">
+        <div class="icon-badge"><svg fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>Creating auditable records of actions, approvals and identified exceptions</h3>
+      </div>
+      <div class="card card--hover a-card">
+        <div class="icon-badge"><svg fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.8L20 10l-5.1 3.3L16 20l-4-3.4L8 20l1.1-6.7L4 10l6.1-1.2z"/></svg></div>
+        <h3>Building customised operational workflows through natural-language instructions</h3>
+      </div>
+    </div>
+
+    <div class="note-box reveal">
+      <p>ARIA is designed to extend AI-based assistance across mission-critical processes for property managers, real estate agents and administrative staff — <strong>augmenting rather than replacing professional judgment</strong>. Material legal, financial, compliance and customer decisions will remain subject to appropriate human review and approval.</p>
     </div>
   </div>
 </section>
 
 <!-- ═══════════ BEYOND CHATBOTS ═══════════ -->
-<section class="sec" id="execution">
-  <div class="container reveal">
-    <div class="eyebrow"><span class="bar"></span> Moving Beyond Chatbots</div>
-    <div class="sec-title">From answering questions to AI execution</div>
-    <p class="sec-desc" style="max-width:820px">Traditional generative AI tools typically respond to individual prompts by answering questions, summarising information or drafting content. Agentic AI systems are designed to go further by planning and executing multi-step tasks across connected software, data sources and business processes.</p>
-    <p class="sec-desc" style="max-width:820px;margin-top:14px">ARIA is intended to apply this agentic model specifically to the real estate industry. For example, an authorised user may instruct ARIA to prepare a new tenancy workflow. Subject to system availability, permissions and human-review requirements, ARIA could:</p>
+<section class="section" id="execution">
+  <div class="container">
+    <div class="section-head aria-head reveal">
+      <div>
+        <div class="eyebrow">Moving Beyond Chatbots</div>
+        <h2 class="h2">From answering questions to AI execution</h2>
+      </div>
+      <div>
+        <p class="lede">Traditional generative AI tools typically respond to individual prompts by answering questions, summarising information or drafting content. Agentic AI systems are designed to go further by planning and executing multi-step tasks across connected software, data sources and business processes.</p>
+        <div class="prose mt-s"><p>ARIA is intended to apply this agentic model specifically to the real estate industry. For example, an authorised user may instruct ARIA to prepare a new tenancy workflow. Subject to system availability, permissions and human-review requirements, ARIA could:</p></div>
+      </div>
+    </div>
 
     <div class="flow">
-      <div class="flow-row">
+      <div class="flow-row reveal-stagger">
         <div class="flow-step"><div class="flow-n">1</div><div class="flow-body"><p>Review the relevant tenant and property information</p></div></div>
         <div class="flow-step"><div class="flow-n">2</div><div class="flow-body"><p>Identify missing information or documentation</p></div></div>
         <div class="flow-step"><div class="flow-n">3</div><div class="flow-body"><p>Request outstanding information from the relevant parties</p></div></div>
         <div class="flow-step"><div class="flow-n">4</div><div class="flow-body"><p>Prepare the required draft agreement and supporting forms</p></div></div>
       </div>
-      <div class="flow-row">
+      <div class="flow-row reveal-stagger">
         <div class="flow-step"><div class="flow-n">5</div><div class="flow-body"><p>Route documents for internal review</p></div></div>
         <div class="flow-step"><div class="flow-n">6</div><div class="flow-body"><p>Coordinate electronic signature</p></div></div>
         <div class="flow-step"><div class="flow-n">7</div><div class="flow-body"><p>Monitor completion</p></div></div>
@@ -378,59 +376,73 @@
       </div>
     </div>
 
-    <div class="note-box">
+    <div class="note-box reveal">
       <p>By connecting information, documents, communication and execution within one operating layer, Braiin believes ARIA can reduce repetitive administration, improve process consistency and enable agencies to grow their property portfolios without requiring a proportionate increase in administrative headcount.</p>
     </div>
   </div>
 </section>
 
 <!-- ═══════════ MARKET OPPORTUNITY ═══════════ -->
-<section class="market" id="market">
-  <div class="container reveal">
-    <div class="eyebrow"><span class="bar"></span> Market Opportunity</div>
-    <div class="sec-title">A significant global opportunity</div>
-    <p class="sec-desc" style="max-width:820px">Braiin views the global real estate software market as the most relevant primary total addressable market benchmark for ARIA. According to Grand View Research, the global real estate software market was valued at approximately US$12.8 billion in 2025 and is estimated to reach approximately US$14.3 billion in 2026.</p>
-
-    <div class="m-cards">
-      <div class="mc"><div class="mc-n">US$14.3B</div><div class="mc-l">Global real estate software market, est. 2026</div></div>
-      <div class="mc"><div class="mc-n">12.2%</div><div class="mc-l">Forecast CAGR, 2026&ndash;2033</div></div>
-      <div class="mc"><div class="mc-n">US$32.0B</div><div class="mc-l">Forecast real estate software market by 2033</div></div>
-      <div class="mc"><div class="mc-n">46.2%</div><div class="mc-l">Forecast CAGR, enterprise agentic AI, 2025&ndash;2030</div></div>
+<section class="section section--dark" id="market">
+  <div class="container">
+    <div class="section-head aria-head reveal">
+      <div>
+        <div class="eyebrow">Market Opportunity</div>
+        <h2 class="h2">A significant global opportunity</h2>
+      </div>
+      <div>
+        <p class="lede">Braiin views the global real estate software market as the most relevant primary total addressable market benchmark for ARIA. According to Grand View Research, the global real estate software market was valued at approximately US$12.8 billion in 2025 and is estimated to reach approximately US$14.3 billion in 2026.</p>
+      </div>
     </div>
 
-    <p style="font-size:13.5px;color:rgba(255,255,255,.72);line-height:1.95;margin-top:40px;max-width:860px">The research includes software used for property management; customer relationship management; enterprise resource planning; contract management; transaction workflows; residential real estate; commercial real estate; and real estate agency operations. Grand View Research identifies cloud deployment, automation, artificial intelligence, digital documentation and demand for integrated property-management systems as important contributors to this growth.</p>
-    <p style="font-size:13.5px;color:rgba(255,255,255,.72);line-height:1.95;margin-top:14px;max-width:860px">ARIA also participates in the rapidly expanding enterprise agentic AI market, which Grand View Research estimates was approximately US$3.67 billion in 2025 and is forecast to reach approximately US$24.50 billion by 2030.</p>
+    <div class="kpis reveal-stagger" style="--cols:4">
+      <div class="kpi"><div class="stat__n text-grad">US$14.3B</div><div class="stat__l">Global real estate software market, est. 2026</div></div>
+      <div class="kpi"><div class="stat__n">12.2%</div><div class="stat__l">Forecast CAGR, 2026&ndash;2033</div></div>
+      <div class="kpi"><div class="stat__n text-grad">US$32.0B</div><div class="stat__l">Forecast real estate software market by 2033</div></div>
+      <div class="kpi"><div class="stat__n">46.2%</div><div class="stat__l">Forecast CAGR, enterprise agentic AI, 2025&ndash;2030</div></div>
+    </div>
 
-    <div class="note-box">
-      <p>Braiin does not aggregate the real estate software and enterprise agentic AI forecasts because the categories may overlap. The two market forecasts are presented to demonstrate the scale of the real estate software opportunity and the rapid growth of the underlying agentic AI technology category. <strong style="color:#fff">Neither market estimate represents a forecast of ARIA's revenue, market share or financial performance.</strong></p>
+    <div class="prose mt-l reveal">
+      <p>The research includes software used for property management; customer relationship management; enterprise resource planning; contract management; transaction workflows; residential real estate; commercial real estate; and real estate agency operations. Grand View Research identifies cloud deployment, automation, artificial intelligence, digital documentation and demand for integrated property-management systems as important contributors to this growth.</p>
+      <p>ARIA also participates in the rapidly expanding enterprise agentic AI market, which Grand View Research estimates was approximately US$3.67 billion in 2025 and is forecast to reach approximately US$24.50 billion by 2030.</p>
+    </div>
+
+    <div class="note-box reveal">
+      <p>Braiin does not aggregate the real estate software and enterprise agentic AI forecasts because the categories may overlap. The two market forecasts are presented to demonstrate the scale of the real estate software opportunity and the rapid growth of the underlying agentic AI technology category. <strong>Neither market estimate represents a forecast of ARIA's revenue, market share or financial performance.</strong></p>
     </div>
   </div>
 </section>
 
 <!-- ═══════════ PROPTECH ECOSYSTEM ═══════════ -->
-<section class="sec" id="ecosystem">
-  <div class="container reveal">
-    <div class="eyebrow"><span class="bar"></span> Integrated With Braiin's PropTech Ecosystem</div>
-    <div class="sec-title">An intelligent operating layer for the residential lifecycle</div>
-    <p class="sec-desc" style="max-width:860px">Braiin intends to integrate ARIA across its broader Property Technology and Living Infrastructure ecosystem to deliver unique workflows and proprietary data sets few other agentic platforms can match. This is expected to create an intelligent operating layer connecting real estate workflows with:</p>
-
-    <div class="eco-grid">
-      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span>Tenant &amp; purchaser onboarding</span></div>
-      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span>Utility activation &amp; switching</span></div>
-      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span>Broadband &amp; telecommunications</span></div>
-      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span>Property &amp; tenancy documentation</span></div>
-      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span>Customer-experience automation</span></div>
-      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span>Embedded residential services</span></div>
-      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span>Insurance &amp; household-service products</span></div>
-      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span>Payments &amp; recurring household transactions</span></div>
-      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span>Property-management systems</span></div>
-      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span>Tenant, landlord &amp; household engagement</span></div>
+<section class="section" id="ecosystem">
+  <div class="container">
+    <div class="section-head aria-head reveal">
+      <div>
+        <div class="eyebrow">Integrated With Braiin's PropTech Ecosystem</div>
+        <h2 class="h2">An intelligent operating layer for the residential lifecycle</h2>
+      </div>
+      <div>
+        <p class="lede">Braiin intends to integrate ARIA across its broader Property Technology and Living Infrastructure ecosystem to deliver unique workflows and proprietary data sets few other agentic platforms can match. This is expected to create an intelligent operating layer connecting real estate workflows with:</p>
+      </div>
     </div>
 
-    <div class="eco-banner">
-      <img src="assets/images/property.webp" alt="Braiin Property Technology and Living Infrastructure ecosystem">
+    <div class="eco-grid reveal-stagger">
+      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div><span>Tenant &amp; purchaser onboarding</span></div>
+      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div><span>Utility activation &amp; switching</span></div>
+      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div><span>Broadband &amp; telecommunications</span></div>
+      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div><span>Property &amp; tenancy documentation</span></div>
+      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div><span>Customer-experience automation</span></div>
+      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div><span>Embedded residential services</span></div>
+      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div><span>Insurance &amp; household-service products</span></div>
+      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div><span>Payments &amp; recurring household transactions</span></div>
+      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div><span>Property-management systems</span></div>
+      <div class="eco-item"><div class="eco-tick"><svg fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div><span>Tenant, landlord &amp; household engagement</span></div>
+    </div>
+
+    <div class="eco-banner reveal">
+      <img src="assets/images/property.webp" alt="Braiin Property Technology and Living Infrastructure ecosystem" loading="lazy">
       <div class="eco-banner-inner">
-        <span class="eco-kicker">Living Infrastructure</span>
+        <div class="eyebrow">Living Infrastructure</div>
         <h3>Beyond administrative automation</h3>
         <p>Braiin believes the integration can extend ARIA beyond administrative automation and position the platform as an intelligent orchestration layer supporting the broader residential lifecycle. Subject to commercial agreements and required integrations, the platform may also be embedded within real estate agency networks, property-management platforms, mortgage and brokerage channels and residential service ecosystems.</p>
       </div>
@@ -439,64 +451,70 @@
 </section>
 
 <!-- ═══════════ COMMERCIAL MODEL ═══════════ -->
-<section class="sec" id="commercial" style="background:var(--g50)">
-  <div class="container reveal">
-    <div class="eyebrow"><span class="bar"></span> Commercial Model &amp; International Deployment</div>
-    <div class="sec-title">A phased path to commercialisation</div>
-    <p class="sec-desc" style="max-width:820px">Braiin intends to release ARIA through a phased commercial deployment involving selected real estate agencies, property-management businesses and enterprise partners. The Company expects the platform to be commercialised through a combination of:</p>
-
-    <div class="comm-grid">
-      <div class="a-card">
-        <div class="a-ico"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-6.2-8.6"/><path d="M21 3v6h-6"/></svg></div>
-        <h4>Recurring software subscriptions</h4>
+<section class="section section--alt" id="commercial">
+  <div class="container">
+    <div class="section-head aria-head reveal">
+      <div>
+        <div class="eyebrow">Commercial Model &amp; International Deployment</div>
+        <h2 class="h2">A phased path to commercialisation</h2>
       </div>
-      <div class="a-card">
-        <div class="a-ico"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M13 2L3 14h8l-1 8 10-12h-8z"/></svg></div>
-        <h4>Usage-based AI workflow fees</h4>
-      </div>
-      <div class="a-card">
-        <div class="a-ico"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></div>
-        <h4>Enterprise licensing</h4>
-      </div>
-      <div class="a-card">
-        <div class="a-ico"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
-        <h4>Per-property or per-portfolio pricing</h4>
-      </div>
-      <div class="a-card">
-        <div class="a-ico"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></div>
-        <h4>Integration and implementation fees</h4>
-      </div>
-      <div class="a-card">
-        <div class="a-ico"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-        <h4>Revenue through connected residential services</h4>
+      <div>
+        <p class="lede">Braiin intends to release ARIA through a phased commercial deployment involving selected real estate agencies, property-management businesses and enterprise partners. The Company expects the platform to be commercialised through a combination of:</p>
       </div>
     </div>
 
-    <div class="note-box">
-      <p>The initial deployment is expected to focus on <strong style="color:var(--text)">Australia</strong>, followed by selected opportunities in the <strong style="color:var(--text)">United Kingdom, New Zealand and the United States</strong>. Each international deployment will require the localisation of property forms, terminology, privacy controls, workflow rules and applicable regulatory and compliance frameworks. Specific customers, commercial terms, deployment timing and expected financial contributions will be announced when agreements are finalised and disclosure is considered appropriate.</p>
+    <div class="grid grid-3 reveal-stagger" style="--gap:16px">
+      <div class="card card--hover a-card">
+        <div class="icon-badge"><svg fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.2-8.6"/><path d="M21 3v6h-6"/></svg></div>
+        <h3>Recurring software subscriptions</h3>
+      </div>
+      <div class="card card--hover a-card">
+        <div class="icon-badge"><svg fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h8l-1 8 10-12h-8z"/></svg></div>
+        <h3>Usage-based AI workflow fees</h3>
+      </div>
+      <div class="card card--hover a-card">
+        <div class="icon-badge"><svg fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>Enterprise licensing</h3>
+      </div>
+      <div class="card card--hover a-card">
+        <div class="icon-badge"><svg fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        <h3>Per-property or per-portfolio pricing</h3>
+      </div>
+      <div class="card card--hover a-card">
+        <div class="icon-badge"><svg fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></div>
+        <h3>Integration and implementation fees</h3>
+      </div>
+      <div class="card card--hover a-card">
+        <div class="icon-badge"><svg fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>Revenue through connected residential services</h3>
+      </div>
+    </div>
+
+    <div class="note-box reveal">
+      <p>The initial deployment is expected to focus on <strong>Australia</strong>, followed by selected opportunities in the <strong>United Kingdom, New Zealand and the United States</strong>. Each international deployment will require the localisation of property forms, terminology, privacy controls, workflow rules and applicable regulatory and compliance frameworks. Specific customers, commercial terms, deployment timing and expected financial contributions will be announced when agreements are finalised and disclosure is considered appropriate.</p>
     </div>
   </div>
 </section>
 
 <!-- ═══════════ ABOUT / BOILERPLATE ═══════════ -->
-<section class="boiler">
-  <div class="container reveal">
-    <div class="boiler-grid">
-      <div class="boiler-col">
-        <span class="boiler-kick"><i></i> About ARIA</span>
-        <p>ARIA — the Agentic Real Estate Intelligence and Automation — is an AI-native workforce designed to execute multi-step workflows across property management, leasing, sales, compliance, documentation, accounting support and customer engagement. ARIA combines natural-language interaction, workflow orchestration, document generation, data analysis and human-in-the-loop controls to help real estate organisations reduce repetitive administration, strengthen operational consistency and scale more efficiently.</p>
+<section class="section">
+  <div class="container">
+    <div class="grid grid-2 reveal-stagger" style="--gap:20px">
+      <div class="card boiler-col">
+        <div class="eyebrow">About ARIA</div>
+        <p class="card__text">ARIA — the Agentic Real Estate Intelligence and Automation — is an AI-native workforce designed to execute multi-step workflows across property management, leasing, sales, compliance, documentation, accounting support and customer engagement. ARIA combines natural-language interaction, workflow orchestration, document generation, data analysis and human-in-the-loop controls to help real estate organisations reduce repetitive administration, strengthen operational consistency and scale more efficiently.</p>
         <div class="boiler-meta">
-          <span class="boiler-chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3l1.9 5.8L20 10l-5.1 3.3L16 20l-4-3.4L8 20l1.1-6.7L4 10l6.1-1.2z"/></svg> Agentic AI Execution</span>
-          <span class="boiler-chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> Real Estate &amp; PropTech</span>
+          <span class="boiler-chip"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.8L20 10l-5.1 3.3L16 20l-4-3.4L8 20l1.1-6.7L4 10l6.1-1.2z"/></svg> Agentic AI Execution</span>
+          <span class="boiler-chip"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> Real Estate &amp; PropTech</span>
         </div>
       </div>
-      <div class="boiler-col">
-        <span class="boiler-kick"><i></i> About Braiin Limited</span>
-        <p>Braiin Limited (NASDAQ: BRAI) is a global technology platform operating across AI, agritech, customer experience solutions, PropTech, and living infrastructure. Braiin's ecosystem combines embedded distribution, intelligent automation, and recurring revenue platforms designed to support the lifecycle of the home and connected consumer services.</p>
+      <div class="card boiler-col">
+        <div class="eyebrow">About Braiin Limited</div>
+        <p class="card__text">Braiin Limited (NASDAQ: BRAI) is a global technology platform operating across AI, agritech, customer experience solutions, PropTech, and living infrastructure. Braiin's ecosystem combines embedded distribution, intelligent automation, and recurring revenue platforms designed to support the lifecycle of the home and connected consumer services.</p>
         <div class="boiler-meta">
           <span class="boiler-chip"><span class="dot"></span> NASDAQ: BRAI</span>
-          <span class="boiler-chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Subiaco, WA &middot; Australia</span>
-          <span class="boiler-chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg> ir@braiin.com</span>
+          <span class="boiler-chip"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Subiaco, WA &middot; Australia</span>
+          <span class="boiler-chip"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg> ir@braiin.com</span>
         </div>
       </div>
     </div>
@@ -504,46 +522,55 @@
 </section>
 
 <!-- ═══════════ CTA ═══════════ -->
-<section class="aria-cta">
-  <div class="container reveal">
-    <div class="eyebrow" style="justify-content:center"><span class="bar"></span> Get in Touch</div>
-    <div class="sec-title">Interested in learning more?</div>
-    <p>If you're interested in learning more about ARIA or Braiin's other innovative solutions, please reach out to our team.</p>
-    <div class="ct-grid">
-      <div class="ct-card">
-        <h5>Investor Relations</h5>
-        <b>Mike Mason</b>
-        <span>CORE IR &middot; (212) 655-0924</span>
-        <a href="mailto:ir@braiin.com">ir@braiin.com</a>
-      </div>
-      <div class="ct-card">
-        <h5>Public Relations</h5>
-        <b>Matthew Cossel</b>
-        <span>Core PR &middot; (212) 655-0924</span>
-        <a href="mailto:pr@braiin.com">pr@braiin.com</a>
+<section class="section section--flush-top">
+  <div class="container">
+    <div class="cta-band reveal">
+      <div class="cta-band__grid">
+        <div>
+          <div class="eyebrow">Get in Touch</div>
+          <h2>Interested in learning more?</h2>
+          <p>If you're interested in learning more about ARIA or Braiin's other innovative solutions, please reach out to our team.</p>
+        </div>
+        <div class="ct-grid">
+          <div class="ct-card">
+            <h3>Investor Relations</h3>
+            <b>Mike Mason</b>
+            <span>CORE IR &middot; (212) 655-0924</span>
+            <a href="mailto:ir@braiin.com">ir@braiin.com</a>
+          </div>
+          <div class="ct-card">
+            <h3>Public Relations</h3>
+            <b>Matthew Cossel</b>
+            <span>Core PR &middot; (212) 655-0924</span>
+            <a href="mailto:pr@braiin.com">pr@braiin.com</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════ DISCLAIMER ═══════════ -->
-<section class="disclaimer">
-  <details>
-    <summary>Cautionary Note Regarding Forward-Looking Statements</summary>
-    <p>This page contains "forward-looking statements" within the meaning of Section 27A of the United States Securities Act of 1933, as amended, and Section 21E of the United States Securities Exchange Act of 1934, as amended. All statements, other than statements of historical facts, included herein, including but not limited to such things as future business strategy, plans, and goals, and the expansion and growth of our business. The words "estimate", "plan", "anticipate", "expect", "intend", "believe", "target", "budget", "may", "can", "will", "would", "could", "should", "seeks", or "scheduled to" and similar words or expressions, or negatives of these terms or other variations of these terms or comparable language or any discussion of strategy or intention identify forward-looking statements. Please see the risk factors included in the Company's United States Securities and Exchange Commission filings, which could cause actual results and events to differ materially from those contained in the forward-looking statements.</p>
-    <p>You are cautioned against attributing undue certainty to forward-looking statements. Although these forward-looking statements were based on assumptions that the Company believes are reasonable when made, you are cautioned that forward-looking statements are not guarantees of future performance and that actual results, performance, or achievements may differ materially from those made in or suggested by the forward-looking statements. Any forward-looking statements made on this page speak only as of the date of those statements. We undertake no obligation to update those statements or publicly announce the results of any revisions to any of those statements to reflect future events or developments.</p>
-  </details>
+<section class="disclosure">
+  <div class="container">
+    <details>
+      <summary>Cautionary Note Regarding Forward-Looking Statements</summary>
+      <p>This page contains "forward-looking statements" within the meaning of Section 27A of the United States Securities Act of 1933, as amended, and Section 21E of the United States Securities Exchange Act of 1934, as amended. All statements, other than statements of historical facts, included herein, including but not limited to such things as future business strategy, plans, and goals, and the expansion and growth of our business. The words "estimate", "plan", "anticipate", "expect", "intend", "believe", "target", "budget", "may", "can", "will", "would", "could", "should", "seeks", or "scheduled to" and similar words or expressions, or negatives of these terms or other variations of these terms or comparable language or any discussion of strategy or intention identify forward-looking statements. Please see the risk factors included in the Company's United States Securities and Exchange Commission filings, which could cause actual results and events to differ materially from those contained in the forward-looking statements.</p>
+      <p>You are cautioned against attributing undue certainty to forward-looking statements. Although these forward-looking statements were based on assumptions that the Company believes are reasonable when made, you are cautioned that forward-looking statements are not guarantees of future performance and that actual results, performance, or achievements may differ materially from those made in or suggested by the forward-looking statements. Any forward-looking statements made on this page speak only as of the date of those statements. We undertake no obligation to update those statements or publicly announce the results of any revisions to any of those statements to reflect future events or developments.</p>
+    </details>
+  </div>
 </section>
 
+</main>
+
+<!-- ═══ FOOTER (loaded from footer.html) ═══ -->
 <div id="footer-placeholder"></div>
+
 <script>
-fetch('header.html').then(r=>r.text()).then(h=>{document.getElementById('header-placeholder').innerHTML=h;document.getElementById('hamburger').addEventListener('click',function(){this.classList.toggle('open');document.getElementById('mobileMenu').classList.toggle('open');});window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',scrollY>50)});});
-fetch('footer.html').then(r=>r.text()).then(h=>{document.getElementById('footer-placeholder').innerHTML=h});
-document.addEventListener('DOMContentLoaded',()=>{const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}})},{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));});
 // Expand the forward-looking statements notice whenever the page is printed or rendered to PDF.
 const expandAll=()=>document.querySelectorAll('details').forEach(d=>d.open=true);
 window.addEventListener('beforeprint',expandAll);
-if(location.search.includes('pdf=1')){document.addEventListener('DOMContentLoaded',()=>{expandAll();document.querySelectorAll('.reveal').forEach(el=>el.classList.add('v'));});}
+if(location.search.includes('pdf=1')){document.addEventListener('DOMContentLoaded',()=>{expandAll();document.querySelectorAll('.reveal,.reveal-stagger').forEach(el=>el.classList.add('v','is-in'));});}
 </script>
 </body>
 </html>

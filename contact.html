@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,14 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact Braiin | Global AI Platform Company | NASDAQ: BRAI</title>
 <meta name="description" content="Contact Braiin Limited (NASDAQ: BRAI), a global AI platform headquartered in Western Australia. Reach our team for partnership or investor inquiries.">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=1.0.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=2.0.0">
+<script>document.documentElement.classList.add('js')</script>
+<script src="site.js?v=2.0.0" defer></script>
 
 <!-- Favicons -->
-<link rel="icon" type="image/x-icon" href="assets/images/braiin-favicon.webp">
+<link rel="icon" type="image/webp" href="assets/images/braiin-favicon.webp">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/images/braiin-favicon.webp">
-<meta name="theme-color" content="#2e439a">
-
+<meta name="theme-color" content="#06101D">
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5NN79C0SY"></script>
@@ -21,72 +24,104 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-M5NN79C0SY');
 </script>
 
+<style>
+  /* Page-scoped: IR contact row inside a card, submit button tracking */
+  .pg-contact .ir-contact{display:flex;align-items:flex-start;gap:18px}
+  .pg-contact .ir-contact .icon-badge{margin:0}
+  .pg-contact .ir-contact p{font-size:15px;line-height:1.7;color:var(--muted);margin-top:4px}
+  .pg-contact .ir-contact a{color:var(--brand-700);font-weight:600}
+  .pg-contact .form-submit{letter-spacing:.08em}
+  .pg-contact .nowrap{white-space:nowrap}
+</style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ═══ HEADER (loaded from header.html) ═══ -->
 <div id="header-placeholder"></div>
 
-<div class="page-hero lime">
-  <div class="container">
-    <div class="eyebrow"><span class="bar"></span> Contact Us</div>
-    <div class="sec-title">Have questions?<br>Get in touch</div>
-    <p class="sec-desc">Whether you're a potential partner, investor, or have general inquiries — we'd love to hear from you.</p>
-  </div>
-</div>
+<main id="main" class="pg-contact">
 
-<section class="sec" style="padding:80px 5% 60px">
+<!-- ═══ HERO ═══ -->
+<section class="page-hero lime">
   <div class="container">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:56px;align-items:start" class="contact-split">
-      <div>
-        <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--g400);margin-bottom:10px">CONTACT US</p>
-        <h2 style="font-size:clamp(28px,3.5vw,42px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin-bottom:32px">Have Questions?<br>Get in Touch!</h2>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>Contact</span></nav>
+    <div class="eyebrow">Contact Us</div>
+    <h1 class="h1">Have questions?<br><span class="text-grad">Get in touch</span></h1>
+    <p class="lede">Whether you're a potential partner, investor, or have general inquiries — we'd love to hear from you.</p>
+  </div>
+</section>
+
+<!-- ═══ CONTACT FORM ═══ -->
+<section class="section">
+  <div class="container">
+    <div class="split split--top">
+      <div class="reveal">
+        <div class="eyebrow">CONTACT US</div>
+        <h2 class="h2">Have Questions?<br>Get in Touch!</h2>
         <!-- Real photo: Sydney Australia skyline -->
-        <div style="border-radius:14px;overflow:hidden">
-          <img src="assets/images/sydneya.jpg" alt="Sydney, Australia Skyline" style="width:100%;height:360px;object-fit:cover">
+        <div class="media media--accent mt-m" style="--ratio:4/3">
+          <img src="assets/images/sydneya.jpg" alt="Sydney, Australia Skyline" loading="lazy">
         </div>
       </div>
+
       <!-- Contact form sends to Vercel serverless API -->
-      <div style="background:white;padding:40px;border-radius:14px;box-shadow:0 4px 32px rgba(0,0,0,.06)">
-        <div style="margin-bottom:28px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--g100);padding-bottom:20px">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--g300)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          <input type="text" id="cf-name" placeholder="Name" style="flex:1;border:none;outline:none;font-family:'Montserrat';font-size:14px;color:var(--text);padding:4px 0">
+      <div class="form-card reveal">
+        <div class="form">
+          <div class="form-row">
+            <div class="field">
+              <label for="cf-name">Name</label>
+              <input type="text" id="cf-name" class="form-input" placeholder="Name" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="cf-phone">Phone</label>
+              <input type="tel" id="cf-phone" class="form-input" placeholder="Phone" autocomplete="tel">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="cf-email">Email Address</label>
+              <input type="email" id="cf-email" class="form-input" placeholder="Email Address" autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="cf-company">Company</label>
+              <input type="text" id="cf-company" class="form-input" placeholder="Company" autocomplete="organization">
+            </div>
+          </div>
+          <div class="field">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" class="form-input" placeholder="How can we help you? Feel free to get in touch!" rows="5"></textarea>
+          </div>
+          <button type="button" id="cf-submit" class="form-submit" onclick="submitContactForm()">GET IN TOUCH</button>
+          <div id="cf-status" role="status" aria-live="polite" style="display:none;padding:14px;border-radius:12px;font-size:14px;font-weight:600;text-align:center"></div>
         </div>
-        <div style="margin-bottom:28px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--g100);padding-bottom:20px">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--g300)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <input type="tel" id="cf-phone" placeholder="Phone" style="flex:1;border:none;outline:none;font-family:'Montserrat';font-size:14px;color:var(--text);padding:4px 0">
-        </div>
-        <div style="margin-bottom:28px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--g100);padding-bottom:20px">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--g300)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          <input type="email" id="cf-email" placeholder="Email Address" style="flex:1;border:none;outline:none;font-family:'Montserrat';font-size:14px;color:var(--text);padding:4px 0">
-        </div>
-        <div style="margin-bottom:28px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--g100);padding-bottom:20px">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--g300)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-          <input type="text" id="cf-company" placeholder="Company" style="flex:1;border:none;outline:none;font-family:'Montserrat';font-size:14px;color:var(--text);padding:4px 0">
-        </div>
-        <div style="margin-bottom:28px;display:flex;align-items:flex-start;gap:14px;border-bottom:1px solid var(--g100);padding-bottom:20px">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--g300)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:4px"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
-          <textarea id="cf-message" placeholder="How can we help you? Feel free to get in touch!" rows="3" style="flex:1;border:none;outline:none;font-family:'Montserrat';font-size:14px;color:var(--text);padding:4px 0;resize:vertical"></textarea>
-        </div>
-        <button id="cf-submit" onclick="submitContactForm()" style="padding:16px 36px;border:none;border-radius:8px;background:var(--lime);color:white;font-family:'Montserrat';font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .3s" onmouseover="this.style.background='#7BA82E'" onmouseout="this.style.background='#9ACA3C'">GET IN TOUCH</button>
-        <div id="cf-status" style="display:none;margin-top:16px;padding:14px;border-radius:8px;font-size:13px;font-weight:600;text-align:center"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Investor Relations contact only -->
-<section class="sec" style="background:var(--g50);padding:40px 5% 60px">
+<!-- ═══ INVESTOR RELATIONS CONTACT ═══ -->
+<section class="section section--alt section--tight">
   <div class="container">
-    <div style="padding:28px;border:1px solid var(--g100);border-radius:var(--radius);background:white;max-width:600px">
-      <h4 style="font-size:14px;font-weight:700;margin-bottom:6px">Investor Relations Contact</h4>
-      <p style="font-size:13px;color:var(--g400);line-height:1.7">Scott Gordon &middot; Core IR<br><a href="mailto:scottg@coreir.com" style="color:var(--cyan);font-weight:600">scottg@coreir.com</a> &middot; +1 212-655-0924</p>
+    <!-- Investor Relations contact only -->
+    <div class="card reveal">
+      <div class="ir-contact">
+        <span class="icon-badge icon-badge--solid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></span>
+        <div>
+          <h3 class="card__title" style="margin-bottom:0">Investor Relations Contact</h3>
+          <p>Scott Gordon &middot; Core IR<br><a href="mailto:scottg@coreir.com">scottg@coreir.com</a> &middot; <span class="nowrap">+1 212-655-0924</span></p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
+</main>
+
+<!-- ═══ FOOTER (loaded from footer.html) ═══ -->
 <div id="footer-placeholder"></div>
 <script>
 // ============================================
@@ -210,12 +245,6 @@ function hideStatus() {
   statusDiv.style.display = 'none';
 }
 
-// ============================================
-// HEADER, FOOTER & SCROLL ANIMATIONS
-// ============================================
-fetch('header.html').then(r=>r.text()).then(h=>{document.getElementById('header-placeholder').innerHTML=h;document.getElementById('hamburger').addEventListener('click',function(){this.classList.toggle('open');document.getElementById('mobileMenu').classList.toggle('open');});window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',scrollY>50)});});
-fetch('footer.html').then(r=>r.text()).then(h=>{document.getElementById('footer-placeholder').innerHTML=h});
-document.addEventListener('DOMContentLoaded',()=>{const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}})},{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));});
 </script>
 </body>
 </html>
